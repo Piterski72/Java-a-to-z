@@ -1,0 +1,13 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ru.nivanov</groupId>
+    <artifactId>java-a-to-z</artifactId>
+    <packaging>pom</packaging>
+	<version>1.0</version>
+    
+	<modules>
+	  <module>chapter_001</module>
+	</modules>
+
+	
+	</project>
