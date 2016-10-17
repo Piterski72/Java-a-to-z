@@ -15,27 +15,28 @@ this.c = c;
 }
 public double area() {
 	
-	//calculate triangle Sides length and poluper
+	//calculate poluper
 	
-	double abSide=this.a.distanceTo(b);
-	double bcSide=this.b.distanceTo(c);
-	double acSide=this.a.distanceTo(c);
-	double poluper=(abSide + bcSide + acSide)/2;
-	double tri_area;
+	double poluper=(this.a.distanceTo(b) + this.b.distanceTo(c) + this.a.distanceTo(c))/2;
+	double triArea;
+	
+	MaxSide longest=new MaxSide();
+	
+	double xxx=longest.maxChoose (this.a, this.b, this.c);
 	
 	//Check triangle existing and calculate the triangle area
 
-	if (poluper>abSide && poluper>bcSide && poluper>acSide) {
+	if (poluper>xxx) {
 	
-		tri_area=sqrt(poluper*(poluper-abSide)*(poluper-bcSide)*(poluper-acSide));
+		triArea=sqrt(poluper*(poluper-this.a.distanceTo(b))*(poluper-this.b.distanceTo(c))*(poluper-this.a.distanceTo(c)));
 	
 		}
 	else {
-		 tri_area=0.0;
-		System.out.println("Impossible to create triangle, area= " + tri_area);
+		 triArea=0.0;
+		System.out.println(String.format ("Impossible to create triangle, area =  %.2f", triArea));
 		
 		}
 
-return tri_area;
+return triArea;
   }
 }
