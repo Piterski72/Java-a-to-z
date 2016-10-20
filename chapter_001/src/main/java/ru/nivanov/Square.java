@@ -18,9 +18,8 @@ public class Square {
 	
 		float calculate (int x) {
 		
-			float y = (float) (this.a * Math.pow((x),2) + this.b * x + this.c);	
-			return y;
-		}
+			return (float) (this.a * Math.pow((x),2) + this.b * x + this.c);	
+			}
 		
 			
 		void show (int start, int finish, int step) {
