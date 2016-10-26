@@ -7,7 +7,7 @@ public class Rotate90Mass {
 		this.values = values;
 	}
 	
-	public void rotation90(int[][] values){
+	public void rotation90(){
 		
 		int max = this.values.length;
 		int tmp = 0;
