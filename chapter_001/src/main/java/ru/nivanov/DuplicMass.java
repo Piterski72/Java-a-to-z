@@ -14,14 +14,6 @@ public class DuplicMass {
 		int max = symbols.length;
 		int count = 0;
 		
-		System.out.println("Before");
-				
-		// original massive
-		for (int i = 0; i < max; i++) {
-			System.out.printf(" %s",symbols[i]);
-		}
-			System.out.println();
-				
 		// finding copies and converting to nulls
 		for (int i = 0; i < max - 1; i++) {
 			if (symbols[i].equals("")){
@@ -36,7 +28,7 @@ public class DuplicMass {
 			}
 		}
 		
-		//moving nulls to end of massive 
+		//moving nulls to the end of massive 
 		String tmp = "";
 		for (int i = max-1; i > 0; i--) {
 			for (int j = 0; j < i; j++){
@@ -49,19 +41,12 @@ public class DuplicMass {
 		} 
 			
 		// creating new massive, cutting copies 
-		System.out.println("After");	
-			String [] result = new String [symbols. length - count];
+		String [] result = new String [symbols. length - count];
 			for (int i = 0; i < result.length; i++) {
 				result[i] = symbols [i];
-				System.out.printf(" %s",result[i]);
-				
+							
 			}
 		
-		System.out.println();	
-		System.out.printf("Number of duplicates = %d ",count);
-		System.out.println();		
-		System.out.printf("Result massive length = %d ",result.length);
-		System.out.println();
 		return result;
 		
 	}
