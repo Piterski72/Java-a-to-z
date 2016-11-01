@@ -30,10 +30,9 @@ public class DuplicMass {
 		
 		//moving nulls to the end of massive 
 		String tmp = null;
-		boolean test = false;
 		for (int i = max-1; i > 0; i--) {
 			for (int j = 0; j < i; j++){
-				if ( test = (symbols[max-j-1].equals(null)) && symbols[max-j-2].equals(null)) {
+				if ( !symbols[max-j-1].equals(null) && symbols[max-j-2].equals(null)) {
 					tmp = symbols[max-j-2];
 					symbols[max-j-2] = symbols [max-j-1];
 					symbols[max-j-1] = tmp;
