@@ -14,25 +14,18 @@ public class SubOrigin {
 		for (int j = 0; j < chSub.length; j++) {
 			
 			for (int i = index; i < chOrig.length; i++) {
-				if (chSub[j]==chOrig[i]) {
+				if (chSub[j]==(chOrig[i])) {
 					index = i + 1;
 					count ++;
 					break;
-				} 
-				else {
-					count = 0;
-				}
+				} else { count = 0;
+				  }
 										
 			}
 					
 		}
 		
-		if (count == chSub.length) {
-			result = true;
-		} else 
-			result = false;
-		
-		return result;
+		return count==chSub.length;
 		
 	}
 
