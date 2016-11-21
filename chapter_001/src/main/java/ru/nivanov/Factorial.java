@@ -1,26 +1,34 @@
 package ru.nivanov;
 
+/**
+ * Calculating factorial.
+ * @author nivanov.
+ * @since
+ * @version
+ */
+
 public class Factorial {
-	
-	int a;
-	
-	public Factorial (int a) {
-		
-	this.a = a;	
-		
+	/**
+	*/
+	private int a;
+	/**
+	* Constructor Factorial.
+	* @param x ..
+	*/
+	public Factorial(int x) {
+		this.a = x;
 	}
-	
-	public int calcF () {
-		
+	/**
+	* Calculating factorial.
+	*@return result
+	*
+	*/
+	public int calcF() {
 		int b = this.a;
 		for (int i = 1; i < this.a; i++) {
-		b = b * i;		
+		b = b * i;
 		}
-		
-		System.out.println (String.format("factorial %d =  %d", a, b));
+		System.out.println(String.format("factorial %d =  %d", a, b));
 		return b;
-	}	
-
-	
-	
+	}
 }
