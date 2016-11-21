@@ -74,7 +74,11 @@
 
         <!-- Checks for imports                              -->
         <!-- See http://checkstyle.sf.net/config_import.html -->
-        <module name="AvoidStarImport"/>
+        <module name="AvoidStarImport">
+			<property name="excludes" value="java.io,java.net,java.lang.Math"/>
+			<property name="allowClassImports" value="true"/>
+			<property name="allowStaticMemberImports" value="true"/>
+		</module>
         <module name="IllegalImport"/> <!-- defaults to sun.* packages -->
         <module name="RedundantImport"/>
         <module name="UnusedImports"/>
@@ -116,7 +120,7 @@
         <module name="AvoidInlineConditionals"/>
         <module name="EmptyStatement"/>
         <module name="EqualsHashCode"/>
-        <module name="HiddenField"/>
+        <!--<module name="HiddenField"/>-->
         <module name="IllegalInstantiation"/>
         <module name="InnerAssignment"/>
         <module name="MagicNumber"/>
