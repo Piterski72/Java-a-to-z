@@ -4,21 +4,44 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class TriangleTest {
-	
-	@Test
+/**
+ * Calculate triangle square.
+ * @author nivanov.
+ * @since
+ * @version
+ */
+
+	public class TriangleTest {
+	/**
+	* Calculate square.
+	*/
+		@Test
 	public void whenABCCorrectThenReturnArea() {
-	  Triangle abcOne=new Triangle(new Point(2.0,1.0), new Point (-1.0,-3.0), new Point(-1.0,1.0));
-      double ploshad=abcOne.area ();
-      assertThat(ploshad, is (6.0d));
+		final double one = 2.0;
+		final double two = 1.0;
+		final double three = -1.0;
+		final double four = -3.0;
+		final double five = -1.0;
+		final double six = 1.0;
+		final double seven = 6.0;
+		Triangle abcOne = new Triangle(new Point(one, two), new Point(three, four), new Point(five, six));
+		double ploShad = abcOne.area();
+		assertThat(ploShad, is(seven));
     }
-	
-    @Test
+	/**
+	* Test if triangle cannot exist.
+	*/
+		@Test
 	public void whenABCinLineThenReturnError() {
-	  Triangle abcTwo=new Triangle(new Point(1.0,1.0), new Point (5.0,5.0), new Point(10.0,10.0));
-	  double ploshad=abcTwo.area ();
-      assertThat(ploshad, is (0.0d));	  
+		final double one = 1.0;
+		final double two = 1.0;
+		final double three = 5.0;
+		final double four = 5.0;
+		final double five = 10.0;
+		final double six = 10.0;
+		final double seven = 0.0;
+		Triangle abcTwo = new Triangle(new Point(one, two), new Point(three, four), new Point(five, six));
+		double ploShad = abcTwo.area();
+		assertThat(ploShad, is(seven));
 	}
-	
-	
-}	
+}

@@ -4,13 +4,23 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
+/**
+ * Test of calculating factorial.
+ * @author nivanov.
+ * @since
+ * @version
+ */
 
 public class FactorialTest {
-	
+	/**
+	* Test of factorial of 6.
+	*/
 	@Test
 	public void whenCalculateFactThenReturnIt() {
-	Factorial factorial = new Factorial(6);
+	final int one = 6;
+	final int expected = 720;
+	Factorial factorial = new Factorial(one);
 	int z = factorial.calcF();
-    assertThat(z, is (720)); 	 	
+    assertThat(z, is(expected));
 	}
 }
