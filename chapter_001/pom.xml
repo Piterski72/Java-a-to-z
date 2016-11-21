@@ -4,6 +4,12 @@
     <artifactId>chapter_001</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
+	
+	<parent>
+		<groupId>ru.nivanov</groupId>
+		<artifactId>Java-a-to-z</artifactId>
+		<version>1.0</version>
+	</parent>
     
 	<properties>
 	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
