@@ -25,6 +25,11 @@ public class StartUI {
 			System.out.printf("%s %s %s \n", item.getId(), item.getName(), item.getDescription());
 		}
 		System.out.println();
+		tracker.remove(tracker.findByName("first task").getId());
+		for (Item item : tracker.getAll()) {
+			System.out.printf("%s %s %s \n", item.getId(), item.getName(), item.getDescription());
+		}
+		System.out.println();
 		try {
 			String isFoundName = tracker.findByName("third task").getName();
 			System.out.println(isFoundName);

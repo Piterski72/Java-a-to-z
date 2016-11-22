@@ -49,17 +49,6 @@ public class Tracker {
 		return found;
 	}
 	/**
-	 * Edit Items fields.
-	 * @param pos input parameter index
-	 * @param newName input parameter name
-	 * @param newDesc input parameter description
-	 *
-	 */
-	public void ieditOne(int pos, String newName, String newDesc) {
-		items[pos].setName(newName);
-		items[pos].setDescription(newDesc);
-	}
-	/**
 	 * Edit2 Items fields.
 	 * @param itemEdit input new Item with new fields
 	 *
@@ -74,14 +63,21 @@ public class Tracker {
 	}
 	/**
 	 * Remove Item from list.
-	 * @param pos is index
+	 * @param itemId is item id
 	 *
 	 */
-	public void remove(int pos) {
-		items[pos] = null;
+	public void remove(String itemId) {
+		 int indItRm = 0;
+		 for (int i = 0; i < position; i++) {
+			if (items[i].getId().equals(itemId)) {
+				items[i] = null;
+				indItRm = i;
+				break;
+			}
+		}
 		position--;
-		for (int i = pos; i < position; i++) {
-			items[i] = items [i + 1];
+		for (int j = indItRm; j < position; j++) {
+			items[j] = items[j + 1];
 		}
 	}
 	/**
