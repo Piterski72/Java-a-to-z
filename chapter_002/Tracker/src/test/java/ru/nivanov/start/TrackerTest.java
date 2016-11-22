@@ -38,19 +38,6 @@ public class TrackerTest {
 		assertThat(test3.getId(), is(commented.getId()));
 	}
 	/**
-	* Edit items fields test (search by position).
-	*/
-	@Test
-	public void whenEditOneItemNameThenReturnEdited() {
-		Tracker tracker = new Tracker();
-		Item test1 = new Task("first task", "first desc");
-		Item test2 = new Task("2 task", "2 desc");
-		tracker.add(test1);
-		tracker.add(test2);
-		tracker.ieditOne(1, "secT", "secDsc");
-		assertThat(test2.getName(), is("secT"));
-	}
-	/**
 	* Edit2 items fields test (new item, same id).
 	*/
 	@Test
@@ -70,9 +57,9 @@ public class TrackerTest {
 	@Test
 	public void whenRemoveItemThenReturnResult() {
 		Tracker tracker = new Tracker();
-		tracker.add(new Task("first task", "first desc"));
-		tracker.add(new Task("second task", "second desc"));
-		tracker.remove(1);
+		Item one = tracker.add(new Task("first task", "first desc"));
+		Item two = tracker.add(new Task("second task", "second desc"));
+		tracker.remove(one.getId());
 		Item[] temp = tracker.getAll();
 		assertThat(temp.length, is(1));
 	}
