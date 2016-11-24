@@ -8,8 +8,6 @@ package ru.nivanov;
  */
 
 public class Calculator {
-	/**
-	*/
 	private double result;
 	/**
 	* summ.
@@ -47,10 +45,6 @@ public class Calculator {
 	   this.result = first / second;
 	   }
 	}
-	/**
-	* getter.
-	* @return result
-	*/
 	public double getResult() {
 		  return this.result;
 	}
