@@ -5,7 +5,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 /**
- * Tracker set oftests.
+ * Tracker set of tests.
  * @author nivanov.
  * @since
  * @version
@@ -32,10 +32,9 @@ public class TrackerTest {
 		Tracker tracker = new Tracker();
 		Item test3 = new Task("third task", "third desc");
 		tracker.add(test3);
-		String testId = tracker.findByName("third task").getId();
-		Comments comment = new Comments(testId, "comment one");
-		Item commented = tracker.addComment(comment);
-		assertThat(test3.getId(), is(commented.getId()));
+		String testId = test3.getId();
+		Item commented = tracker.addComment(testId, "comment one");
+		assertThat(testId, is(commented.getId()));
 	}
 	/**
 	* Edit2 items fields test (new item, same id).
@@ -43,13 +42,11 @@ public class TrackerTest {
 	@Test
 	public void whenEditTwoItemThenReturnEdited() {
 		Tracker tracker = new Tracker();
-		tracker.add(new Task("first task", "first desc"));
-		Item[] temp = tracker.getAll();
-		Item newtest1 = new Task("new-first task", "new-first desc");
-		newtest1.setId(temp[0].getId());
-		tracker.ieditTwo(newtest1);
-		Item[] result = tracker.getAll();
-		assertThat(result[0].getName(), is("new-first task"));
+		Item newtest1 = new Task("first task", "first desc");
+		tracker.add(newtest1);
+		String testId = newtest1.getId();
+		tracker.ieditTwo(testId, "name-ed", "desc-ed");
+		assertThat(newtest1.getName(), is("name-ed"));
 	}
 	/**
 	* Remove item test.
