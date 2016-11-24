@@ -1,5 +1,6 @@
 package ru.nivanov.start;
 import ru.nivanov.models.*;
+import ru.nivanov.menu.*;
 
 /**
  * StartUI class.
@@ -9,38 +10,33 @@ import ru.nivanov.models.*;
  */
 
 public class StartUI {
+	private Input input;
+	public StartUI(Input input) {
+		this.input = input;
+	}
+	/**
+	 * realization.
+	 * ..
+	 * ..
+	 */
+	public void init() {
+		final int getout = 7;
+		Tracker tracker = new Tracker();
+		MenuItem[] str = new MenuItem[] {new MenuAdd(), new MenuEdit(), new MenuRem(), new MenuList(), new MenuFilList(), new MenuAddComm(), new MenuExit()};
+		int menuch;
+		do {
+			System.out.println("0 - add, 1 - edit, 2 - del, 3 - list, 4 - filter, 5 - add comment, 6 - exit");
+			String usrch = input.ask("Please, enter your choice: ");
+			menuch = Integer.valueOf(usrch);
+			str[menuch].doStuff(input, tracker);
+			} while (menuch + 1 < getout);
+	}
 	/**
 	* main method.
 	* @param args input param
 	*/
 	public static void main(String[] args) {
-		Tracker tracker = new Tracker();
-		tracker.add(new Task("first task", "first desc"));
-		tracker.add(new Task("second task", "second desc"));
-		tracker.add(new Task("third task", "third desc"));
-		tracker.add(new Task("third task", "Super third desc"));
-		tracker.add(new Task("forth task", "forth desc"));
-		tracker.add(new Task("fith task", "fith desc"));
-		for (Item item : tracker.getAll()) {
-			System.out.printf("%s %s %s \n", item.getId(), item.getName(), item.getDescription());
-		}
-		System.out.println();
-		tracker.remove(tracker.findByName("first task").getId());
-		for (Item item : tracker.getAll()) {
-			System.out.printf("%s %s %s \n", item.getId(), item.getName(), item.getDescription());
-		}
-		System.out.println();
-		try {
-			String isFoundName = tracker.findByName("third task").getName();
-			System.out.println(isFoundName);
-			} catch (NullPointerException ex) {
-			System.out.println("Name not found");
-		}
-		try {
-			String isFoundDesc = tracker.findByDesc("fith desc").getDescription();
-			System.out.println(isFoundDesc);
-			} catch (NullPointerException ex) {
-			System.out.println("Desc not found");
-		}
+		Input input = new ConsoleInput();
+		new StartUI(input).init();
 	}
 }

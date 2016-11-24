@@ -40,26 +40,26 @@ public class Tracker {
 	}
 	/**
 	 * Add Items comment.
+	 * @param itemId input parameter
 	 * @param comment input parameter
 	 * @return item with comment
 	 */
-	public Item addComment(Comments comment) {
-		Item found = findById(comment.getIdComm());
-		found.addCommentz(comment);
-		return found;
+	public Item addComment(String itemId, String comment) {
+		Item result = findById(itemId);
+		result.addCommentz(comment);
+		return result;
 	}
 	/**
 	 * Edit2 Items fields.
-	 * @param itemEdit input new Item with new fields
+	 * @param itemId input Item Id
+	 * @param name input Item Name
+	 * @param desc input Item description
 	 *
 	 */
-	public void ieditTwo(Item itemEdit) {
-		for (int i = 0; i < this.items.length; i++) {
-			if (this.items[i] != null && this.items[i].getId().equals(itemEdit.getId())) {
-				this.items[i] = itemEdit;
-				break;
-			}
-		}
+	public void ieditTwo(String itemId, String name, String desc) {
+		Item result = findById(itemId);
+		result.setName(name);
+		result.setDescription(desc);
 	}
 	/**
 	 * Remove Item from list.
@@ -72,12 +72,11 @@ public class Tracker {
 			if (items[i].getId().equals(itemId)) {
 				items[i] = null;
 				indItRm = i;
-				break;
+				position--;
+				for (int j = indItRm; j < position; j++) {
+					items[j] = items[j + 1];
+				}
 			}
-		}
-		position--;
-		for (int j = indItRm; j < position; j++) {
-			items[j] = items[j + 1];
 		}
 	}
 	/**
