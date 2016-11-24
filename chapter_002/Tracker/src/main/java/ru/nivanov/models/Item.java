@@ -24,10 +24,13 @@ public class Item {
 	private final int numComm = 20;
 	/**
 	*/
-	private Comments[] comments = new Comments[numComm];
+	private String[] comments = new String[numComm];
 	/**
 	*/
 	private int num = 0;
+	/**
+	*/
+	private int countCom = 0;
 	/**
 	*/
 	public Item() {
@@ -42,6 +45,12 @@ public class Item {
 		this.name = name;
 		this.description = description;
 		this.create = create;
+	}
+	/**
+	* @return number of non empty comments
+	*/
+	public int getCountCom() {
+		return this.countCom;
 	}
 	/**
 	 * Getting name.
@@ -103,22 +112,19 @@ public class Item {
 	 * Add new comments.
 	 * @param comments input param
 	 */
-	public void addCommentz(Comments comments) {
+	public void addCommentz(String comments) {
 		this.comments[num++] = comments;
+		countCom++;
 	}
 	/**
 	 * Getting comment text.
-	 * @return comment text
+	 * @return commResult massive
 	 */
 	public String[] getComments() {
-		String[] commTxt = new String[numComm];
-		try {
-		for (int i = 0; i < numComm; i++) {
-			commTxt[i] = this.comments[i].getBodyComm();
-		}
-		} catch (NullPointerException ex) {
-			System.out.println("comment not found");
-		  }
-		return commTxt;
+		String[] commResult = new String[this.countCom];
+		for (int i = 0; i < countCom; i++) {
+			commResult[i] = this.comments[i];
+			}
+		return commResult;
 	}
 }
