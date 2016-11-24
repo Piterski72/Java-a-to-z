@@ -11,10 +11,6 @@ public class DuplicMass {
 	/**
 	*/
 	private String[] symbols;
-	/**
-	* Constructor DuplicMass.
-	* @param psymbols ..
-	*/
 	public DuplicMass(String[] psymbols) {
 		this.symbols = psymbols;
 	}
