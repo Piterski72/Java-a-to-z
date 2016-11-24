@@ -7,8 +7,6 @@ package ru.nivanov;
  * @version
  */
 	public class BubbleSortMass {
-	/**
-	*/
 	private int[] values;
 	/**
 	* sorting values by bubble method.
