@@ -17,9 +17,7 @@ import java.util.*;
 	 * @return ..
 	 */
 	public String doStuff(Input input, Tracker tracker) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Enter item`s ID: ");
-		String itemId = scanner.nextLine();
+		String itemId = input.ask("Enter Id: ");
 		int before = tracker.getPosition();
 		tracker.remove(itemId);
 		if (tracker.getPosition() < before) {
