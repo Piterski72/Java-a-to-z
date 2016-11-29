@@ -2,7 +2,7 @@ package ru.nivanov.start;
 import ru.nivanov.models.*;
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * Tracker set of tests.
