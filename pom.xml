@@ -74,6 +74,7 @@
 						<excludes>
 							<exclude>ru/nivanov/models/*.class</exclude>
 							<exclude>ru/nivanov/start/StartUI.class</exclude>
+							<exclude>ru/nivanov/start/ConsoleInput.class</exclude>
 						</excludes>
 					</instrumentation>
 					<check>
@@ -85,6 +86,9 @@
                         <packageLineRate>60</packageLineRate>
                         <packageBranchRate>60</packageBranchRate>
                     </check>
+					<formats>
+                        <format>html</format>
+                    </formats>
 				</configuration>
                 <executions>
                     <execution>
@@ -93,6 +97,7 @@
                         <goals>
                             <goal>clean</goal>
                             <goal>check</goal>
+							<goal>cobertura</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -163,6 +168,6 @@
                     <!-- Version 1.2.0+ -->
                 </configuration>
             </plugin>
-        </plugins>
+		</plugins>
     </build>
 </project>
