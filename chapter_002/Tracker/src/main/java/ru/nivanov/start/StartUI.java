@@ -16,12 +16,11 @@ public class StartUI {
 	}
 	/**
 	 * realization.
-	 * ..
+	 * @param tracker ..
 	 * ..
 	 */
-	public void init() {
+	public void init(Tracker tracker) {
 		final int getout = 7;
-		Tracker tracker = new Tracker();
 		MenuItem[] str = new MenuItem[] {new MenuAdd(), new MenuEdit(), new MenuRem(), new MenuList(), new MenuFilList(), new MenuAddComm(), new MenuExit()};
 		int menuch;
 		do {
@@ -36,7 +35,8 @@ public class StartUI {
 	* @param args input param
 	*/
 	public static void main(String[] args) {
+		Tracker tracker = new Tracker();
 		Input input = new ConsoleInput();
-		new StartUI(input).init();
+		new StartUI(input).init(tracker);
 	}
 }
