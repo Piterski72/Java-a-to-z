@@ -74,7 +74,6 @@
 						<excludes>
 							<exclude>ru/nivanov/models/*.class</exclude>
 							<exclude>ru/nivanov/start/StartUI.class</exclude>
-							<exclude>ru/nivanov/start/ConsoleInput.class</exclude>
 						</excludes>
 					</instrumentation>
 					<check>
