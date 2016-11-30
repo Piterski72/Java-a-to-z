@@ -1,7 +1,4 @@
 package ru.nivanov.start;
-import ru.nivanov.models.*;
-import ru.nivanov.menu.*;
-
 /**
  * StartUI class.
  * @author nivanov.
@@ -11,32 +8,32 @@ import ru.nivanov.menu.*;
 
 public class StartUI {
 	private Input input;
-	public StartUI(Input input) {
+	private Tracker tracker;
+	public StartUI(Input input, Tracker tracker) {
 		this.input = input;
+		this.tracker = tracker;
 	}
 	/**
 	 * realization.
-	 * @param tracker ..
+	 *
 	 * ..
 	 */
-	public void init(Tracker tracker) {
-		final int getout = 7;
-		MenuItem[] str = new MenuItem[] {new MenuAdd(), new MenuEdit(), new MenuRem(), new MenuList(), new MenuFilList(), new MenuAddComm(), new MenuExit()};
-		int menuch;
+	public void init() {
+		MenuTracker menu = new MenuTracker(this.input, this.tracker);
+		menu.fillActions();
 		do {
-			System.out.println("0 - add, 1 - edit, 2 - del, 3 - list, 4 - filter, 5 - add comment, 6 - exit");
-			String usrch = input.ask("Please, enter your choice: ");
-			menuch = Integer.valueOf(usrch);
-			str[menuch].doStuff(input, tracker);
-			} while (menuch + 1 < getout);
+			menu.show();
+			int key = Integer.valueOf(input.ask("Select action: "));
+			menu.select(key);
+			} while (!"y".equals(this.input.ask("Exit? (y) ")));
 	}
 	/**
 	* main method.
 	* @param args input param
 	*/
 	public static void main(String[] args) {
-		Tracker tracker = new Tracker();
 		Input input = new ConsoleInput();
-		new StartUI(input).init(tracker);
+		Tracker tracker = new Tracker();
+		new StartUI(input, tracker).init();
 	}
 }
