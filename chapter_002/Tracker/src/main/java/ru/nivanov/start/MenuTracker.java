@@ -41,12 +41,12 @@ class EditItem implements UserAction {
  * @version
  */
  public class MenuTracker {
-	 private final int leng = 6;
-	 private final int three = 3;
-	 private final int four = 4;
-	 private final int five = 5;
+	 static final int THREE = 3;
+	 static final int FOUR = 4;
+	 static final int FIVE = 5;
 	 private Input input;
 	 private Tracker tracker;
+	 private final int leng = 6;
 	 private UserAction[] actions = new UserAction[leng];
 		public MenuTracker(Input input, Tracker tracker) {
 			this.input = input;
@@ -60,9 +60,9 @@ class EditItem implements UserAction {
 			actions[0] = this.new AddItem();
 			actions[1] = new MenuTracker.ShowItems();
 			actions[2] = new EditItem();
-			actions[three] = this.new DelItem();
-			actions[four] = this.new FilterItems();
-			actions[five] = this.new AddItemComments();
+			actions[THREE] = this.new DelItem();
+			actions[FOUR] = this.new FilterItems();
+			actions[FIVE] = this.new AddItemComments();
 		}
 	/**
 	 * Select menu realization.
@@ -159,13 +159,12 @@ class EditItem implements UserAction {
  * @version
  */
 		private class DelItem implements UserAction {
-			private final int menuNum = 3;
 	/**
 	 * key method.
 	 * @return key..
 	 */
 			public int key() {
-				return menuNum;
+				return THREE;
 			}
 	/**
 	 * Executing delete action.
@@ -192,13 +191,12 @@ class EditItem implements UserAction {
  * @version
  */
 		private class FilterItems implements UserAction {
-			private final int menuNum = 4;
 	/**
 	 * key method.
 	 * @return key..
 	 */
 			public int key() {
-				return menuNum;
+				return FOUR;
 			}
 	/**
 	 * Executing filtering action.
@@ -237,13 +235,12 @@ class EditItem implements UserAction {
  * @version
  */
 		private class AddItemComments implements UserAction {
-			private final int menuNum = 5;
 	/**
 	 * key method.
 	 * @return key..
 	 */
 			public int key() {
-				return menuNum;
+				return FIVE;
 			}
 	/**
 	 * Executing add comments action.
