@@ -23,8 +23,7 @@ public class StartUI {
 		menu.fillActions();
 		do {
 			menu.show();
-			int key = Integer.valueOf(input.ask("Select action: "));
-			menu.select(key);
+			menu.select(input.ask("Select: ", menu.getRange()));
 			} while (!"y".equals(this.input.ask("Exit? (y) ")));
 	}
 	/**
@@ -32,7 +31,7 @@ public class StartUI {
 	* @param args input param
 	*/
 	public static void main(String[] args) {
-		Input input = new ConsoleInput();
+		Input input = new ValidateInput();
 		Tracker tracker = new Tracker();
 		new StartUI(input, tracker).init();
 	}

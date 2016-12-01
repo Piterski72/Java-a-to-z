@@ -53,6 +53,17 @@ class EditItem implements UserAction {
 			this.tracker = tracker;
 		}
 	/**
+	 * range create.
+	 * @return range
+	 */
+		public int[] getRange() {
+			int[] ranges = new int[leng];
+			for (int i = 0; i < leng; i++) {
+			ranges[i] = i;
+		}
+		return ranges;
+		}
+	/**
 	 * Build menu realization.
 	 *
 	 */
@@ -69,7 +80,11 @@ class EditItem implements UserAction {
 	 * @param key ..
 	 */
 		public void select(int key) {
-			this.actions[key].execute(this.input, this.tracker);
+			try {
+				this.actions[key].execute(this.input, this.tracker);
+				} catch (NullPointerException npe) {
+					System.out.println("Incorrect data, please try again");
+				}
 		}
 	/**
 	 * Show menu realization.
@@ -174,7 +189,11 @@ class EditItem implements UserAction {
 	 */
 			public void execute(Input input, Tracker tracker) {
 				String itemId = input.ask("Enter Id: ");
+				int before = tracker.getPosition();
 				tracker.remove(itemId);
+				if (before == tracker.getPosition()) {
+					System.out.println("Wrong id! Deletion imcomplete!");
+				}
 			}
 	/**
 	 * Info method.

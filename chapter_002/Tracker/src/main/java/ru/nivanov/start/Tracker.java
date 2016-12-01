@@ -90,6 +90,8 @@ public class Tracker {
 			if (item != null && item.getId().equals(id)) {
 				result = item;
 				break;
+			} else {
+				result = null;
 			}
 		}
 		return result;
