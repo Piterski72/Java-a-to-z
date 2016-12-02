@@ -6,7 +6,10 @@ import ru.nivanov.models.*;
  * @since
  * @version
  */
-class EditItem implements UserAction {
+class EditItem extends BaseAction {
+	EditItem(String name) {
+		super(name);
+	}
 	/**
 	 * key method.
 	 * @return key..
@@ -20,19 +23,12 @@ class EditItem implements UserAction {
 	 * @param tracker ..
 	 *
 	 */
-			public void execute(Input input, Tracker tracker) {
-				String id = input.ask("Enter task`s id: ");
-				String name = input.ask("Enter task`s name: ");
-				String desc = input.ask("Enter task`s desc: ");
-				tracker.ieditTwo(id, name, desc);
-			}
-	/**
-	 * Info method.
-	 * @return info..
-	 */
-			public String info() {
-				return String.format("%d. %s ", this.key(), "Edit item");
-			}
+	public void execute(Input input, Tracker tracker) {
+		String id = input.ask("Enter task`s id: ");
+		String name = input.ask("Enter task`s name: ");
+		String desc = input.ask("Enter task`s desc: ");
+		tracker.ieditTwo(id, name, desc);
+	}
 }
 /**
  * MenuTracker class.
@@ -68,12 +64,12 @@ class EditItem implements UserAction {
 	 *
 	 */
 		public void fillActions() {
-			actions[0] = this.new AddItem();
-			actions[1] = new MenuTracker.ShowItems();
-			actions[2] = new EditItem();
-			actions[THREE] = this.new DelItem();
-			actions[FOUR] = this.new FilterItems();
-			actions[FIVE] = this.new AddItemComments();
+			actions[0] = this.new AddItem("Add new task");
+			actions[1] = new MenuTracker.ShowItems("Show all tasks");
+			actions[2] = new EditItem("Edit item");
+			actions[THREE] = this.new DelItem("Delete task");
+			actions[FOUR] = this.new FilterItems("Set filer by name/desc");
+			actions[FIVE] = this.new AddItemComments("Add task`s comments");
 		}
 	/**
 	 * Select menu realization.
@@ -103,7 +99,10 @@ class EditItem implements UserAction {
  * @since
  * @version
  */
-		private class AddItem implements UserAction {
+		private class AddItem extends BaseAction {
+			AddItem(String name) {
+			super(name);
+			}
 	/**
 	 * key method.
 	 * @return key..
@@ -122,13 +121,6 @@ class EditItem implements UserAction {
 				String desc = input.ask("Enter task`s desc: ");
 				tracker.add(new Task(name, desc));
 			}
-	/**
-	 * Info method.
-	 * @return info..
-	 */
-			public String info() {
-				return String.format("%d. %s ", this.key(), "Add new item");
-			}
 		}
 /**
  * ShowItems inner static class.
@@ -136,7 +128,10 @@ class EditItem implements UserAction {
  * @since
  * @version
  */
-		private static class ShowItems implements UserAction {
+		private static class ShowItems extends BaseAction {
+			ShowItems(String name) {
+				super(name);
+			}
 	/**
 	 * key method.
 	 * @return key..
@@ -159,13 +154,6 @@ class EditItem implements UserAction {
 						}
 				}
 			}
-	/**
-	 * Info method.
-	 * @return info..
-	 */
-			public String info() {
-				return String.format("%d. %s ", this.key(), "Show all items");
-			}
 		}
 /**
  * DelItem inner class.
@@ -173,7 +161,10 @@ class EditItem implements UserAction {
  * @since
  * @version
  */
-		private class DelItem implements UserAction {
+		private class DelItem extends BaseAction {
+			DelItem(String name) {
+				super(name);
+			}
 	/**
 	 * key method.
 	 * @return key..
@@ -195,13 +186,6 @@ class EditItem implements UserAction {
 					System.out.println("Wrong id! Deletion imcomplete!");
 				}
 			}
-	/**
-	 * Info method.
-	 * @return info..
-	 */
-			public String info() {
-				return String.format("%d. %s ", this.key(), "Delete item");
-			}
 		}
 		/**
  * FilterItems inner class.
@@ -209,7 +193,10 @@ class EditItem implements UserAction {
  * @since
  * @version
  */
-		private class FilterItems implements UserAction {
+		private class FilterItems extends BaseAction {
+			FilterItems(String name) {
+				super(name);
+			}
 	/**
 	 * key method.
 	 * @return key..
@@ -239,13 +226,6 @@ class EditItem implements UserAction {
 						System.out.println("incorrect choice");
 						}
 			}
-	/**
-	 * Info method.
-	 * @return info..
-	 */
-			public String info() {
-				return String.format("%d. %s ", this.key(), "Set filter");
-			}
 		}
 		/**
  * AddItemComments inner class.
@@ -253,7 +233,10 @@ class EditItem implements UserAction {
  * @since
  * @version
  */
-		private class AddItemComments implements UserAction {
+		private class AddItemComments extends BaseAction {
+			AddItemComments(String name) {
+				super(name);
+			}
 	/**
 	 * key method.
 	 * @return key..
@@ -271,13 +254,6 @@ class EditItem implements UserAction {
 				String itemId = input.ask("Enter Id: ");
 				String comms = input.ask("Enter comment: ");
 				tracker.addComment(itemId, comms);
-			}
-	/**
-	 * Info method.
-	 * @return info..
-	 */
-			public String info() {
-				return String.format("%d. %s ", this.key(), "Add item`s comment");
 			}
 		}
 }
