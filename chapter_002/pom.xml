@@ -13,6 +13,7 @@
     
 	<modules>
 	  <module>Tracker</module>
+	  <module>Chess</module>
 	 
 	</modules>
 
