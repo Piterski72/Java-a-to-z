@@ -18,4 +18,18 @@ package ru.nivanov.start;
 	public int getVpos() {
 		return this.vPos;
 	}
+	/**
+	 * Check if cells are equals.
+	 * @param cell ..
+	 * @return result of comparison
+	 */
+	boolean cellCompare(Cell cell) {
+		boolean itog = false;
+		if (this.getHpos() == cell.getHpos() && this.getVpos() == cell.getVpos()) {
+			itog = true;
+		} else {
+			itog = false;
+		}
+		return itog;
+	}
 }

@@ -19,12 +19,12 @@ import static java.lang.Math.abs;
 	 * @throws ImpossibleMoveException ..
 	 */
 	public Cell[] way(Cell dist) throws ImpossibleMoveException {
-		int shiftH = dist.getHpos() - position.getHpos();
-		int shiftV = dist.getVpos() - position.getVpos();
+		int shiftH = dist.getHpos() - getPosition().getHpos();
+		int shiftV = dist.getVpos() - getPosition().getVpos();
 		Cell[] result = new Cell[abs(shiftH)];
 		if (abs(shiftH) == abs(shiftV)) {
-			for (int i = 0; i < shiftH; i++) {
-				result[i] = new Cell((position.getHpos() + (i + 1) * shiftH / abs(shiftH)), (position.getVpos() + (i + 1) * shiftV / abs(shiftV)));
+			for (int i = 0; i < abs(shiftH); i++) {
+				result[i] = new Cell((getPosition().getHpos() + (i + 1) * shiftH / abs(shiftH)), (getPosition().getVpos() + (i + 1) * shiftV / abs(shiftV)));
 			}
 		}	else {
 				throw new ImpossibleMoveException("Destination cell is wrong!");

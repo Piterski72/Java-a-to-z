@@ -6,8 +6,14 @@ package ru.nivanov.start;
  * @version
  */
  public abstract class Figure {
-	private final Cell position;
+	private Cell position;
 	public Figure(Cell position) {
+		this.position = position;
+	}
+	public Cell getPosition() {
+		return this.position;
+	}
+	public void setPosition(Cell position) {
 		this.position = position;
 	}
 	/**
