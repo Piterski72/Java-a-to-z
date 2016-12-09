@@ -13,8 +13,13 @@ package ru.nivanov.start;
 	public Cell getPosition() {
 		return this.position;
 	}
-	public void setPosition(Cell position) {
-		this.position = position;
+	/**
+	 * Change figure position.
+	 * @param dist is destination
+	 *
+	 */
+	public void clone(Cell dist) {
+		this.position = dist;
 	}
 	/**
 	 * Check if the way possible.

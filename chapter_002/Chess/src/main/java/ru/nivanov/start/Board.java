@@ -74,7 +74,7 @@ import ru.nivanov.models.*;
 				if (figures[i].getPosition().cellCompare(source)) {
 				Cell[] figPass = figures[i].way(dist);
 					if (checkWay(figPass) == 0) {
-						figures[i].setPosition(dist);
+						figures[i].clone(dist);
 						break;
 					}
 				} else {
