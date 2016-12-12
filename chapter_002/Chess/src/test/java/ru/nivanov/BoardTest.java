@@ -33,6 +33,27 @@ import static org.hamcrest.Matchers.*;
 		assertThat(test[0].getPosition(), is(dist));
 	}
 	/**
+	* Test for bishop move ok.
+	* @throws ImpossibleMoveException ..
+	* @throws OccupiedWayException ..
+	* @throws FigureNotFoundException ..
+	*/
+	@Test
+	public void whenMove2CorrectThenReturnOk() throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
+		Board board = new Board();
+		final int three = 3;
+		final int four = 4;
+		final int five = 5;
+		final int eight = 8;
+		Bishop bishop = new Bishop(new Cell(four, four));
+		board.fillBoard(bishop);
+		Cell source = new Cell(four, four);
+		Cell dist = new Cell(eight, eight);
+		board.move2(source, dist);
+		Figure[] test = board.getFigures();
+		assertThat(test[0].getPosition(), is(dist));
+	}
+	/**
 	* Test for bishop move FigureNotFound error.
 	* @throws ImpossibleMoveException ..
 	* @throws OccupiedWayException ..

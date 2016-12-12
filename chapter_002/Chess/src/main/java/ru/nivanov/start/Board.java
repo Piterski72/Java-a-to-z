@@ -83,4 +83,27 @@ import ru.nivanov.models.*;
 		}
 		return true;
 	}
+	/**
+	 * move2 method checks correct moving.
+	 * @param source ..
+	 * @param dist ..
+	 * @return smthg
+	 * @throws ImpossibleMoveException ..
+	 * @throws OccupiedWayException ..
+	 * @throws FigureNotFoundException ..
+	 */
+	public boolean move2(Cell source, Cell dist) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
+		for (Figure fig : this.getFigures()) {
+				if (fig.getPosition().cellCompare(source)) {
+					Cell[] figPass = fig.way(dist);
+					if (checkWay(figPass)) {
+						fig = fig.clone(dist);
+						break;
+					}
+				} else {
+					throw new FigureNotFoundException("no figure found!");
+				}
+		}
+		return true;
+	}
  }
