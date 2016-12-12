@@ -70,19 +70,15 @@ import ru.nivanov.models.*;
 	 * @throws FigureNotFoundException ..
 	 */
 	public boolean move(Cell source, Cell dist) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
-		for (Figure fig : this.getFigures()) {
-				if (fig.getPosition().cellCompare(source)) {
-				System.out.println("log1");
-				Cell[] figPass = fig.way(dist);
+		for (int i = 0; i < this.getFigures().length; i++) {
+				if (figures[i].getPosition().cellCompare(source)) {
+					Cell[] figPass = figures[i].way(dist);
 					if (checkWay(figPass)) {
-						fig = fig.clone(dist);
-						System.out.println("log2");
-						System.out.println(fig.clone(dist).getPosition().getVpos());
+						figures[i] = figures[i].clone(dist);
 						break;
 					}
 				} else {
-					System.out.println("log3");
-				throw new FigureNotFoundException("no figure found!");
+					throw new FigureNotFoundException("no figure found!");
 				}
 		}
 		return true;

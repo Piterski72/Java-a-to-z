@@ -69,21 +69,6 @@ import static org.hamcrest.Matchers.*;
 		assertThat(cell[2].cellCompare(expect), is(true));
 	}
 	/**
-	* Test for bishop correct move .
-	* @throws ImpossibleMoveException ..
-	*/
-	@Test
-	public void whenImpossibleMoveThenReturnOk() throws ImpossibleMoveException {
-		Board board = new Board();
-		final int four = 4;
-		final int eight = 8;
-		board.fillBoard(new Bishop(new Cell(four, four)));
-		Figure[] test = board.getFigures();
-		Cell dist = new Cell(eight, eight);
-		Cell[] cell = test[0].way(dist);
-		assertThat(cell[four - 1].cellCompare(dist), is(true));
-	}
-	/**
 	* Test for checkway method.
 	* @throws ImpossibleMoveException ..
 	* @throws OccupiedWayException ..
@@ -114,5 +99,57 @@ import static org.hamcrest.Matchers.*;
 		Cell trtr = new Cell(four, four);
 		boolean result = trtr.cellCompare(source);
 		assertThat(result, is(true));
+	}
+	/**
+	* Test for exception.
+	* @throws ImpossibleMoveException ..
+	* @throws OccupiedWayException ..
+	* @throws FigureNotFoundException ..
+	*/
+	@Test(expected = ImpossibleMoveException.class)
+	public void whenImpossibleMoveThenReturnOk() throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
+		Board board = new Board();
+		final int four = 4;
+		final int eight = 8;
+		board.fillBoard(new Bishop(new Cell(four, four)));
+		Cell source = new Cell(four, four);
+		Cell dist = new Cell(eight, four);
+		board.move(source, dist);
+	}
+	/**
+	* Test for exception.
+	* @throws ImpossibleMoveException ..
+	* @throws OccupiedWayException ..
+	* @throws FigureNotFoundException ..
+	*/
+	@Test(expected = OccupiedWayException.class)
+	public void whenOccupiedWayExistsThenReturnOk() throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
+		Board board = new Board();
+		final int four = 4;
+		final int seven = 7;
+		final int eight = 8;
+		board.fillBoard(new Bishop(new Cell(four, four)));
+		board.fillBoard(new Bishop(new Cell(seven, seven)));
+		Cell source = new Cell(four, four);
+		Cell dist = new Cell(eight, eight);
+		board.move(source, dist);
+	}
+	/**
+	* Test for exception.
+	* @throws ImpossibleMoveException ..
+	* @throws OccupiedWayException ..
+	* @throws FigureNotFoundException ..
+	*/
+	@Test(expected = FigureNotFoundException.class)
+	public void whenFigureNotFoundExceptionExistsThenReturnOk() throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
+		Board board = new Board();
+		final int four = 4;
+		final int seven = 7;
+		final int eight = 8;
+		board.fillBoard(new Bishop(new Cell(four, four)));
+		board.fillBoard(new Bishop(new Cell(seven, seven)));
+		Cell source = new Cell(1, four);
+		Cell dist = new Cell(eight, eight);
+		board.move(source, dist);
 	}
 }
