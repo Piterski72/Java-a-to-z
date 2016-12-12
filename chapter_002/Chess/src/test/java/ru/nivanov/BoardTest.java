@@ -13,33 +13,30 @@ import static org.hamcrest.Matchers.*;
  public class BoardTest {
 	/**
 	* Test for bishop move ok.
-	*
+	* @throws ImpossibleMoveException ..
+	* @throws OccupiedWayException ..
+	* @throws FigureNotFoundException ..
 	*/
 	@Test
-	public void whenMoveCorrectThenReturnOk() {
+	public void whenMoveCorrectThenReturnOk() throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
 		Board board = new Board();
 		final int three = 3;
 		final int four = 4;
 		final int five = 5;
 		final int eight = 8;
-		board.fillBoard(new Bishop(new Cell(four, four)));
-		Figure[] test = board.getFigures();
+		Bishop bishop = new Bishop(new Cell(four, four));
+		board.fillBoard(bishop);
 		Cell source = new Cell(four, four);
-		Cell dist = new Cell(0, eight);
-		try {
-			board.move(source, dist);
-		} catch (ImpossibleMoveException ime) {
-			System.out.println("ime error");
-		} catch (OccupiedWayException owe) {
-			System.out.println("owe error");
-		} catch (FigureNotFoundException fnfe) {
-			System.out.println("fnfe error");
-		}
+		Cell dist = new Cell(eight, eight);
+		board.move(source, dist);
+		Figure[] test = board.getFigures();
 		assertThat(test[0].getPosition(), is(dist));
 	}
 	/**
 	* Test for bishop move FigureNotFound error.
-	*
+	* @throws ImpossibleMoveException ..
+	* @throws OccupiedWayException ..
+	* @throws FigureNotFoundException ..
 	*/
 	@Test
 	public void whenFigureNotFoundThenReturnOk() {
@@ -50,102 +47,49 @@ import static org.hamcrest.Matchers.*;
 		Figure[] test = board.getFigures();
 		Cell source = new Cell(1, four);
 		Cell dist = new Cell(eight, eight);
-		boolean err = true;
-		try {
-			board.move(source, dist);
-		} catch (ImpossibleMoveException ime) {
-			System.out.println("ime error");
-		} catch (OccupiedWayException owe) {
-			System.out.println("owe error");
-		} catch (FigureNotFoundException fnfe) {
-			System.out.println("FigureNotFound error");
-			err = false;
-		}
-		assertThat(err, is(false));
+		Cell expect = test[0].getPosition();
+		assertThat(expect.cellCompare(source), is(false));
 	}
 	/**
-	* Test for bishop move OccupiedWayException error.
-	*
+	* Test for bishop move when way is not free.
+	* @throws ImpossibleMoveException ..
 	*/
 	@Test
-	public void whenOccupiedWayThenReturnOk() {
+	public void whenOccupiedWayThenReturnOk() throws ImpossibleMoveException {
 		Board board = new Board();
 		final int four = 4;
 		final int seven = 7;
 		final int eight = 8;
 		board.fillBoard(new Bishop(new Cell(four, four)));
-		board.fillBoard(new Bishop(new Cell(eight, eight)));
-		board.fillBoard(new Bishop(new Cell(four, seven)));
-		Cell source = new Cell(four, four);
+		board.fillBoard(new Bishop(new Cell(seven, seven)));
 		Cell dist = new Cell(eight, eight);
-		boolean err = true;
-		try {
-			board.move(source, dist);
-		} catch (ImpossibleMoveException ime) {
-			System.out.println("ime error");
-		} catch (OccupiedWayException owe) {
-			System.out.println("owe error");
-			err = false;
-		} catch (FigureNotFoundException fnfe) {
-			System.out.println("FigureNotFound error");
-		}
-		assertThat(err, is(false));
+		Figure[] test = board.getFigures();
+		Cell[] cell = test[0].way(dist);
+		Cell expect = test[1].getPosition();
+		assertThat(cell[2].cellCompare(expect), is(true));
 	}
 	/**
-	* Test for bishop move ImpossibleMoveException error.
-	*
+	* Test for bishop correct move .
+	* @throws ImpossibleMoveException ..
 	*/
 	@Test
-	public void whenImpossibleMoveThenReturnOk() {
+	public void whenImpossibleMoveThenReturnOk() throws ImpossibleMoveException {
 		Board board = new Board();
 		final int four = 4;
 		final int eight = 8;
 		board.fillBoard(new Bishop(new Cell(four, four)));
-		board.fillBoard(new Bishop(new Cell(eight, eight)));
 		Figure[] test = board.getFigures();
-		Cell source = new Cell(four, four);
-		Cell dist = new Cell(eight, four);
-		boolean err = true;
-		try {
-			board.move(source, dist);
-		} catch (ImpossibleMoveException ime) {
-			err = false;
-			System.out.println("ime error");
-		} catch (OccupiedWayException owe) {
-			System.out.println("owe error");
-		} catch (FigureNotFoundException fnfe) {
-			System.out.println("FigureNotFound error");
-		}
-		assertThat(err, is(false));
-	}
-	/**
-	* Test for way method.
-	*
-	*/
-	@Test
-	public void whenWayCorrectThenReturnOk() {
-		Board board = new Board();
-		final int four = 4;
-		final int five = 5;
-		final int eight = 8;
-		board.fillBoard(new Bishop(new Cell(four, four)));
-		Figure[] test = board.getFigures();
-		Cell source = new Cell(four, four);
 		Cell dist = new Cell(eight, eight);
-		Cell expect = new Cell(five, four);
-		try {
-			Cell[] res = test[0].way(dist);
-			assertThat(res[four - 1].cellCompare(dist), is(true));
-			} catch (ImpossibleMoveException ime) {
-			System.out.println("ime error");
-		}
+		Cell[] cell = test[0].way(dist);
+		assertThat(cell[four - 1].cellCompare(dist), is(true));
 	}
 	/**
 	* Test for checkway method.
-	*
+	* @throws ImpossibleMoveException ..
+	* @throws OccupiedWayException ..
 	*/
 	@Test
-	public void whenCheckWayCorrectThenReturnOk() {
+	public void whenCheckWayCorrectThenReturnOk() throws ImpossibleMoveException, OccupiedWayException {
 		Board board = new Board();
 		final int four = 4;
 		final int eight = 8;
@@ -153,16 +97,9 @@ import static org.hamcrest.Matchers.*;
 		Figure[] test = board.getFigures();
 		Cell source = new Cell(four, four);
 		Cell dist = new Cell(eight, eight);
-		try {
 			Cell[] res = test[0].way(dist);
-			int what = board.checkWay(res);
-			System.out.println(what);
-			assertThat(what, is(0));
-		} catch (OccupiedWayException owe) {
-			System.out.println("owe error");
-		} catch (ImpossibleMoveException ime) {
-			System.out.println("ime error");
-		}
+			boolean what = board.checkWay(res);
+			assertThat(what, is(true));
 	}
 	/**
 	* Test for cell compare.

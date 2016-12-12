@@ -31,4 +31,13 @@ import static java.lang.Math.abs;
 		}
 		return result;
 	}
+	/**
+	 * Change figure position.
+	 * @param dist is destination
+	 * @return new figure
+	 */
+	public Figure clone(Cell dist) {
+		 Bishop newbishop = new Bishop(dist);
+		 return newbishop;
+	}
 }

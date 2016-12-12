@@ -6,7 +6,7 @@ package ru.nivanov.start;
  * @version
  */
  public abstract class Figure {
-	private Cell position;
+	private final Cell position;
 	public Figure(Cell position) {
 		this.position = position;
 	}
@@ -16,11 +16,9 @@ package ru.nivanov.start;
 	/**
 	 * Change figure position.
 	 * @param dist is destination
-	 *
+	 * @return new figure
 	 */
-	public void clone(Cell dist) {
-		this.position = dist;
-	}
+	public abstract Figure clone(Cell dist);
 	/**
 	 * Check if the way possible.
 	 * @param dist is destination

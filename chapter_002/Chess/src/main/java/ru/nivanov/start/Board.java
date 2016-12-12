@@ -47,12 +47,12 @@ import ru.nivanov.models.*;
 	 * @return check result
 	 * @throws OccupiedWayException ..
 	 */
-	public int checkWay(Cell[] test) throws OccupiedWayException {
-		int checkW = 1;
-		for (int j = 0; j < test.length; j++) {
-			for (int i = 0; i < getPos(); i++) {
-				if (!figures[i].getPosition().cellCompare(test[j])) {
-					checkW = 0;
+	public boolean checkWay(Cell[] test) throws OccupiedWayException {
+		boolean checkW = false;
+		for (Cell cell : test) {
+			for (Figure figs : this.getFigures()) {
+				if (figs != null && !figs.getPosition().cellCompare(cell)) {
+					checkW = true;
 				} else {
 					throw new OccupiedWayException("the way is not free!");
 				}
@@ -70,14 +70,18 @@ import ru.nivanov.models.*;
 	 * @throws FigureNotFoundException ..
 	 */
 	public boolean move(Cell source, Cell dist) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
-		for (int i = 0; i < getPos(); i++) {
-				if (figures[i].getPosition().cellCompare(source)) {
-				Cell[] figPass = figures[i].way(dist);
-					if (checkWay(figPass) == 0) {
-						figures[i].clone(dist);
+		for (Figure fig : this.getFigures()) {
+				if (fig.getPosition().cellCompare(source)) {
+				System.out.println("log1");
+				Cell[] figPass = fig.way(dist);
+					if (checkWay(figPass)) {
+						fig = fig.clone(dist);
+						System.out.println("log2");
+						System.out.println(fig.clone(dist).getPosition().getVpos());
 						break;
 					}
 				} else {
+					System.out.println("log3");
 				throw new FigureNotFoundException("no figure found!");
 				}
 		}
