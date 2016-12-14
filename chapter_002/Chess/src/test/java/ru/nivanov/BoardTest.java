@@ -24,34 +24,14 @@ import static org.hamcrest.Matchers.*;
 		final int four = 4;
 		final int five = 5;
 		final int eight = 8;
+		board.fillBoard(new Bishop(new Cell(1, 1)));
 		Bishop bishop = new Bishop(new Cell(four, four));
 		board.fillBoard(bishop);
 		Cell source = new Cell(four, four);
 		Cell dist = new Cell(eight, eight);
 		board.move(source, dist);
 		Figure[] test = board.getFigures();
-		assertThat(test[0].getPosition(), is(dist));
-	}
-	/**
-	* Test for bishop move ok.
-	* @throws ImpossibleMoveException ..
-	* @throws OccupiedWayException ..
-	* @throws FigureNotFoundException ..
-	*/
-	@Test
-	public void whenMove2CorrectThenReturnOk() throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
-		Board board = new Board();
-		final int three = 3;
-		final int four = 4;
-		final int five = 5;
-		final int eight = 8;
-		Bishop bishop = new Bishop(new Cell(four, four));
-		board.fillBoard(bishop);
-		Cell source = new Cell(four, four);
-		Cell dist = new Cell(eight, eight);
-		board.move2(source, dist);
-		Figure[] test = board.getFigures();
-		assertThat(test[0].getPosition(), is(dist));
+		assertThat(test[1].getPosition(), is(dist));
 	}
 	/**
 	* Test for bishop move FigureNotFound error.
@@ -64,11 +44,12 @@ import static org.hamcrest.Matchers.*;
 		Board board = new Board();
 		final int four = 4;
 		final int eight = 8;
+		board.fillBoard(new Bishop(new Cell(1, 1)));
 		board.fillBoard(new Bishop(new Cell(four, four)));
 		Figure[] test = board.getFigures();
 		Cell source = new Cell(1, four);
 		Cell dist = new Cell(eight, eight);
-		Cell expect = test[0].getPosition();
+		Cell expect = test[1].getPosition();
 		assertThat(expect.cellCompare(source), is(false));
 	}
 	/**
@@ -169,7 +150,7 @@ import static org.hamcrest.Matchers.*;
 		final int eight = 8;
 		board.fillBoard(new Bishop(new Cell(four, four)));
 		board.fillBoard(new Bishop(new Cell(seven, seven)));
-		Cell source = new Cell(1, four);
+		Cell source = new Cell(1, 1);
 		Cell dist = new Cell(eight, eight);
 		board.move(source, dist);
 	}

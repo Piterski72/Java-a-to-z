@@ -70,40 +70,20 @@ import ru.nivanov.models.*;
 	 * @throws FigureNotFoundException ..
 	 */
 	public boolean move(Cell source, Cell dist) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
+		boolean isFound = false;
 		for (int i = 0; i < this.getFigures().length; i++) {
-				if (figures[i].getPosition().cellCompare(source)) {
+			if (figures[i].getPosition().cellCompare(source)) {
+				isFound = true;
 					Cell[] figPass = figures[i].way(dist);
 					if (checkWay(figPass)) {
 						figures[i] = figures[i].clone(dist);
 						break;
 					}
-				} else {
-					throw new FigureNotFoundException("no figure found!");
 				}
 		}
-		return true;
-	}
-	/**
-	 * move2 method checks correct moving.
-	 * @param source ..
-	 * @param dist ..
-	 * @return smthg
-	 * @throws ImpossibleMoveException ..
-	 * @throws OccupiedWayException ..
-	 * @throws FigureNotFoundException ..
-	 */
-	public boolean move2(Cell source, Cell dist) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
-		for (Figure fig : this.getFigures()) {
-				if (fig.getPosition().cellCompare(source)) {
-					Cell[] figPass = fig.way(dist);
-					if (checkWay(figPass)) {
-						fig = fig.clone(dist);
-						break;
-					}
-				} else {
-					throw new FigureNotFoundException("no figure found!");
-				}
+		if (!isFound) {
+			throw new FigureNotFoundException("no figure found!");
 		}
-		return true;
+		return isFound;
 	}
- }
+}
