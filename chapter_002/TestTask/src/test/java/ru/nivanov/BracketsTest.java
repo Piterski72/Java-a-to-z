@@ -49,4 +49,34 @@ import static org.junit.Assert.assertThat;
 		boolean test = brackets.skobkiOk();
 		assertThat(test, is(false));
 	}
-}
+	/**
+	* Test for brackets correct position (simple).
+	*
+	*/
+	@Test
+	public void whenSimpleBracketsCorrectThenReturnOk() {
+		Brackets brackets = new Brackets("(a+b)*(45-(66+(e+f)/(x+y)-r)/13)");
+		boolean test = brackets.simpleCode();
+		assertThat(test, is(true));
+	}
+	 /**
+	* Test for brackets incorrect1 position (simple).
+	*
+	*/
+	@Test
+	public void whenSimpleBracketsInCorrectThenReturnOk() {
+		Brackets brackets = new Brackets("(a+b))*(45-(66+(e+f)/(x+y)-r/13)");
+		boolean test = brackets.simpleCode();
+		assertThat(test, is(false));
+	}
+	 /**
+	* Test for brackets incorrect2 position (simple).
+	*
+	*/
+	@Test
+	public void whenSimpleBracketsInCorrect2ThenReturnOk() {
+		Brackets brackets = new Brackets("(a+b)*45-(66/(e+f)-77)/x+y)-(r-6(4*7/13)");
+		boolean test = brackets.simpleCode();
+		assertThat(test, is(false));
+	}
+ }

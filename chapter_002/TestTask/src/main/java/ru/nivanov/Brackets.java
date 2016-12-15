@@ -53,4 +53,23 @@ package ru.nivanov;
 				}
 		return isCorrect;
 		}
+	/**
+	* simple method checks correct brackets position.
+	* @return boolean result
+	*/
+		public boolean simpleCode() {
+			int result = 0;
+			char[] testChar = this.str.toCharArray();
+				for (int z = 0; z < testChar.length; z++) {
+					if (testChar[z] == '(') {
+						result++;
+					} else if (testChar[z] == ')') {
+						result--;
+						if (result < 0) {
+							break;
+						}
+					}
+				}
+		return (result == 0);
+		}
 }
