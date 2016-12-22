@@ -16,9 +16,9 @@ import static org.junit.Assert.assertThat;
 	*/
 	@Test
 	public void whenPalikCorrectThenReturnOk() throws IOException {
-		ByteArrayInputStream arr = new ByteArrayInputStream("kOmoK".getBytes());
+		BufferedReader arr = new BufferedReader(new InputStreamReader(new ByteArrayInputStream("kOmoK".getBytes())));
 		Palindrom test = new Palindrom();
-		boolean result = test.isPalik(arr);
+		boolean result = test.isPalindrom(arr.readLine());
 		assertThat(result, is(true));
 	}
  }

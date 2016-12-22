@@ -11,27 +11,23 @@ import java.io.*;
 	private final int five = 5;
 	/**
 	* method checks if palindrom is in input flow.
-	* @param in ..
+	* @param phrase ..
 	* @return boolean result
-	* @throws IOException ..
 	*/
-	boolean isPalik(InputStream in) throws IOException {
+	boolean isPalindrom(String phrase) {
 		boolean match = false;
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
-			String value = br.readLine();
-			if (value.length() == five) {
-				char[] reverse = new char[value.length()];
-					for (int i = 0; i < value.length(); i++) {
-						reverse[i] = value.charAt(value.length() - 1 - i);
+		if (phrase.length() == five) {
+				char[] reverse = new char[phrase.length()];
+					for (int i = 0; i < phrase.length(); i++) {
+						reverse[i] = phrase.charAt(phrase.length() - 1 - i);
 					}
 				String strReverse = new String(reverse);
-				if (value.equalsIgnoreCase(strReverse)) {
+				if (phrase.equalsIgnoreCase(strReverse)) {
 					match = true;
 				}
 			} else {
 				System.out.println("error, 5 symbols needed");
 			}
-		}
 		return match;
 	}
 }
