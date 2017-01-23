@@ -2,7 +2,7 @@ package ru.nivanov;
 import java.io.*;
 
 /**
- * Programm checks if even number is in input flow.
+ * Programm checks if palindrom is in input flow.
  * @author nivanov.
  * @since
  * @version
