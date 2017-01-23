@@ -42,6 +42,13 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.6.5</version>
+			<scope>test</scope>
+		</dependency>
+		
     </dependencies>
 	<build>
         <plugins>
@@ -75,6 +82,8 @@
 						<excludes>
 							<exclude>ru/nivanov/models/*.class</exclude>
 							<exclude>ru/nivanov/start/StartUI.class</exclude>
+							<exclude>ru/nivanov/userChat/ConsoleChat.class</exclude>
+							<exclude>ru/nivanov/DropAbuse.class</exclude>
 						</excludes>
 					</instrumentation>
 					<check>
