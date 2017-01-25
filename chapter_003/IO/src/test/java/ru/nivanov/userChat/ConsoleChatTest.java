@@ -18,12 +18,11 @@ import static org.mockito.Mockito.*;
 	@Test
 	public void whenChatCorrectThenReturnResult() throws IOException {
 		File textLines = new File("userText.txt");
-		File log = new File("chatlog.txt");
 		ChatBot chat = mock(ChatBot.class);
 		//add the behavior for chatbot
 		when(chat.startBot()).thenReturn("575435");
 		try (Reader input = new FileReader(textLines)) {
-			new ConsoleChat(input, chat).init();
+			new ConsoleChat(input, chat).init("chatlog.txt");
 		} catch (IOException ioe) {
 			 ioe.printStackTrace();
 		}
@@ -31,7 +30,7 @@ import static org.mockito.Mockito.*;
 		verify(chat, atLeastOnce()).startBot();
 		//check for writing to log file
 		boolean match = false;
-		try (BufferedReader br = new BufferedReader(new FileReader(log))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(new File("chatlog.txt")))) {
 			String result = "";
 			while (result != null) {
 				result = br.readLine();
