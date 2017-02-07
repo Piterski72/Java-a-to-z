@@ -36,7 +36,7 @@ public class BotOracleServer {
     public void start() throws IOException {
         setUp();
         try (PrintWriter out = new PrintWriter(this.socket.getOutputStream(), true);
-             BufferedReader in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));) {
+             BufferedReader in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()))) {
             String ask;
             String randomAnswer;
             do {
@@ -63,7 +63,7 @@ public class BotOracleServer {
      * @return resulst getting bot random answer ..
      * @throws IOException ..
      */
-    public String generateAnswer() throws IOException {
+    private String generateAnswer() throws IOException {
         int j = lineNumber();
         int i = 0;
         String result = "";
@@ -87,7 +87,7 @@ public class BotOracleServer {
      * @return count ..
      * @throws IOException ..
      */
-    public int lineNumber() throws IOException {
+    private int lineNumber() throws IOException {
         int count = 0;
         File answers = new File(this.settings.getValue("botAnswerFile"));
         try (RandomAccessFile raf = new RandomAccessFile(answers, "r")) {

@@ -33,7 +33,7 @@ public class BotOracleClient {
      * Starting client.
      * @throws IOException ..
      */
-    public void start() throws IOException {
+    private void start() throws IOException {
         setUp();
         int port = Integer.valueOf(this.settings.getValue("port"));
         String servAddress = this.settings.getValue("serverIp");

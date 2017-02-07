@@ -1,5 +1,6 @@
 package ru.nivanov.botOracle;
 
+import com.google.common.base.Joiner;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -13,10 +14,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 /**
- * Created by pit on 06.02.2017.
+ * Created by Nikolay Ivanov on 06.02.2017.
  */
 public class BotOracleServerTest {
-   private String sep = System.getProperty("line separator");
+    private String sep = System.getProperty("line.separator");
 
     /**
      * test for server 1.
@@ -24,34 +25,21 @@ public class BotOracleServerTest {
      */
     @Test
     public void whenAskAnswerThenChooseRandom() throws Exception {
-        Socket socket = mock(Socket.class);
-        ByteArrayInputStream in = new ByteArrayInputStream("exit".getBytes());
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        when(socket.getInputStream()).thenReturn(in);
-        when(socket.getOutputStream()).thenReturn(out);
-        BotOracleServer underTest = new BotOracleServer(socket);
-        underTest.start();
-        assertThat(out.toString(), is(""));
+        this.testOracleServer("exit", "");
     }
+
     /**
      * test for server 2.
      * @throws Exception ..
      */
     @Test
     public void whenAskHelloThenChooseGreeting() throws Exception {
-        Socket socket = mock(Socket.class);
-        String one = "Hello oracle";
-        String two = "exit";
-        ByteArrayInputStream in = new ByteArrayInputStream((String.format("%s%s%s", one, "\r\n", two)).getBytes());
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        when(socket.getInputStream()).thenReturn(in);
-        when(socket.getOutputStream()).thenReturn(out);
-        BotOracleServer underTest = new BotOracleServer(socket);
-        underTest.start();
-        assertThat(out.toString(), is(String.format("%s%s%s", "Hello, dear friend, I'm an oracle.", "\r\n", "\r\n")));
+        this.testOracleServer(Joiner.on(sep).join("Hello oracle", "exit"),
+                Joiner.on(sep).join("Hello, dear friend, I'm an oracle.", sep));
     }
+
     /**
-     * test for server 2.
+     * test for server 3.
      * @throws Exception ..
      */
     @Test
@@ -59,12 +47,23 @@ public class BotOracleServerTest {
         Socket socket = mock(Socket.class);
         String one = "Hello";
         String two = "exit";
-        ByteArrayInputStream in = new ByteArrayInputStream((String.format("%s%s%s", one, "\r\n", two)).getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream((String.format("%s%s%s", one, sep, two)).getBytes());
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         when(socket.getInputStream()).thenReturn(in);
         when(socket.getOutputStream()).thenReturn(out);
         BotOracleServer underTest = new BotOracleServer(socket);
         underTest.start();
         assertNotNull(out.toString());
+    }
+
+    private void testOracleServer(String input, String expected) throws Exception {
+        Socket socket = mock(Socket.class);
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        when(socket.getInputStream()).thenReturn(in);
+        when(socket.getOutputStream()).thenReturn(out);
+        BotOracleServer underTest = new BotOracleServer(socket);
+        underTest.start();
+        assertThat(out.toString(), is(expected));
     }
 }
