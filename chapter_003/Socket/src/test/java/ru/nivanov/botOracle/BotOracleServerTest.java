@@ -56,6 +56,12 @@ public class BotOracleServerTest {
         assertNotNull(out.toString());
     }
 
+    /**
+     * Basic method.
+     * @param input ..
+     * @param expected ..
+     * @throws Exception ..
+     */
     private void testOracleServer(String input, String expected) throws Exception {
         Socket socket = mock(Socket.class);
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
