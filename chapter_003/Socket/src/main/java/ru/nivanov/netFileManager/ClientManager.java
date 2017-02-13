@@ -82,11 +82,10 @@ class ClientManager {
      * @throws IOException ..
      */
     void select(int key) throws IOException {
-        try {
-            this.actions[key].execute();
-        } catch (NullPointerException npe) {
-            npe.printStackTrace();
+        if (key < 0 | key > 5) {
+            System.out.println("out of menu range");
         }
+        this.actions[key].execute();
     }
 
     /**
