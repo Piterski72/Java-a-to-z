@@ -6,7 +6,6 @@ import java.io.*;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
-
 /**
  * Created by Nikolay Ivanov on 08.02.2017.
  */
@@ -46,7 +45,7 @@ public class Find {
     /**
      * show help.
      */
-    public static void showTips() {
+    static void showTips() {
         System.out.println(Joiner.on(sep).join("Usage: find.jar -d dirname -n filename -args -o logfile",
                 "where keys and values are:", "dirname is directory name, i.e. c:/",
                 "filename is full file name or mask (i.e. .txt) or part of file name",
@@ -59,7 +58,7 @@ public class Find {
      * @param input comes from main method
      * @return validate result
      */
-    public boolean validate(String[] input) {
+    boolean validate(String[] input) {
         boolean validation = false;
         int countZeroArg = 0;
         for (String str : input) {
