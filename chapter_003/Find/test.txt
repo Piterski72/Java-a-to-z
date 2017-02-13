@@ -1,0 +1,6 @@
+Usage: find.jar -d dirname -n filename -args -o logfile
+where keys and values are:
+dirname is directory name, i.e. c:/
+filename is full file name or mask (i.e. .txt) or part of file name
+-args may be -m (find by mask) or -f (find exact name) or -r (find by partial coincidence)
+logfile is the name of log file with resuls, stored in c:/findLogs.logFileName
