@@ -1,6 +1,5 @@
 package ru.nivanov;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
@@ -16,9 +15,9 @@ interface SearchAction {
     String getId();
 
     /**
-     * chat bot acton.
-     * @return string result..
-     * @throws IOException ..
+     * @param name ..
+     * @param path ..
+     * @return arraylist
      */
     @SuppressWarnings("JavaDoc")
     ArrayList<String> execute(String name, Path path);

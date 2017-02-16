@@ -22,9 +22,10 @@ class SearchMode {
     }
 
     /**
-     * method for chat mode selection.
-     * @param selection is input.
-     * @return result.
+     * @param selection ..
+     * @param searchName ..
+     * @param path ..
+     * @return ..
      */
     ArrayList<String> modeSelect(String selection, String searchName, Path path) {
         for (SearchAction action : actions) {
@@ -40,8 +41,7 @@ class SearchMode {
     }
 
     /**
-     * NormalMode inner class.
-     * @author nivanov.
+     * inner class ..
      */
     private class SearchByMask implements SearchAction {
         private String id = "-m";
@@ -55,8 +55,9 @@ class SearchMode {
         }
 
         /**
-         * Executing operation.
-         * @return string result
+         * @param name ..
+         * @param path ..
+         * @return ..
          */
         public ArrayList<String> execute(String name, Path path) {
             File foundByMask = new File(path.toString());
@@ -73,6 +74,9 @@ class SearchMode {
         }
     }
 
+    /**
+     * inner class ..
+     */
     private class SearchExact implements SearchAction {
         private String id = "-f";
 
@@ -85,8 +89,9 @@ class SearchMode {
         }
 
         /**
-         * Executing operation.
-         * @return string result
+         * @param name ..
+         * @param path ..
+         * @return ..
          */
         public ArrayList<String> execute(String name, Path path) {
             File foundExact = new File(path.toString());
@@ -98,6 +103,9 @@ class SearchMode {
         }
     }
 
+    /**
+     * inner class ..
+     */
     private class SearchPartial implements SearchAction {
         private String id = "-r";
 
@@ -110,8 +118,9 @@ class SearchMode {
         }
 
         /**
-         * Executing operation.
-         * @return string result
+         * @param name ..
+         * @param path ..
+         * @return ..
          */
         public ArrayList<String> execute(String name, Path path) {
             File foundPart = new File(path.toString());

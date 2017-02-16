@@ -16,8 +16,8 @@ public class Find {
     private static final int FIVE = 5;
     private static final int SIX = 6;
     private static final int SEVEN = 7;
-    private static final String[] keysAndValues = new String[SEVEN];
-    private static final String sep = System.getProperty("line.separator");
+    private static String[] keysAndValues = new String[SEVEN];
+    private static String sep = System.getProperty("line.separator");
     private final Settings settings = new Settings();
     private File log;
 
