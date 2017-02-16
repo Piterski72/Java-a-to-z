@@ -1,6 +1,5 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>ru.nivanov</groupId>
     <artifactId>chapter_003</artifactId>
     <version>1.0</version>
     <dependencies>
@@ -21,8 +20,11 @@
 	<modules>
 	  <module>IO</module>
 	  <module>Socket</module>
-	  	 
-	</modules>
+        <module>Find</module>
+        <module>TestTask003</module>
+
+
+    </modules>
 
 	 
 </project>

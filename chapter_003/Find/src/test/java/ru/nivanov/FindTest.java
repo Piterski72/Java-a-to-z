@@ -8,6 +8,7 @@ import java.io.PrintStream;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Nikolay Ivanov on 13.02.2017.
@@ -28,7 +29,8 @@ public class FindTest {
         FileReader expect = new FileReader("test.txt");
         expect.read(cbuf);
         String newString = String.valueOf(cbuf);
-        assertThat(newString, is("Usage: find.jar"));
+        String expected = "Usage: find.jar";
+        assertThat(newString, is(expected));
     }
 
     /**
@@ -40,6 +42,6 @@ public class FindTest {
         Find find = new Find();
         String[] input = {"-d", "1", "-n", "2", "-m", "-o", "3"};
         find.validate(input);
-        assertThat(find.validate(input), is(true));
+        assertTrue(find.validate(input));
     }
 }
