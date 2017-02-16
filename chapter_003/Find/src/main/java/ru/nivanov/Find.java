@@ -6,6 +6,7 @@ import java.io.*;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+
 /**
  * Created by Nikolay Ivanov on 08.02.2017.
  */
@@ -15,11 +16,10 @@ public class Find {
     private static final int FIVE = 5;
     private static final int SIX = 6;
     private static final int SEVEN = 7;
-    private static String[] keysAndValues = new String[SEVEN];
-    private static ArrayList<String> result = new ArrayList<>();
-    private static String sep = System.getProperty("line.separator");
+    private static final String[] keysAndValues = new String[SEVEN];
+    private static final String sep = System.getProperty("line.separator");
+    private final Settings settings = new Settings();
     private File log;
-    private Settings settings = new Settings();
 
     /**
      * main method receive args.
@@ -37,7 +37,6 @@ public class Find {
             System.arraycopy(args, 0, keysAndValues, 0, args.length);
             if (finder.validate(keysAndValues)) {
                 finder.search2(keysAndValues[1], keysAndValues[THREE]);
-                finder.writeToLog(result);
             }
         }
     }
@@ -103,7 +102,7 @@ public class Find {
         ClassLoader loader = Settings.class.getClassLoader();
         InputStream io = loader.getResourceAsStream("app.properties");
         this.settings.load(io);
-        String currentLogDir = this.settings.getValue("defaultLogDir");
+        String currentLogDir = this.settings.getValue();
         File logDir = new File(currentLogDir);
         logDir.mkdir();
         log = new File(currentLogDir, logName);
@@ -126,7 +125,7 @@ public class Find {
      * Class MyFileVisitor with methods for visit directories and files and getting visit results.
      */
     class MyFileVisitor extends SimpleFileVisitor<Path> {
-        private String name;
+        private final String name;
 
         MyFileVisitor(String name) {
             this.name = name;
@@ -140,37 +139,11 @@ public class Find {
          * @throws IOException ..
          */
         public FileVisitResult visitFile(Path path, BasicFileAttributes attribs) throws IOException {
+            SearchMode mode = new SearchMode();
             if (attribs.isRegularFile() & !(new File(path.toString())).isHidden()) {
-                switch (keysAndValues[FOUR]) {
-                    case "-m":
-                        if (name.matches("\\*\\..+")) {
-                            String mask = name.substring(1);
-                            File foundByMask = new File(path.toString());
-                            String expect = foundByMask.toString();
-                            if (foundByMask.isFile() & expect.substring(expect.length() - mask.length()).equals(mask)) {
-                                System.out.println(foundByMask.toString());
-                                result.add(foundByMask.toString());
-                            }
-                        }
-                        break;
-                    case "-f":
-                        File foundExact = new File(path.toString());
-                        if (foundExact.isFile() & foundExact.getName().equals(name)) {
-                            System.out.println(foundExact.toString());
-                            result.add(foundExact.toString());
-                        }
-                        break;
-                    case "-r":
-                        File foundPart = new File(path.toString());
-                        if (foundPart.isFile() & foundPart.getName().contains(name)) {
-                            System.out.println(foundPart.toString());
-                            result.add(foundPart.toString());
-                        }
-                        break;
-                    default:
-                        System.out.println("searching");
-
-                }
+                mode.fillActions();
+                ArrayList<String> searchingResult = mode.modeSelect(keysAndValues[FOUR], name, path);
+                writeToLog(searchingResult);
             }
             return FileVisitResult.CONTINUE;
         }

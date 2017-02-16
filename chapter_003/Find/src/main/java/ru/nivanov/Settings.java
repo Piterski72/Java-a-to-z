@@ -12,11 +12,10 @@ class Settings {
 
     /**
      * Getting property value by given key.
-     * @param key ..
      * @return value ..
      */
-    String getValue(String key) {
-        return this.props.getProperty(key);
+    String getValue() {
+        return this.props.getProperty("defaultLogDir");
     }
 
     /**
