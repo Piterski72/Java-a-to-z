@@ -1,9 +1,11 @@
 package ru.nivanov.start;
-import ru.nivanov.models.*;
+
 import org.junit.Test;
+import ru.nivanov.models.Bishop;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.hamcrest.Matchers.*;
+
 /**
  * BoardTest class.
  * @author nivanov.

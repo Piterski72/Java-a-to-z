@@ -8,7 +8,7 @@ import java.net.Socket;
  * Server realization.
  * @author nivanov.
  */
-public class NFServer {
+class NFServer {
     private static final int FIVE = 5;
     private final Settings settings = new Settings();
 

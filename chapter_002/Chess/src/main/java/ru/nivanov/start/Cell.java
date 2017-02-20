@@ -6,9 +6,10 @@ package ru.nivanov.start;
  * @version
  */
  public class Cell {
-	private int hPos;
-	private int vPos;
-	   	public Cell(int hPos, int vPos) {
+    private final int hPos;
+    private final int vPos;
+
+    public Cell(int hPos, int vPos) {
 			this.hPos = hPos;
 			this.vPos = vPos;
 		}
@@ -25,11 +26,7 @@ package ru.nivanov.start;
 	 */
 	boolean cellCompare(Cell cell) {
 		boolean itog = false;
-		if (this.getHpos() == cell.getHpos() && this.getVpos() == cell.getVpos()) {
-			itog = true;
-		} else {
-			itog = false;
-		}
-		return itog;
-	}
+        itog = this.getHpos() == cell.getHpos() && this.getVpos() == cell.getVpos();
+        return itog;
+    }
 }

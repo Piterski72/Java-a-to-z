@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * Created by pit on 06.02.2017.
  */
-public class BotOracleClient {
+class BotOracleClient {
     private final Settings settings = new Settings();
 
     /**

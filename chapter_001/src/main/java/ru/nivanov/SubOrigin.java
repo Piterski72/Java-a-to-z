@@ -7,7 +7,7 @@ package ru.nivanov;
  * @version
  */
 
-public class SubOrigin {
+class SubOrigin {
 		//checks if string "sub" is substring of "origin".
 	/**
 	* Calc distance.

@@ -1,5 +1,6 @@
 package ru.nivanov;
-import static java.lang.Math.*;
+
+import static java.lang.Math.sqrt;
 
 /**
  * Calculate triangle area.
@@ -8,16 +9,16 @@ import static java.lang.Math.*;
  * @version
  */
 
-public class Triangle {
+class Triangle {
 	/**
 	*/
-	private Point a;
+	private final Point a;
 	/**
 	*/
-	private Point b;
+	private final Point b;
 	/**
 	*/
-	private Point c;
+	private final Point c;
 	/**
 	 * Class Constructor.
 	 * @param x is point with coordinates

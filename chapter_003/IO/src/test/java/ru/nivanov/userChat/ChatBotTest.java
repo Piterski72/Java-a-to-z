@@ -1,9 +1,13 @@
 package ru.nivanov.userChat;
-import java.io.*;
+
 import org.junit.Test;
+
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.*;
+
 /**
  * ChatBotTest class.
  * @author nivanov.
@@ -21,7 +25,7 @@ public class ChatBotTest {
 		boolean found = false;
 		String result = chat.startBot();
 		String expect = "";
-		try (RandomAccessFile raf = new RandomAccessFile("botans.txt", "r");) {
+		try (RandomAccessFile raf = new RandomAccessFile("botans.txt", "r")) {
 			while (raf.getFilePointer() != raf.length()) {
 				expect = raf.readLine();
 				if (expect.equalsIgnoreCase(result)) {

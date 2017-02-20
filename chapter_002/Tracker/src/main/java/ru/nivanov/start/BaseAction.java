@@ -6,7 +6,7 @@ package ru.nivanov.start;
  * @version
  */
  public abstract class BaseAction implements UserAction {
-	 private String name;
+	private final String name;
 	 public BaseAction(String name) {
 		 this.name = name;
 		  }

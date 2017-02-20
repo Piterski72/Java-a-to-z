@@ -1,5 +1,4 @@
 package ru.nivanov;
-import static java.lang.Math.*;
 
 /**
  * Programm creates sorted massive from two sorted massives.
@@ -8,30 +7,30 @@ import static java.lang.Math.*;
  * @version
  */
 
-public class PersonalTask {
+class PersonalTask {
 	/**
 	*/
-	private int[] first;
+	private final int[] first;
 	/**
 	*/
-	private int[] second;
+	private final int[] second;
 	/**
 	 * Class Constructor.
 	 * @param pfirst first massive
 	 * @param psecond second massive
 	 *
 	 */
-	public PersonalTask(int[] pfirst, int[] psecond) {
+	PersonalTask(int[] pfirst, int[] psecond) {
 		this.first = pfirst;
 		this.second = psecond;
 	}
 	/**
 	* @return result
 	*/
-	public int[] sortedMass() {
+	int[] sortedMass() {
 		int[] result = new int[this.first.length + this.second.length];
-		int indexFirst = 0;
-		int indexSecond = 0;
+		int indexFirst;
+		int indexSecond;
 		int count = 0;
 		int naibol = Math.max(first[this.first.length - 1], second[this.second.length - 1]);
 		int[] tempMass = new int[naibol + 1];

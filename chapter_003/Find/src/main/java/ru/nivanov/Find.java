@@ -10,14 +10,10 @@ import java.util.ArrayList;
 /**
  * Created by Nikolay Ivanov on 08.02.2017.
  */
-public class Find {
-    private static final int THREE = 3;
-    private static final int FOUR = 4;
-    private static final int FIVE = 5;
-    private static final int SIX = 6;
+class Find {
     private static final int SEVEN = 7;
-    private static String[] keysAndValues = new String[SEVEN];
-    private static String sep = System.getProperty("line.separator");
+    private static final String sep = System.getProperty("line.separator");
+    private static Param param;
     private final Settings settings = new Settings();
     private File log;
 
@@ -28,15 +24,15 @@ public class Find {
      */
     public static void main(String[] args) throws IOException {
         showTips();
+        param = new Param(args);
         Find finder = new Find();
-        finder.setUp(args[SIX]);
+        finder.setUp(param.getLogName());
         System.out.println(System.getProperty("user.dir"));
         if (args.length == 0 | args.length != SEVEN) {
             System.out.println("Use help for keys");
         } else {
-            System.arraycopy(args, 0, keysAndValues, 0, args.length);
-            if (finder.validate(keysAndValues)) {
-                finder.search2(keysAndValues[1], keysAndValues[THREE]);
+            if (finder.validate(param)) {
+                finder.search2(param);
             }
         }
     }
@@ -54,41 +50,33 @@ public class Find {
 
     /**
      * validating keys.
-     * @param input comes from main method
+     * @param param comes from main method
      * @return validate result
      */
-    boolean validate(String[] input) {
+    boolean validate(Param param) {
         boolean validation = false;
-        int countZeroArg = 0;
-        for (String str : input) {
-            if (str.equals("")) {
-                countZeroArg++;
-            }
+        String expected1 = "-d-n-o";
+        String expected2 = "-m-f-r";
+        if (!Joiner.on("").join(param.getDparam(), param.getNparam(), param.getOparam()).equals(expected1)) {
+            System.out.println("incorrect key -d -n -o usage, quitting...");
+        } else if (!expected2.contains(param.getMFRparam())) {
+            System.out.println("incorrect key -m -f -r usage, quitting...");
+        } else {
+            validation = true;
         }
-        if (countZeroArg == 0) {
-            String expected1 = "-d-n-o";
-            String expected2 = "-m-f-r";
-            if (!Joiner.on("").join(input[0], input[2], input[FIVE]).equals(expected1)) {
-                System.out.println("incorrect key -d -n -o usage, quitting...");
-            } else if (!expected2.contains(input[FOUR])) {
-                System.out.println("incorrect key -m -f -r usage, quitting...");
-            } else {
-                validation = true;
-            }
-        }
+
         return validation;
     }
 
     /**
      * search engine uses walkFileTree.
-     * @param dirName is starting directory
-     * @param name is search object
+     * @param param ..
      * @throws IOException ..
      */
-    private void search2(String dirName, String name) throws IOException {
-        File test = new File(dirName);
+    private void search2(Param param) throws IOException {
+        File test = new File(param.getDirName());
         if (test.exists() & test.isDirectory()) {
-            Files.walkFileTree(Paths.get(dirName), new MyFileVisitor(name));
+            Files.walkFileTree(Paths.get(param.getDirName()), new MyFileVisitor(param.getFileName()));
         } else {
             System.out.println("No such directory");
         }
@@ -142,7 +130,7 @@ public class Find {
             SearchMode mode = new SearchMode();
             if (attribs.isRegularFile() & !(new File(path.toString())).isHidden()) {
                 mode.fillActions();
-                ArrayList<String> searchingResult = mode.modeSelect(keysAndValues[FOUR], name, path);
+                ArrayList<String> searchingResult = mode.modeSelect(param.getMFRparam(), name, path);
                 writeToLog(searchingResult);
             }
             return FileVisitResult.CONTINUE;

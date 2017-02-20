@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
  * Created by Nikolay Ivanov on 06.02.2017.
  */
 public class BotOracleServerTest {
-    private String sep = System.getProperty("line.separator");
+    private final String sep = System.getProperty("line.separator");
 
     /**
      * test for server 1.

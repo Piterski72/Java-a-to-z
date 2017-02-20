@@ -1,5 +1,7 @@
 package ru.nivanov.start;
-import ru.nivanov.models.*;
+
+import ru.nivanov.models.Item;
+import ru.nivanov.models.Task;
 /**
  * EditItem outer class.
  * @author nivanov.
@@ -37,13 +39,13 @@ class EditItem extends BaseAction {
  * @version
  */
  public class MenuTracker {
-	 static final int THREE = 3;
-	 static final int FOUR = 4;
-	 static final int FIVE = 5;
-	 private Input input;
-	 private Tracker tracker;
+	private static final int THREE = 3;
+	private static final int FOUR = 4;
+	private static final int FIVE = 5;
+	private final Input input;
+	private final Tracker tracker;
 	 private final int leng = 6;
-	 private UserAction[] actions = new UserAction[leng];
+	private final UserAction[] actions = new UserAction[leng];
 		public MenuTracker(Input input, Tracker tracker) {
 			this.input = input;
 			this.tracker = tracker;
@@ -93,35 +95,7 @@ class EditItem extends BaseAction {
 				}
 			}
 		}
-/**
- * AddItem inner class.
- * @author nivanov.
- * @since
- * @version
- */
-		private class AddItem extends BaseAction {
-			AddItem(String name) {
-			super(name);
-			}
-	/**
-	 * key method.
-	 * @return key..
-	 */
-			public int key() {
-				return 0;
-			}
-	/**
-	 * Executing add action.
-	 * @param input ..
-	 * @param tracker ..
-	 *
-	 */
-			public void execute(Input input, Tracker tracker) {
-				String name = input.ask("Enter task`s name: ");
-				String desc = input.ask("Enter task`s desc: ");
-				tracker.add(new Task(name, desc));
-			}
-		}
+
 /**
  * ShowItems inner static class.
  * @author nivanov.
@@ -155,38 +129,70 @@ class EditItem extends BaseAction {
 				}
 			}
 		}
-/**
- * DelItem inner class.
- * @author nivanov.
- * @since
- * @version
- */
-		private class DelItem extends BaseAction {
-			DelItem(String name) {
-				super(name);
-			}
+
 	/**
-	 * key method.
-	 * @return key..
+	 * AddItem inner class.
+	 * @author nivanov.
 	 */
-			public int key() {
-				return THREE;
-			}
+	private class AddItem extends BaseAction {
+		AddItem(String name) {
+			super(name);
+		}
+
+		/**
+		 * key method.
+		 * @return key..
+		 */
+		public int key() {
+			return 0;
+		}
+
+		/**
+		 * Executing add action.
+		 * @param input ..
+		 * @param tracker ..
+		 */
+		public void execute(Input input, Tracker tracker) {
+			String name = input.ask("Enter task`s name: ");
+			String desc = input.ask("Enter task`s desc: ");
+			tracker.add(new Task(name, desc));
+		}
+	}
+
 	/**
-	 * Executing delete action.
-	 * @param input ..
-	 * @param tracker ..
-	 *
+	 * DelItem inner class.
+	 * @author nivanov.
+	 * @since
+	 * @version
 	 */
-			public void execute(Input input, Tracker tracker) {
-				String itemId = input.ask("Enter Id: ");
-				int before = tracker.getPosition();
-				tracker.remove(itemId);
-				if (before == tracker.getPosition()) {
-					System.out.println("Wrong id! Deletion imcomplete!");
-				}
+	private class DelItem extends BaseAction {
+		DelItem(String name) {
+			super(name);
+		}
+
+		/**
+		 * key method.
+		 * @return key..
+		 */
+		public int key() {
+			return THREE;
+		}
+
+		/**
+		 * Executing delete action.
+		 * @param input ..
+		 * @param tracker ..
+		 *
+		 */
+		public void execute(Input input, Tracker tracker) {
+			String itemId = input.ask("Enter Id: ");
+			int before = tracker.getPosition();
+			tracker.remove(itemId);
+			if (before == tracker.getPosition()) {
+				System.out.println("Wrong id! Deletion imcomplete!");
 			}
 		}
+	}
 		/**
  * FilterItems inner class.
  * @author nivanov.

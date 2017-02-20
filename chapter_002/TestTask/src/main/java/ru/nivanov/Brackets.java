@@ -6,29 +6,28 @@ package ru.nivanov;
  * @since
  * @version
  */
- public class Brackets {
-	private String str;
-	private int[] leftBr;
-	private int[] rightBr;
-		public Brackets(String str) {
+class Brackets {
+	private final String str;
+
+	Brackets(String str) {
 		this.str = str;
 		}
 	/**
 	* method checks correct brackets position.
 	* @return boolean result
 	*/
-		public boolean skobkiOk() {
+	boolean skobkiOk() {
 			boolean isCorrect = false;
 			char[] testChar = this.str.toCharArray();
 			int found = 0;
-				for (int i = 0; i < testChar.length; i++) {
-					if (testChar[i] == '(' || testChar[i] == ')') {
-						found++;
-					}
-				}
-				if (found != 0 && found % 2 == 0) {
-					leftBr = new int[found / 2];
-					rightBr = new int[found / 2];
+		for (char aTestChar : testChar) {
+			if (aTestChar == '(' || aTestChar == ')') {
+				found++;
+			}
+		}
+		if (found != 0 && found % 2 == 0) {
+			int[] leftBr = new int[found / 2];
+			int[] rightBr = new int[found / 2];
 					int count1 = 0;
 					int count2 = 0;
 					for (int i = 0; i < testChar.length; i++) {
@@ -57,19 +56,19 @@ package ru.nivanov;
 	* simple method checks correct brackets position.
 	* @return boolean result
 	*/
-		public boolean simpleCode() {
+	boolean simpleCode() {
 			int result = 0;
 			char[] testChar = this.str.toCharArray();
-				for (int z = 0; z < testChar.length; z++) {
-					if (testChar[z] == '(') {
-						result++;
-					} else if (testChar[z] == ')') {
-						result--;
-						if (result < 0) {
-							break;
-						}
-					}
+		for (char aTestChar : testChar) {
+			if (aTestChar == '(') {
+				result++;
+			} else if (aTestChar == ')') {
+				result--;
+				if (result < 0) {
+					break;
 				}
+			}
+		}
 		return (result == 0);
 		}
 }

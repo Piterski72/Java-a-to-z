@@ -9,6 +9,12 @@ package ru.nivanov.models;
 public class Item {
 	/**
 	*/
+	private final int numComm = 20;
+	/**
+	 */
+	private final String[] comments = new String[numComm];
+	/**
+	 */
 	private String id;
 	/**
 	*/
@@ -21,19 +27,13 @@ public class Item {
 	private long create;
 	/**
 	*/
-	private final int numComm = 20;
-	/**
-	*/
-	private String[] comments = new String[numComm];
-	/**
-	*/
 	private int num = 0;
 	/**
 	*/
 	private int countCom = 0;
 	/**
 	*/
-	public Item() {
+	Item() {
 	}
 	/**
 	 * Class Constructor.
@@ -91,7 +91,7 @@ public class Item {
 	 * Setting create.
 	 *@param create input param
 	 */
-	public void setCreate(long create) {
+	void setCreate(long create) {
 		this.create = create;
 	}
 	/**

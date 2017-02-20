@@ -7,10 +7,10 @@ package ru.nivanov;
  * @version
  */
 
-public class Rotate90Mass {
+class Rotate90Mass {
 	/**
 	*/
-	private int[][] values;
+	private final int[][] values;
 	/**
 	 * Class Constructor.
 	 * @param vals 2-dim massive

@@ -5,7 +5,7 @@ package ru.nivanov.start;
  * @since
  * @version
  */
- public interface UserAction {
+interface UserAction {
 	 /**
 	 * Menu selection.
 	 * @return key..

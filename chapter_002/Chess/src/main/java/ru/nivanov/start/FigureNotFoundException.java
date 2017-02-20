@@ -5,7 +5,7 @@ package ru.nivanov.start;
  * @since
  * @version
  */
-public class FigureNotFoundException extends Exception {
+class FigureNotFoundException extends Exception {
 	public FigureNotFoundException(String msg) {
 		super(msg);
 	}

@@ -8,7 +8,7 @@ import java.net.Socket;
  * Client realization.
  * @author nivanov.
  */
-public class NFClient {
+class NFClient {
     private final Settings settings = new Settings();
     private InputStream in;
 

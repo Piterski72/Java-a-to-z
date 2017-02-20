@@ -8,10 +8,10 @@ import java.util.Random;
 /**
  * Created by pit on 06.02.2017.
  */
-public class BotOracleServer {
+class BotOracleServer {
     private static final int PORT = 40000;
     private final Settings settings = new Settings();
-    private Socket socket;
+    private final Socket socket;
 
     public BotOracleServer(Socket socket) {
         this.socket = socket;

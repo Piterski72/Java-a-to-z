@@ -1,12 +1,13 @@
 package ru.nivanov.userChat;
-import java.io.*;
+
+import java.io.IOException;
 /**
  * BotAction interface.
  * @author nivanov.
  * @since
  * @version
  */
- public interface BotAction {
+interface BotAction {
 	 /**
 	 * Getting string ident for event.
 	 * @return id..

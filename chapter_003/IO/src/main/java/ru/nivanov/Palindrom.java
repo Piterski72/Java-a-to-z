@@ -1,5 +1,4 @@
 package ru.nivanov;
-import java.io.*;
 
 /**
  * Programm checks if palindrom is in input flow.
@@ -7,8 +6,7 @@ import java.io.*;
  * @since
  * @version
  */
- public class Palindrom {
-	private final int five = 5;
+class Palindrom {
 	/**
 	* method checks if palindrom is in input flow.
 	* @param phrase ..
@@ -16,6 +14,7 @@ import java.io.*;
 	*/
 	boolean isPalindrom(String phrase) {
 		boolean match = false;
+		int five = 5;
 		if (phrase.length() == five) {
 				char[] reverse = new char[phrase.length()];
 					for (int i = 0; i < phrase.length(); i++) {

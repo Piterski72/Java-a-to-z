@@ -6,14 +6,13 @@ package ru.nivanov;
  * @since
  * @version
  */
-	public class BubbleSortMass {
-	private int[] values;
+class BubbleSortMass {
 	/**
 	* sorting values by bubble method.
 	* @param pvals ..
 	*/
 	public BubbleSortMass(int[] pvals) {
-		this.values = pvals;
+		int[] values = pvals;
 	}
 	/**
 	* sorting values by bubble method.

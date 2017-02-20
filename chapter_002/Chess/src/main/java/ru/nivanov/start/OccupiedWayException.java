@@ -5,7 +5,7 @@ package ru.nivanov.start;
  * @since
  * @version
  */
-public class OccupiedWayException extends Exception {
+class OccupiedWayException extends Exception {
 	public OccupiedWayException(String msg) {
 		super(msg);
 	}

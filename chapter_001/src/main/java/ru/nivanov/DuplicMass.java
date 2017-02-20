@@ -7,10 +7,10 @@ package ru.nivanov;
  * @version
  */
 
-public class DuplicMass {
+class DuplicMass {
 	/**
 	*/
-	private String[] symbols;
+	private final String[] symbols;
 	public DuplicMass(String[] psymbols) {
 		this.symbols = psymbols;
 	}

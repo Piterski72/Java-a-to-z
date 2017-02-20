@@ -1,5 +1,9 @@
 package ru.nivanov.models;
-import ru.nivanov.start.*;
+
+import ru.nivanov.start.Cell;
+import ru.nivanov.start.Figure;
+import ru.nivanov.start.ImpossibleMoveException;
+
 import static java.lang.Math.abs;
 
 /**
@@ -37,7 +41,6 @@ import static java.lang.Math.abs;
 	 * @return new figure
 	 */
 	public Figure clone(Cell dist) {
-		 Bishop newbishop = new Bishop(dist);
-		 return newbishop;
+		return new Bishop(dist);
 	}
 }

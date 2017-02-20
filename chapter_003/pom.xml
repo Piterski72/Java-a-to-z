@@ -1,3 +1,4 @@
+<!--suppress XmlUnboundNsPrefix, XmlUnboundNsPrefix -->
 <project>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>chapter_003</artifactId>
@@ -10,21 +11,21 @@
         </dependency>
     </dependencies>
     <packaging>pom</packaging>
-	
-	<parent>
-		<groupId>ru.nivanov</groupId>
-		<artifactId>Java-a-to-z</artifactId>
-		<version>1.0</version>
-	</parent>
-    
-	<modules>
-	  <module>IO</module>
-	  <module>Socket</module>
+
+    <parent>
+        <groupId>ru.nivanov</groupId>
+        <artifactId>Java-a-to-z</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <modules>
+        <module>IO</module>
+        <module>Socket</module>
         <module>Find</module>
         <module>TestTask003</module>
 
 
     </modules>
 
-	 
+
 </project>

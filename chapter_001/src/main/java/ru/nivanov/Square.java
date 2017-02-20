@@ -1,5 +1,4 @@
 package ru.nivanov;
-import static java.lang.Math.*;
 
 /**
  * Calculates quadratic.
@@ -7,23 +6,23 @@ import static java.lang.Math.*;
  * @since
  * @version
  */
-	public class Square {
+class Square {
 	/**
 	*/
-		private int a;
+	private final int a;
 	/**
 	*/
-		private int b;
+	private final int b;
 	/**
 	*/
-		private int c;
+	private final int c;
 	/**
 	 * Class Constructor.
 	 * @param d coeff.
 	 * @param e coeff.
 	 * @param f coeff.
 	 */
-		public Square(int d, int e, int f) {
+	Square(int d, int e, int f) {
 		this.a = d;
 		this.b = e;
 		this.c = f;

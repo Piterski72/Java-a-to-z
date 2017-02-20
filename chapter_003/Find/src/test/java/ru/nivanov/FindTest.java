@@ -41,7 +41,8 @@ public class FindTest {
     public void whenValidateWorksThenReturnResult() throws Exception {
         Find find = new Find();
         String[] input = {"-d", "1", "-n", "2", "-m", "-o", "3"};
-        find.validate(input);
-        assertTrue(find.validate(input));
+        Param param = new Param(input);
+        find.validate(param);
+        assertTrue(find.validate(param));
     }
 }

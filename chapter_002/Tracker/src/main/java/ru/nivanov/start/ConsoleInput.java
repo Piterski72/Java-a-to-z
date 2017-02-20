@@ -1,5 +1,6 @@
 package ru.nivanov.start;
-import java.util.*;
+
+import java.util.Scanner;
 /**
  * ConsoleInput class.
  * @author nivanov.
@@ -7,7 +8,7 @@ import java.util.*;
  * @version
  */
 public class ConsoleInput implements Input {
-	private Scanner scanner = new Scanner(System.in);
+	private final Scanner scanner = new Scanner(System.in);
 	/**
 	 * Wait for user input.
 	 * @param question ..

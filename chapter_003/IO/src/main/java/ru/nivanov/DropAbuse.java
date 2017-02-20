@@ -7,7 +7,7 @@ import java.io.*;
  * @since
  * @version
  */
-public class DropAbuse {
+class DropAbuse {
     /**
      * method checks and remove abuse word from input flow.
      * @param in is input stream.
@@ -17,8 +17,8 @@ public class DropAbuse {
      */
     public void dropAbuses(InputStream in, OutputStream out, String[] abuse) throws IOException {
         boolean check = true;
-		int c = 0;
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        int c;
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(in));
              PrintStream ps = new PrintStream(out)) {
             while (check) {
                 for (int i = 0; i < abuse.length; i++) {

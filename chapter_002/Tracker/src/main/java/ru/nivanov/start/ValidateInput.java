@@ -1,5 +1,5 @@
 package ru.nivanov.start;
-import java.util.*;
+
 /**
  * ValidateInput class.
  * @author nivanov.

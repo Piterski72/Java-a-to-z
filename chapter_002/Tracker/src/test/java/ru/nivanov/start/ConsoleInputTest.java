@@ -1,10 +1,12 @@
 package ru.nivanov.start;
-import ru.nivanov.models.*;
+
 import org.junit.Test;
+
 import java.io.ByteArrayInputStream;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.hamcrest.Matchers.*;
+
 /**
  * ConsoleInputTest class.
  * @author nivanov.

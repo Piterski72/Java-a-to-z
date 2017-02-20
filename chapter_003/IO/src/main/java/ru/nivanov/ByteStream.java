@@ -1,5 +1,9 @@
 package ru.nivanov;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Programm checks if even number is in input flow.
@@ -7,7 +11,7 @@ import java.io.*;
  * @since
  * @version
  */
- public class ByteStream {
+class ByteStream {
 	/**
 	* method checks if even number is in input flow.
 	* @param in ..

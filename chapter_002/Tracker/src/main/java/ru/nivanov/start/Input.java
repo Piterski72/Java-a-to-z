@@ -5,7 +5,7 @@ package ru.nivanov.start;
  * @since
  * @version
  */
-public interface Input {
+interface Input {
 	/**
 	 * Wait for user input.
 	 * @param question ..

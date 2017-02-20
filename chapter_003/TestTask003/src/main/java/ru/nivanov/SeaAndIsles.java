@@ -4,8 +4,8 @@ package ru.nivanov;
  * Created by Nikolay Ivanov on 15.02.2017.
  */
 class SeaAndIsles {
-    private int[][] sea;
-    private boolean[][] visitedArray;
+    private final int[][] sea;
+    private final boolean[][] visitedArray;
     private int countMax;
 
     SeaAndIsles(int[][] sea) {

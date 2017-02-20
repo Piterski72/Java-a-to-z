@@ -1,5 +1,8 @@
 package ru.nivanov.userChat;
-import java.io.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.Random;
 /**
  * Programm sinulates console chat.
@@ -7,17 +10,17 @@ import java.util.Random;
  * @since
  * @version
  */
- public class ChatBot {
-	 private File answers = new File("botAns.txt");
+class ChatBot {
+	private final File answers = new File("botAns.txt");
 	 /**
 	 * counting number of string lines in file.
 	 * @return count ..
 	 * @throws IOException ..
 	 */
-	 public int lineNumber() throws IOException {
+	 private int lineNumber() throws IOException {
 		 int count = 0;
-		 try (RandomAccessFile raf = new RandomAccessFile(this.answers, "r");) {
-			while (raf.getFilePointer() != raf.length()) {
+		 try (RandomAccessFile raf = new RandomAccessFile(this.answers, "r")) {
+			 while (raf.getFilePointer() != raf.length()) {
 				raf.readLine();
 				count++;
 			}
@@ -30,7 +33,7 @@ import java.util.Random;
 	 * @throws IOException ..
 	 */
 	public String startBot() throws IOException {
-		String answ = generateAnswer();
+		@SuppressWarnings("UnnecessaryLocalVariable") String answ = generateAnswer();
 		return answ;
 	}
 	/**
@@ -40,13 +43,13 @@ import java.util.Random;
 	 * @return resulst getting bot random answer ..
 	 * @throws IOException ..
 	 */
-	public String generateAnswer() throws IOException {
+	private String generateAnswer() throws IOException {
 		int j = lineNumber();
 		int i = 0;
 		String result = "";
 		Random rnd = new Random();
 		int rndNumber = rnd.nextInt(j);
-		try (RandomAccessFile raf = new RandomAccessFile(this.answers, "r");) {
+		try (RandomAccessFile raf = new RandomAccessFile(this.answers, "r")) {
 			while (raf.getFilePointer() != raf.length()) {
 				result = raf.readLine();
 				i++;

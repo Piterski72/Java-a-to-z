@@ -8,9 +8,9 @@ import java.util.ArrayList;
  * Created by Nikolay Ivanov on 16.02.2017.
  */
 class SearchMode {
-    private static ArrayList<String> forLog = new ArrayList<>();
+    private static final ArrayList<String> forLog = new ArrayList<>();
     private final int kol = 3;
-    private SearchAction[] actions = new SearchAction[kol];
+    private final SearchAction[] actions = new SearchAction[kol];
 
     /**
      * Filling actions.
@@ -44,7 +44,7 @@ class SearchMode {
      * inner class ..
      */
     private class SearchByMask implements SearchAction {
-        private String id = "-m";
+        private final String id = "-m";
 
         /**
          * Getter for id.
@@ -78,7 +78,7 @@ class SearchMode {
      * inner class ..
      */
     private class SearchExact implements SearchAction {
-        private String id = "-f";
+        private final String id = "-f";
 
         /**
          * Getter for id.
@@ -107,7 +107,7 @@ class SearchMode {
      * inner class ..
      */
     private class SearchPartial implements SearchAction {
-        private String id = "-r";
+        private final String id = "-r";
 
         /**
          * Getter for id.

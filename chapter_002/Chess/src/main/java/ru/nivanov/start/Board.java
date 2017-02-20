@@ -1,21 +1,19 @@
 package ru.nivanov.start;
-import ru.nivanov.models.*;
+
 /**
  * Board class.
  * @author nivanov.
  * @since
  * @version
  */
- public class Board {
+class Board {
 	private final int four = 4;
 	private final int five = 5;
 	private final int seven = 7;
 	private final int half = 32;
 	private Figure[] figures = new Figure[half];
 	private int pos = 0;
-	public void setFigures(Figure[] figures) {
-		this.figures = figures;
-	}
+
 	/**
 	 * fill board with figures.
 	 * @param figure ..
@@ -23,13 +21,15 @@ import ru.nivanov.models.*;
 	public void fillBoard(Figure figure) {
 		figures[pos++] = figure;
 	}
+
 	/**
 	 * get number of figures.
 	 * @return pos ..
 	 */
-	public int getPos() {
+	private int getPos() {
 		return this.pos;
 	}
+
 	/**
 	 * get figures.
 	 * @return result ..
@@ -41,6 +41,11 @@ import ru.nivanov.models.*;
 		}
 		return result;
 	}
+
+	public void setFigures(Figure[] figures) {
+		this.figures = figures;
+	}
+
 	/**
 	 * check for free way for figure.
 	 * @param test cell massive

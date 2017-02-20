@@ -1,6 +1,8 @@
 package ru.nivanov.start;
-import ru.nivanov.models.*;
-import java.util.*;
+
+import ru.nivanov.models.Item;
+
+import java.util.Random;
 
 /**
  * Tracker.
@@ -9,19 +11,20 @@ import java.util.*;
  * @version
  */
 
-public class Tracker {
+class Tracker {
+	/**
+	 */
+	private static final Random RN = new Random();
 	/**
 	*/
 	private final int quant = 15;
 	/**
 	*/
-	private Item[] items = new Item[quant];
+	private final Item[] items = new Item[quant];
 	/**
 	*/
 	private int position = 0;
-	/**
-	*/
-	private static final Random RN = new Random();
+
 	/**
 	* @return position
 	*/
@@ -84,7 +87,7 @@ public class Tracker {
 	 * @param id is input parameter
 	 * @return Item with id
 	 */
-	protected Item findById(String id) {
+	Item findById(String id) {
 		Item result = null;
 		for (Item item : items) {
 			if (item != null && item.getId().equals(id)) {
@@ -101,7 +104,7 @@ public class Tracker {
 	 * @param name is input parameter
 	 * @return Item with name
 	 */
-	protected Item findByName(String name) {
+	Item findByName(String name) {
 		Item result = null;
 		for (Item item : items) {
 			if (item != null && item.getName().equals(name)) {
@@ -116,7 +119,7 @@ public class Tracker {
 	 * @param desc is input parameter
 	 * @return Item with description
 	 */
-	protected Item findByDesc(String desc) {
+	Item findByDesc(String desc) {
 		Item result = null;
 		for (Item item : items) {
 			if (item != null && item.getDescription().equals(desc)) {
@@ -145,7 +148,7 @@ public class Tracker {
 	 * Generating id for new item.
 	 * @return new id for new Item
 	 */
-	String generateId() {
+	private String generateId() {
 		return String.valueOf(System.currentTimeMillis() + RN.nextInt());
 	}
 	/**

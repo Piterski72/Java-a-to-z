@@ -1,5 +1,6 @@
 package ru.nivanov.userChat;
-import java.io.*;
+
+import java.io.IOException;
 /**
  * Programm switches console chat mode (normal, suspen, wakeup).
  * @author nivanov.
@@ -7,10 +8,10 @@ import java.io.*;
  * @version
  */
  public class ChatMode {
-	 private boolean suspended = false;
-	 private ChatBot chat;
+	private final ChatBot chat;
 	 private final int kol = 3;
-	 private BotAction[] actions = new BotAction[kol];
+	private final BotAction[] actions = new BotAction[kol];
+	private boolean suspended = false;
 	 public ChatMode(ChatBot chat) {
 		 this.chat = chat;
 	 }
@@ -50,7 +51,7 @@ import java.io.*;
  * @version
  */
 		private class NormalMode implements BotAction {
-			private String id = "normal";
+	 private final String id = "normal";
 		/**
 		 * Getter for id.
 		 * @return class id
@@ -80,7 +81,7 @@ import java.io.*;
  * @version
  */
 		private class SuspendMode implements BotAction {
-			private String id = "stop";
+	private final String id = "stop";
 	/**
 	 * Getter for id.
 	 * @return class id
@@ -105,7 +106,7 @@ import java.io.*;
  * @version
  */
 		private class WakeUpMode implements BotAction {
-			private String id = "go";
+			private final String id = "go";
 	/**
 	 * Getter for id.
 	 * @return class id

@@ -7,10 +7,10 @@ package ru.nivanov;
  * @version
  */
 
-public class Factorial {
+class Factorial {
 	/**
 	*/
-	private int a;
+	private final int a;
 	/**
 	* Constructor Factorial.
 	* @param x ..

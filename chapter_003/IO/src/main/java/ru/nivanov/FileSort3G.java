@@ -1,5 +1,8 @@
 package ru.nivanov;
-import java.io.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 
 /**
  * Programm uses external sorting method.
@@ -7,9 +10,9 @@ import java.io.*;
  * @since
  * @version
  */
- public class FileSort3G {
-	private String sep = System.getProperty("line.separator");
-	private boolean unsorted = true;
+class FileSort3G {
+    private final String sep = System.getProperty("line.separator");
+    private boolean unsorted = true;
 	/**
 	* external sorting method.
 	* @param source is input file.
@@ -20,11 +23,11 @@ import java.io.*;
 		File fileOne = new File("fileOne.txt");
 		File fileTwo = new File("fileTwo.txt");
 		try (RandomAccessFile rafSource = new RandomAccessFile(source, "r");
-			 RandomAccessFile rafDest = new RandomAccessFile(distance, "rw");
-			 RandomAccessFile raf1 = new RandomAccessFile(fileOne, "rw");
-			 RandomAccessFile raf2 = new RandomAccessFile(fileTwo, "rw");) {
-				rafSource.seek(0);
-				writeToFile(rafSource, rafDest);
+             RandomAccessFile rafDest = new RandomAccessFile(distance, "rw");
+             RandomAccessFile raf1 = new RandomAccessFile(fileOne, "rw");
+             RandomAccessFile raf2 = new RandomAccessFile(fileTwo, "rw")) {
+            rafSource.seek(0);
+            writeToFile(rafSource, rafDest);
 				do {
 					splitFiles(rafDest, raf1, raf2);
 					if (unsorted) {
