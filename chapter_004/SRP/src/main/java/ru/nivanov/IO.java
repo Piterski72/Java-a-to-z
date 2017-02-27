@@ -15,4 +15,5 @@ public interface IO {
      * @param value ..
      */
     void println(Object value);
+
 }

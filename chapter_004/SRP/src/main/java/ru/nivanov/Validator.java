@@ -36,6 +36,26 @@ class Validator {
     }
 
     /**
+     * Get double.
+     * @param line ..
+     * @return ..
+     */
+    int getInt(String line) {
+        boolean invalid;
+        do {
+            try {
+                this.io.println(line);
+                return Integer.valueOf(this.io.read());
+            } catch (NumberFormatException nfe) {
+                nfe.printStackTrace();
+                invalid = true;
+                this.io.println("error read int, try again");
+            }
+        } while (invalid);
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Get user input.
      * @param line ..
      * @return ..
@@ -54,5 +74,21 @@ class Validator {
     boolean compare(String text, String choice) {
         io.println(text);
         return (choice.equalsIgnoreCase(this.io.read()));
+    }
+
+    /**
+     * Check range method.
+     * @param digit ..
+     * @param range ..
+     * @return ..
+     */
+    boolean checkRange(int digit, int[] range) {
+        boolean tested = false;
+        for (int item : range) {
+            if (digit == item) {
+                tested = true;
+            }
+        }
+        return tested;
     }
 }

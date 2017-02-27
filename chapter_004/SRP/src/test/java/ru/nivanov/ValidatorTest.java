@@ -18,7 +18,7 @@ public class ValidatorTest {
      * @throws Exception ..
      */
     @Test
-    public void getDouble() throws Exception {
+    public void whenGetDoubleThenReturnResult() throws Exception {
         //add io behavior
         when(io.read()).thenReturn("2");
         Validator underTest = new Validator(io);
@@ -28,11 +28,25 @@ public class ValidatorTest {
     }
 
     /**
+     * Test for getInt.
+     * @throws Exception ..
+     */
+    @Test
+    public void whenGetIntThenReturnResult() throws Exception {
+        //add io behavior
+        when(io.read()).thenReturn("1");
+        Validator underTest = new Validator(io);
+        int expected = underTest.getInt("");
+        assertThat(expected, is(1));
+
+    }
+
+    /**
      * Test for getString.
      * @throws Exception ..
      */
     @Test
-    public void getString() throws Exception {
+    public void whenGetStringThenReturnResult() throws Exception {
         //add io behavior
         when(io.read()).thenReturn("test");
         Validator underTest = new Validator(io);
@@ -46,12 +60,31 @@ public class ValidatorTest {
      * @throws Exception ..
      */
     @Test
-    public void compare() throws Exception {
+    public void whenCompareThenReturnResult() throws Exception {
         //add io behavior
         when(io.read()).thenReturn("y");
         Validator underTest = new Validator(io);
         boolean test = true;
         boolean expected = underTest.compare("", "y");
         assertThat(test, is(expected));
+    }
+
+    /**
+     * Test for check Range method.
+     * @throws Exception ..
+     */
+    @Test
+    public void whenChechRangeThenReturnResult() throws Exception {
+        final int three = 3;
+        final int four = 4;
+        boolean[] results = new boolean[2];
+        boolean[] expected = {true, false};
+        final int inRange = 3;
+        final int notInRange = 5;
+        int[] testRange = {0, 1, 2, three, four};
+        Validator underTest = new Validator(io);
+        results[0] = underTest.checkRange(inRange, testRange);
+        results[1] = underTest.checkRange(notInRange, testRange);
+        assertThat(expected, is(results));
     }
 }
