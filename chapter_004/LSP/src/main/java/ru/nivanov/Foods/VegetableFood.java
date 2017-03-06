@@ -1,11 +1,11 @@
-package ru.nivanov;
+package ru.nivanov.Foods;
 
 /**
  * Created by Nikolay Ivanov on 28.02.2017.
  */
-class VegetableFood extends Food {
-    private static final int TEN = 10;
-    private int discount = TEN;
+public class VegetableFood extends Food {
+    private static final int DISCOUNT = 10;
+    private int discount = DISCOUNT;
 
     /**
      * Constructor.
@@ -14,7 +14,7 @@ class VegetableFood extends Food {
      * @param createDate ..
      * @param expireDate ..
      */
-    VegetableFood(String name, double price, String createDate, String expireDate) {
+    public VegetableFood(String name, double price, String createDate, String expireDate) {
         super(name, price, createDate, expireDate);
     }
 

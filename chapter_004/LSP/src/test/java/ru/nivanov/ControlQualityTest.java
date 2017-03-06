@@ -1,6 +1,9 @@
 package ru.nivanov;
 
 import org.junit.Test;
+import ru.nivanov.Foods.GeneralFood;
+import ru.nivanov.Foods.MilkFood;
+import ru.nivanov.Start.ControlQuality;
 
 import java.util.ArrayList;
 
@@ -13,9 +16,7 @@ import static org.mockito.Mockito.when;
  * Created by Nikolay Ivanov on 02.03.2017.
  */
 public class ControlQualityTest {
-    private static final int THREE = 3;
-    private static final double STOODIN = 101;
-
+    private static final int SIX = 6;
     private ControlQuality controlQuality;
 
     /**
@@ -26,7 +27,7 @@ public class ControlQualityTest {
         controlQuality = new ControlQuality(new ArrayList<>());
         controlQuality.installStorages();
         int result = controlQuality.getStorages().size();
-        assertThat(result, is(THREE));
+        assertThat(result, is(SIX));
     }
 
     /**
@@ -34,10 +35,11 @@ public class ControlQualityTest {
      */
     @Test
     public void whenSetFoodDestinationThenReturnResult() {
-        Food mockFood = mock(Food.class);
+        GeneralFood mockFood = mock(MilkFood.class);
         //add food behavior
-        when(mockFood.getShelfLifePercent()).thenReturn((STOODIN));
-        ArrayList<Food> testFood = new ArrayList<>();
+        when(mockFood.getShelfLifePercent()).thenReturn((double) 1);
+        when(mockFood.getName()).thenReturn("");
+        ArrayList<GeneralFood> testFood = new ArrayList<>();
         testFood.add(mockFood);
         controlQuality = new ControlQuality(testFood);
         controlQuality.installStorages();

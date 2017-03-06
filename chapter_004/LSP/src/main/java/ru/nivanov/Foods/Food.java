@@ -1,4 +1,4 @@
-package ru.nivanov;
+package ru.nivanov.Foods;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -6,15 +6,13 @@ import java.util.Date;
 /**
  * Created by Nikolay Ivanov on 28.02.2017.
  */
-class Food {
-    private static final int TWENTY = 20;
+public abstract class Food implements GeneralFood {
     private static final int STOODIN = 101;
     private static final int STO = 100;
     private String name;
     private double price;
     private String expireDate;
     private String createDate;
-    private int discount = TWENTY;
 
     /**
      * Constructor.
@@ -34,7 +32,7 @@ class Food {
      * Name getter.
      * @return name
      */
-    private String getName() {
+    public String getName() {
         return this.name;
     }
 
@@ -42,7 +40,7 @@ class Food {
      * Expire date getter.
      * @return ..
      */
-    private String getExpireDate() {
+    public String getExpireDate() {
         return expireDate;
     }
 
@@ -50,7 +48,7 @@ class Food {
      * Creation date getter.
      * @return ..
      */
-    private String getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
@@ -84,9 +82,7 @@ class Food {
      * Discount getter.
      * @return ..
      */
-    public int getDiscount() {
-        return this.discount;
-    }
+    public abstract int getDiscount();
 
     /**
      * Set new price.
@@ -110,9 +106,8 @@ class Food {
      */
     @Override
     public String toString() {
-        String description = String.format("name/ %s /price %,.2f /create date %s /expire date %s", getName(),
+        return String.format("name/ %s /price %,.2f /create date %s /expire date %s", getName(),
                 getPrice(), getCreateDate(), getExpireDate());
-        return description;
     }
 
 }

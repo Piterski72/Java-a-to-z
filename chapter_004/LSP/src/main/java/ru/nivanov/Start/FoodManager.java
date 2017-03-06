@@ -1,4 +1,6 @@
-package ru.nivanov;
+package ru.nivanov.Start;
+
+import ru.nivanov.Foods.*;
 
 import java.util.ArrayList;
 
@@ -16,11 +18,17 @@ public class FoodManager {
      * @param args ..
      */
     public static void main(String[] args) {
-        ArrayList<Food> foodProducts = new ArrayList<>();
+        ArrayList<GeneralFood> foodProducts = new ArrayList<>();
         foodProducts.add(new MilkFood("kefir", NINETEEN, "11.02.2017", "11.03.2017"));
-        foodProducts.add(new MilkFood("smetana", SEVEN, "02.03.2017", "11.03.2017"));
+        foodProducts.add(new MilkFood("smetana", SEVEN, "02.03.2017", "11.04.2017"));
+        foodProducts.add(new MilkFood("cheese", 2, "02.03.2017", "11.03.2017"));
+        foodProducts.add(new MilkFood("cream", TEN, "02.03.2017", "11.04.2017"));
         foodProducts.add(new VegetableFood("potato", SIX, "11.12.2016", "11.02.2017"));
         foodProducts.add(new VegetableFood("cabbage", TEN, "11.01.2017", "11.03.2017"));
+        foodProducts.add(new VegetableFood("parrot", TEN, "01.03.2017", "11.04.2017"));
+        foodProducts.add(new VegetableFood("svekla", TEN, "01.03.2017", "11.04.2017"));
+        foodProducts.add(new ReproductCakes(new MilkFood("tvorog", TEN, "01.02.2017", "28.02.2017")));
+        foodProducts.add(new LowTempVegetables(new VegetableFood("tomato", SEVEN, "02.03.2017", "30.03.2017")));
         ControlQuality foodControl = new ControlQuality(foodProducts);
         foodControl.installStorages();
         foodControl.setFoodDestination();

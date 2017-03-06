@@ -1,6 +1,8 @@
 package ru.nivanov;
 
 import org.junit.Test;
+import ru.nivanov.Foods.Food;
+import ru.nivanov.Foods.VegetableFood;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;

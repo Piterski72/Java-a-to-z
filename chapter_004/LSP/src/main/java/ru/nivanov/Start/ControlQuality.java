@@ -1,19 +1,22 @@
-package ru.nivanov;
+package ru.nivanov.Start;
+
+import ru.nivanov.Foods.GeneralFood;
+import ru.nivanov.Storages.*;
 
 import java.util.ArrayList;
 
 /**
  * Created by Nikolay Ivanov on 28.02.2017.
  */
-class ControlQuality {
-    private ArrayList<Food> foodList = new ArrayList<>();
+public class ControlQuality {
+    private ArrayList<GeneralFood> foodList = new ArrayList<>();
     private ArrayList<GeneralStorage> storages = new ArrayList<>();
 
     /**
      * Constructor.
      * @param foodList ..
      */
-    ControlQuality(ArrayList<Food> foodList) {
+    public ControlQuality(ArrayList<GeneralFood> foodList) {
         this.foodList = foodList;
     }
 
@@ -29,10 +32,13 @@ class ControlQuality {
      *
      */
     public void installStorages() {
-        storages.add(new WareHouse());
-        storages.add(new Shop());
-        storages.add(new Trash());
-
+        GeneralStorage wareHouse = new WareHouseStorage();
+        storages.add(wareHouse);
+        storages.add(new ShopStorage());
+        storages.add(new TrashStorage());
+        storages.add(new ExtendedWareHouse(wareHouse));
+        storages.add(new ExtendedReproductFactory(new TrashStorage()));
+        storages.add(new ExtendedCoolStorage(wareHouse));
     }
 
     /**
@@ -40,18 +46,16 @@ class ControlQuality {
      * @return boolean filing result.
      */
     public boolean setFoodDestination() {
-        double foodLife;
         int count = 0;
         boolean fillStorageOK = false;
-        for (int i = 0; i < foodList.size(); i++) {
-            foodLife = foodList.get(i).getShelfLifePercent();
-            for (int j = 0; j < storages.size(); j++) {
-                if (storages.get(j).checkCondition(foodLife)) {
-                    storages.get(j).addFoodItem(foodList.get(i));
+        for (GeneralFood aFoodList : foodList) {
+            for (GeneralStorage storage : storages) {
+                if (storage.checkCondition(aFoodList)) {
+                    storage.addFoodItem(aFoodList);
                     count++;
+                    break;
                 }
             }
-
         }
         if (count == foodList.size()) {
             fillStorageOK = true;

@@ -1,21 +1,25 @@
-package ru.nivanov;
+package ru.nivanov.Storages;
+
+import ru.nivanov.Foods.GeneralFood;
 
 import java.util.ArrayList;
 
 /**
  * Created by Nikolay Ivanov on 28.02.2017.
  */
-public class Shop implements GeneralStorage {
+public class ShopStorage implements GeneralStorage {
+    private static final int TOTAL_SIZE = 100;
     private static final int TWENTYFIVE = 25;
     private static final int SEVENTYFIVE = 75;
     private static final int STO = 100;
-    private ArrayList<Food> shopFoods = new ArrayList<>();
+    private static int storageSize = 0;
+    private ArrayList<GeneralFood> shopFoods = new ArrayList<>();
 
     /**
      * Getter.
      * @return ..
      */
-    public ArrayList<Food> getShopFoods() {
+    public ArrayList<GeneralFood> getShopFoods() {
         return shopFoods;
     }
 
@@ -24,7 +28,7 @@ public class Shop implements GeneralStorage {
      * @param item ..
      */
     @Override
-    public void addFoodItem(Food item) {
+    public void addFoodItem(GeneralFood item) {
         double itemLife = item.getShelfLifePercent();
         if (itemLife > TWENTYFIVE & itemLife <= SEVENTYFIVE) {
             this.shopFoods.add(item);
@@ -39,7 +43,7 @@ public class Shop implements GeneralStorage {
      * @param item ..
      */
     @Override
-    public void removeFoodItem(Food item) {
+    public void removeFoodItem(GeneralFood item) {
         this.shopFoods.remove(item);
     }
 
@@ -48,8 +52,8 @@ public class Shop implements GeneralStorage {
      */
     @Override
     public void getStorageInfo() {
-        System.out.println("Shop information");
-        for (Food items : this.shopFoods) {
+        System.out.println("ShopStorage information");
+        for (GeneralFood items : this.shopFoods) {
             System.out.println(items);
         }
     }
@@ -58,7 +62,26 @@ public class Shop implements GeneralStorage {
      * @return ..
      */
     @Override
-    public boolean checkCondition(double foodLife) {
+    public boolean checkCondition(GeneralFood value) {
+        double foodLife = value.getShelfLifePercent();
         return (foodLife > TWENTYFIVE & foodLife < STO);
+    }
+
+    /**
+     * Getting storage size.
+     * @return ..
+     */
+    @Override
+    public int getTotalStorageSize() {
+        return ShopStorage.TOTAL_SIZE;
+    }
+
+    /**
+     * Getting current storage size.
+     * @return ..
+     */
+    @Override
+    public int getUsedStorageSize() {
+        return this.shopFoods.size();
     }
 }
