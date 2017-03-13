@@ -7,16 +7,16 @@ import java.util.ArrayList;
 /**
  * Created by Nikolay Ivanov on 03.03.2017.
  */
-public class ExtendedWareHouse extends ExtendedStorage {
+public class ExtendedWareHouse extends WareHouseStorage {
     private static final int TWENTYFIVE = 25;
-    private GeneralStorage generalStorage;
+    private WareHouseStorage generalStorage;
     private ArrayList<GeneralFood> extendedWareHouseFoods = new ArrayList<>();
 
     /**
      * Constructor.
      * @param generalStorage ..
      */
-    public ExtendedWareHouse(GeneralStorage generalStorage) {
+    public ExtendedWareHouse(WareHouseStorage generalStorage) {
         this.generalStorage = generalStorage;
     }
 
@@ -62,7 +62,7 @@ public class ExtendedWareHouse extends ExtendedStorage {
     public boolean checkCondition(GeneralFood value) {
         boolean checkWarehouseFullness = this.generalStorage.checkCondition(value);
         double foodLife = value.getShelfLifePercent();
-        return (foodLife <= TWENTYFIVE & (!checkWarehouseFullness) & (!checkCoolingCondition(value)));
+        return (foodLife <= TWENTYFIVE && (!checkWarehouseFullness));
     }
 
     /**
@@ -74,12 +74,5 @@ public class ExtendedWareHouse extends ExtendedStorage {
         return this.extendedWareHouseFoods.size();
     }
 
-    /**
-     * @param value ..
-     * @return ..
-     */
-    private boolean checkCoolingCondition(GeneralFood value) {
-        return (value.getName().contains("lowTemp"));
-    }
 
 }

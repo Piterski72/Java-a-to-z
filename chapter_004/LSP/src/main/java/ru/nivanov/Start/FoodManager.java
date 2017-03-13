@@ -19,19 +19,22 @@ public class FoodManager {
      */
     public static void main(String[] args) {
         ArrayList<GeneralFood> foodProducts = new ArrayList<>();
-        foodProducts.add(new MilkFood("kefir", NINETEEN, "11.02.2017", "11.03.2017"));
-        foodProducts.add(new MilkFood("smetana", SEVEN, "02.03.2017", "11.04.2017"));
-        foodProducts.add(new MilkFood("cheese", 2, "02.03.2017", "11.03.2017"));
-        foodProducts.add(new MilkFood("cream", TEN, "02.03.2017", "11.04.2017"));
+        foodProducts.add(new MilkFood("kefir", NINETEEN, "11.03.2017", "11.06.2017"));
+        foodProducts.add(new MilkFood("smetana", SEVEN, "12.03.2017", "11.04.2017"));
+        foodProducts.add(new MilkFood("cheese", 2, "12.03.2017", "21.03.2017"));
+        foodProducts.add(new MilkFood("cream", TEN, "12.03.2017", "01.04.2017"));
         foodProducts.add(new VegetableFood("potato", SIX, "11.12.2016", "11.02.2017"));
         foodProducts.add(new VegetableFood("cabbage", TEN, "11.01.2017", "11.03.2017"));
         foodProducts.add(new VegetableFood("parrot", TEN, "01.03.2017", "11.04.2017"));
         foodProducts.add(new VegetableFood("svekla", TEN, "01.03.2017", "11.04.2017"));
-        foodProducts.add(new ReproductCakes(new MilkFood("tvorog", TEN, "01.02.2017", "28.02.2017")));
-        foodProducts.add(new LowTempVegetables(new VegetableFood("tomato", SEVEN, "02.03.2017", "30.03.2017")));
+        foodProducts.add(new ReproductFood("tvorog", TEN, "01.02.2017", "28.02.2017"));
+        foodProducts.add(new LowTempVegetables("tomato", SEVEN, "12.03.2017", "30.03.2017"));
         ControlQuality foodControl = new ControlQuality(foodProducts);
-        foodControl.installStorages();
-        foodControl.setFoodDestination();
-        foodControl.getStoragesInfo();
+        foodControl.installMainStorages();
+        foodControl.installSpecialStorages();
+        foodControl.setAllFoodDestination();
+        foodControl.getMainStoragesInfo();
+        foodControl.getSpecialStoragesInfo();
+
     }
 }

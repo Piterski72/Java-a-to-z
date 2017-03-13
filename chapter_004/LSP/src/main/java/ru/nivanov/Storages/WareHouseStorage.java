@@ -49,7 +49,7 @@ public class WareHouseStorage implements GeneralStorage {
     @Override
     public boolean checkCondition(GeneralFood value) {
         double foodLife = value.getShelfLifePercent();
-        return (foodLife <= TWENTYFIVE & (!checkCoolingCondition(value)) & checkSizeCondition());
+        return (foodLife <= TWENTYFIVE && checkSizeCondition());
     }
 
     /**
@@ -68,14 +68,6 @@ public class WareHouseStorage implements GeneralStorage {
     @Override
     public int getUsedStorageSize() {
         return this.wareHouseFoods.size();
-    }
-
-    /**
-     * @param value ..
-     * @return ..
-     */
-    private boolean checkCoolingCondition(GeneralFood value) {
-        return (value.getName().contains("lowTemp"));
     }
 
     /**

@@ -1,5 +1,7 @@
 package ru.nivanov.Storages;
 
+import ru.nivanov.Foods.GeneralFood;
+
 /**
  * Created by Nikolay Ivanov on 03.03.2017.
  */
@@ -13,6 +15,7 @@ abstract class ExtendedStorage implements GeneralStorage {
      */
     ExtendedStorage(GeneralStorage generalStorage) {
         this.generalStorage = generalStorage;
+
     }
 
     ExtendedStorage() {
@@ -25,6 +28,16 @@ abstract class ExtendedStorage implements GeneralStorage {
     @Override
     public int getTotalStorageSize() {
         return ExtendedStorage.TOTAL_SIZE;
+    }
+
+    /**
+     * Check if the food is for this storage.
+     * @param item ..
+     * @return ..
+     */
+    @Override
+    public boolean checkCondition(GeneralFood item) {
+        return this.generalStorage.checkCondition(item);
     }
 
 }

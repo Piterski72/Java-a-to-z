@@ -106,8 +106,8 @@ public abstract class Food implements GeneralFood {
      */
     @Override
     public String toString() {
-        return String.format("name/ %s /price %,.2f /create date %s /expire date %s", getName(),
-                getPrice(), getCreateDate(), getExpireDate());
+        return String.format("name/ %s /price %,.2f /create date %s /expire date %s", getName(), getPrice(),
+                getCreateDate(), getExpireDate());
     }
 
 }

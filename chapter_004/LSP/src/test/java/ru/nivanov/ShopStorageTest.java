@@ -22,7 +22,7 @@ public class ShopStorageTest {
     @Test
     public void whenAddFoodItemThenReturnResult() {
         GeneralFood foodOne = new MilkFood("milk", TEN, "22.02.2017", "20.03.2017");
-        GeneralFood foodTwo = new VegetableFood("parrot", TEN, "02.01.2017", "12.03.2017");
+        GeneralFood foodTwo = new VegetableFood("parrot", TEN, "02.01.2017", "22.03.2017");
         GeneralFood[] foods = {foodOne, foodTwo};
         underTest.addFoodItem(foodOne);
         underTest.addFoodItem(foodTwo);
@@ -37,7 +37,7 @@ public class ShopStorageTest {
     @Test
     public void whenCheckConditionThenReturnResult() {
         GeneralFood foodOne = new MilkFood("milk", TEN, "02.03.2017", "20.03.2017");
-        GeneralFood foodTwo = new VegetableFood("parrot", TEN, "02.01.2017", "10.03.2017");
+        GeneralFood foodTwo = new VegetableFood("parrot", TEN, "02.01.2017", "19.03.2017");
         GeneralFood foodThree = new VegetableFood("onion", TEN, "02.01.2017", "12.02.2017");
         boolean resultOne = underTest.checkCondition(foodOne);
         boolean resultTwo = underTest.checkCondition(foodTwo);

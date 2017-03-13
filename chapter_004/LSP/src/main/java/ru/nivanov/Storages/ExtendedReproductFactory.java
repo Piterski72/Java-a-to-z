@@ -8,7 +8,10 @@ import java.util.ArrayList;
  * Created by Nikolay Ivanov on 03.03.2017.
  */
 public class ExtendedReproductFactory extends ExtendedStorage {
-    private static final int TOTAL_SIZE = 100;
+    /**
+     * This field is for identifying reproduct food.
+     */
+    private static final String CAN_REPRODUCT = "CAN_REPRODUCT";
     private static final int STO = 100;
     private ArrayList<GeneralFood> reproductFactoryFoods = new ArrayList<>();
 
@@ -24,7 +27,6 @@ public class ExtendedReproductFactory extends ExtendedStorage {
      * Add Item.
      * @param item ..
      */
-    @Override
     public void addFoodItem(GeneralFood item) {
         reproductFactoryFoods.add(item);
     }
@@ -58,9 +60,7 @@ public class ExtendedReproductFactory extends ExtendedStorage {
      */
     @Override
     public boolean checkCondition(GeneralFood item) {
-        TrashStorage trash = new TrashStorage();
-        boolean checkTrashCondition = trash.checkCondition(item);
-        return (item.getShelfLifePercent() > STO & (!checkTrashCondition));
+        return (item.getShelfLifePercent() > STO & (item.getName().contains(CAN_REPRODUCT)));
     }
 
     /**

@@ -1,18 +1,25 @@
 package ru.nivanov.Foods;
 
 /**
- * Created by Nikolay Ivanov on 06.03.2017.
+ * Created by Nikolay Ivanov on 03.03.2017.
  */
-public class LowTempVegetables extends Food {
-    private static final int DISCOUNT = 20;
+public class ReproductFood extends Food {
+    private static final int DISCOUNT = 30;
     /**
-     * This field used for recognizing products for low temp storage.
+     * This field is used for products witch can be moved to reproducted factory and reproducted.
      */
-    private static final String LOW_TEMP = "LOW_TEMP";
+    private static final String CAN_REPRODUCT = "CAN_REPRODUCT";
     private int discount = DISCOUNT;
 
-    public LowTempVegetables(String name, double price, String createDate, String expireDate) {
+    /**
+     * @param name ..
+     * @param price ..
+     * @param createDate ..
+     * @param expireDate ..
+     */
+    public ReproductFood(String name, double price, String createDate, String expireDate) {
         super(name, price, createDate, expireDate);
+
     }
 
     /**
@@ -35,6 +42,6 @@ public class LowTempVegetables extends Food {
      */
     @Override
     public String getName() {
-        return super.getName() + "_" + LOW_TEMP;
+        return super.getName() + "_" + CAN_REPRODUCT;
     }
 }

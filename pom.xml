@@ -1,26 +1,27 @@
-<project>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ru.nivanov</groupId>
     <artifactId>Java-a-to-z</artifactId>
     <packaging>pom</packaging>
-	<version>1.0</version>
-	
-	<properties>
+    <version>1.0</version>
+
+    <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-	
-		
-	<modules>
-	  <module>chapter_001</module>
-	  <module>chapter_002</module>
-	  <module>chapter_003</module>
+
+
+    <modules>
+        <module>chapter_001</module>
+        <module>chapter_002</module>
+        <module>chapter_003</module>
         <module>chapter_004</module>
-	</modules>
+    </modules>
 
 
-	<dependencies>
+    <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -48,15 +49,15 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>2.6.5</version>
-			<scope>test</scope>
-		</dependency>
-		
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.6.5</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
-	<build>
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -85,14 +86,14 @@
                 <version>2.7</version>
                 <configuration>
                     <instrumentation>
-						<excludes>
-							<exclude>ru/nivanov/models/*.class</exclude>
-							<exclude>ru/nivanov/start/StartUI.class</exclude>
-							<exclude>ru/nivanov/userChat/ConsoleChat.class</exclude>
-							<exclude>ru/nivanov/DropAbuse.class</exclude>
-						</excludes>
-					</instrumentation>
-					<check>
+                        <excludes>
+                            <exclude>ru/nivanov/models/*.class</exclude>
+                            <exclude>ru/nivanov/start/StartUI.class</exclude>
+                            <exclude>ru/nivanov/userChat/ConsoleChat.class</exclude>
+                            <exclude>ru/nivanov/DropAbuse.class</exclude>
+                        </excludes>
+                    </instrumentation>
+                    <check>
                         <branchRate>60</branchRate>
                         <lineRate>60</lineRate>
                         <haltOnFailure>true</haltOnFailure>
@@ -101,10 +102,10 @@
                         <packageLineRate>60</packageLineRate>
                         <packageBranchRate>60</packageBranchRate>
                     </check>
-					<formats>
+                    <formats>
                         <format>html</format>
                     </formats>
-				</configuration>
+                </configuration>
                 <executions>
                     <execution>
                         <id>verify</id>
@@ -112,7 +113,7 @@
                         <goals>
                             <goal>clean</goal>
                             <goal>check</goal>
-							<goal>cobertura</goal>
+                            <goal>cobertura</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -125,7 +126,7 @@
                     <compilerVersion>1.8</compilerVersion>
                 </configuration>
             </plugin>
-			 <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.7</version>
@@ -133,7 +134,7 @@
                     <printFailingErrors>true</printFailingErrors>
                 </configuration>
             </plugin>
-			<plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
                 <version>3.0.4</version>
@@ -141,7 +142,7 @@
                     <xmlOutput>true</xmlOutput>
                 </configuration>
             </plugin>
-			<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.10</version>
@@ -149,7 +150,7 @@
                     <failOnWarning>true</failOnWarning>
                 </configuration>
             </plugin>
-			<plugin>
+            <plugin>
                 <!-- https://mvnrepository.com/artifact/org.basepom.maven/duplicate-finder-maven-plugin -->
                 <groupId>org.basepom.maven</groupId>
                 <artifactId>duplicate-finder-maven-plugin</artifactId>
@@ -183,6 +184,6 @@
                     <!-- Version 1.2.0+ -->
                 </configuration>
             </plugin>
-		</plugins>
+        </plugins>
     </build>
 </project>

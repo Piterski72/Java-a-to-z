@@ -57,8 +57,7 @@ public class TrashStorage implements GeneralStorage {
      */
     @Override
     public boolean checkCondition(GeneralFood value) {
-        boolean checkForReproduct = value.getName().contains("canReproduct");
-        return (value.getShelfLifePercent() > STO & (!checkForReproduct));
+        return (value.getShelfLifePercent() > STO);
     }
 
     /**

@@ -19,7 +19,7 @@ public class FoodTest {
      */
     @Test
     public void whenGetShelfLifePercentThenReturnResult() throws Exception {
-        Food onion = new VegetableFood("onion", 1, "01.03.2017", "11.03.2017");
+        Food onion = new VegetableFood("onion", 1, "01.03.2017", "11.05.2017");
         Food potato = new VegetableFood("potato", 1, "01.03.2016", "11.03.2016");
         boolean testOne = (onion.getShelfLifePercent() < STO);
         boolean testTwo = (potato.getShelfLifePercent() < STO);
