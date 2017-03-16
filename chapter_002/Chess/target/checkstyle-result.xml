@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="6.11.2">
-<file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\models\Bishop.java">
-</file>
-<file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\models\package-info.java">
-</file>
-<file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\Board.java">
-</file>
-<file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\Cell.java">
-</file>
-<file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\Figure.java">
-</file>
-<file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\FigureNotFoundException.java">
-</file>
-<file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\ImpossibleMoveException.java">
-</file>
-<file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\OccupiedWayException.java">
-</file>
-<file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\package-info.java">
-</file>
-<file name="C:\java\Java-a-to-z\chapter_002\Chess\src\test\java\ru\nivanov\BoardTest.java">
-</file>
-<file name="C:\java\Java-a-to-z\chapter_002\Chess\src\test\java\ru\nivanov\package-info.java">
-</file>
+    <file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\models\Bishop.java">
+    </file>
+    <file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\models\package-info.java">
+    </file>
+    <file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\Board.java">
+    </file>
+    <file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\Cell.java">
+    </file>
+    <file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\Figure.java">
+    </file>
+    <file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\FigureNotFoundException.java">
+    </file>
+    <file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\ImpossibleMoveException.java">
+    </file>
+    <file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\OccupiedWayException.java">
+    </file>
+    <file name="C:\java\Java-a-to-z\chapter_002\Chess\src\main\java\ru\nivanov\start\package-info.java">
+    </file>
+    <file name="C:\java\Java-a-to-z\chapter_002\Chess\src\test\java\ru\nivanov\BoardTest.java">
+    </file>
+    <file name="C:\java\Java-a-to-z\chapter_002\Chess\src\test\java\ru\nivanov\package-info.java">
+    </file>
 </checkstyle>

@@ -1,7 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <duplicate-finder-result version="1">
     <project artifactId="Chess" groupId="ru.nivanov" version="1.0" type="jar"/>
-    <configuration skip="false" quiet="false" checkCompileClasspath="true" checkRuntimeClasspath="true" checkTestClasspath="true" failBuildInCaseOfDifferentContentConflict="false" failBuildInCaseOfEqualContentConflict="false" failBuildInCaseOfConflict="false" printEqualFiles="false" preferLocal="true" includeBootClasspath="false" bootClasspathProperty="sun.boot.class.path" includePomProjects="false" useDefaultResourceIgnoreList="true" useDefaultClassIgnoreList="true" useResultFile="true" resultFileMinClasspathCount="2" resultFile="c:\java\Java-a-to-z\chapter_002\Chess\target\duplicate-finder-result.xml">
+    <configuration skip="false" quiet="false" checkCompileClasspath="true" checkRuntimeClasspath="true"
+                   checkTestClasspath="true" failBuildInCaseOfDifferentContentConflict="false"
+                   failBuildInCaseOfEqualContentConflict="false" failBuildInCaseOfConflict="false"
+                   printEqualFiles="false" preferLocal="true" includeBootClasspath="false"
+                   bootClasspathProperty="sun.boot.class.path" includePomProjects="false"
+                   useDefaultResourceIgnoreList="true" useDefaultClassIgnoreList="true" useResultFile="true"
+                   resultFileMinClasspathCount="2"
+                   resultFile="c:\java\Java-a-to-z\chapter_002\Chess\target\duplicate-finder-result.xml">
         <ignoredResourcePatterns/>
         <ignoredClassPatterns/>
         <conflictingDependencies/>
@@ -62,383 +69,573 @@
             <conflicts>
                 <conflict name="org.hamcrest:hamcrest-all:1.3, org.hamcrest:hamcrest-core:1.3">
                     <conflictResults>
-                        <conflictResult name="org.hamcrest.BaseDescription" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.BaseDescription" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.BaseMatcher" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.BaseMatcher" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.Condition" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.Condition" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.CoreMatchers" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.CoreMatchers" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.CustomMatcher" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.CustomMatcher" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.CustomTypeSafeMatcher" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.CustomTypeSafeMatcher" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.Description" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.Description" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.DiagnosingMatcher" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.DiagnosingMatcher" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.Factory" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.Factory" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.FeatureMatcher" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.FeatureMatcher" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.Matcher" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.Matcher" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.MatcherAssert" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.MatcherAssert" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.SelfDescribing" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.SelfDescribing" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.StringDescription" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.StringDescription" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.TypeSafeDiagnosingMatcher" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.TypeSafeDiagnosingMatcher" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.TypeSafeMatcher" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.TypeSafeMatcher" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.AllOf" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.AllOf" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.AnyOf" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.AnyOf" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.CombinableMatcher" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.CombinableMatcher" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.DescribedAs" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.DescribedAs" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.Every" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.Every" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.Is" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.Is" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.IsAnything" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.IsAnything" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.IsCollectionContaining" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.IsCollectionContaining" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.IsEqual" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.IsEqual" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.IsInstanceOf" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.IsInstanceOf" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.IsNot" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.IsNot" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.IsNull" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.IsNull" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.IsSame" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.IsSame" type="classes" excepted="false" failed="false"
+                                        printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.ShortcutCombination" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.ShortcutCombination" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.StringContains" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.StringContains" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.StringEndsWith" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.StringEndsWith" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.StringStartsWith" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.StringStartsWith" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.core.SubstringMatcher" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.core.SubstringMatcher" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.internal.ArrayIterator" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.internal.ArrayIterator" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.internal.ReflectiveTypeFinder" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.internal.ReflectiveTypeFinder" type="classes"
+                                        excepted="false" failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.internal.SelfDescribingValue" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.internal.SelfDescribingValue" type="classes" excepted="false"
+                                        failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>
-                        <conflictResult name="org.hamcrest.internal.SelfDescribingValueIterator" type="classes" excepted="false" failed="false" printed="false" conflictState="content-equal">
+                        <conflictResult name="org.hamcrest.internal.SelfDescribingValueIterator" type="classes"
+                                        excepted="false" failed="false" printed="false" conflictState="content-equal">
                             <conflictNames>
-                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-all:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-all" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
-                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false" bootClasspathElement="false">
-                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3" versionRange="1.3" type="jar"/>
+                                <conflictName name="org.hamcrest:hamcrest-core:1.3" artifact="true" localFolder="false"
+                                              bootClasspathElement="false">
+                                    <artifact artifactId="hamcrest-core" groupId="org.hamcrest" version="1.3"
+                                              versionRange="1.3" type="jar"/>
                                 </conflictName>
                             </conflictNames>
                         </conflictResult>

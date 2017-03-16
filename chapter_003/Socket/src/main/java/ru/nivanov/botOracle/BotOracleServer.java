@@ -57,7 +57,6 @@ class BotOracleServer {
 
     }
 
-
     /**
      * generating bot random answer.
      * @return resulst getting bot random answer ..

@@ -21,7 +21,7 @@ public class FoodManager {
         ArrayList<GeneralFood> foodProducts = new ArrayList<>();
         foodProducts.add(new MilkFood("kefir", NINETEEN, "11.03.2017", "11.06.2017"));
         foodProducts.add(new MilkFood("smetana", SEVEN, "12.03.2017", "11.04.2017"));
-        foodProducts.add(new MilkFood("cheese", 2, "12.03.2017", "21.03.2017"));
+        foodProducts.add(new MilkFood("cheese", 2, "12.03.2017", "18.05.2017"));
         foodProducts.add(new MilkFood("cream", TEN, "12.03.2017", "01.04.2017"));
         foodProducts.add(new VegetableFood("potato", SIX, "11.12.2016", "11.02.2017"));
         foodProducts.add(new VegetableFood("cabbage", TEN, "11.01.2017", "11.03.2017"));

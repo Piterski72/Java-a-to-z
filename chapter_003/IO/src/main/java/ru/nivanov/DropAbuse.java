@@ -1,11 +1,10 @@
 package ru.nivanov;
+
 import java.io.*;
 
 /**
  * Programm removes abuse word from input flow.
  * @author nivanov.
- * @since
- * @version
  */
 class DropAbuse {
     /**
@@ -22,20 +21,20 @@ class DropAbuse {
              PrintStream ps = new PrintStream(out)) {
             while (check) {
                 for (int i = 0; i < abuse.length; i++) {
-					char[] cbuf = new char[abuse[i].length()];
-					br.mark(abuse[i].length());
-					br.read(cbuf, 0, abuse[i].length());
-					if (!abuse[i].equalsIgnoreCase(new String(cbuf))) {
-						br.reset();
-					}
-				}
-				c = br.read();
-				if (c == -1) {
-					check = false;
-				} else {
-					ps.print((char) c);
-				}
-			}
-		}
-	}
+                    char[] cbuf = new char[abuse[i].length()];
+                    br.mark(abuse[i].length());
+                    br.read(cbuf, 0, abuse[i].length());
+                    if (!abuse[i].equalsIgnoreCase(new String(cbuf))) {
+                        br.reset();
+                    }
+                }
+                c = br.read();
+                if (c == -1) {
+                    check = false;
+                } else {
+                    ps.print((char) c);
+                }
+            }
+        }
+    }
 }
