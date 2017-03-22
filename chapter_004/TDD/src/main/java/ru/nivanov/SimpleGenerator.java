@@ -10,10 +10,11 @@ import java.util.regex.Pattern;
  * Created by Nikolay Ivanov on 20.03.2017.
  */
 public class SimpleGenerator implements Template {
+    static final Pattern REGEX = Pattern.compile("\\$\\{(.+?)}");
+
     @Override
     public String generate(String template, Map<String, String> map) {
-        Pattern pat = Pattern.compile("\\$\\{(.+?)}");
-        Matcher mat = pat.matcher(template);
+        Matcher mat = REGEX.matcher(template);
         StringBuffer stringBuffer = new StringBuffer();
         Set<String> keys = new HashSet<>();
         while (mat.find()) {
