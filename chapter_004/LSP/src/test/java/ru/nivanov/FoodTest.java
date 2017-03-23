@@ -21,8 +21,8 @@ public class FoodTest {
     public void whenGetShelfLifePercentThenReturnResult() throws Exception {
         Food onion = new VegetableFood("onion", 1, "01.03.2017", "11.05.2017");
         Food potato = new VegetableFood("potato", 1, "01.03.2016", "11.03.2016");
-        boolean testOne = (onion.getShelfLifePercent() < STO);
-        boolean testTwo = (potato.getShelfLifePercent() < STO);
+        boolean testOne = (onion.getShelfLifePercent("02.03.2017") < STO);
+        boolean testTwo = (potato.getShelfLifePercent("01.03.2017") < STO);
         boolean[] results = {testOne, testTwo};
         boolean[] expected = {true, false};
         assertThat(results, is(expected));

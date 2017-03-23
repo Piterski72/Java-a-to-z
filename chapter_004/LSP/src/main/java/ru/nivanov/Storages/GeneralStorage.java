@@ -2,6 +2,8 @@ package ru.nivanov.Storages;
 
 import ru.nivanov.Foods.GeneralFood;
 
+import java.util.ArrayList;
+
 /**
  * Created by Nikolay Ivanov on 28.02.2017.
  */
@@ -13,10 +15,10 @@ public interface GeneralStorage {
     void addFoodItem(GeneralFood item);
 
     /**
-     * Remove item.
-     * @param item ..
+     * Get all food from storage.
+     * @return all food.
      */
-    void removeFoodItem(GeneralFood item);
+    ArrayList<GeneralFood> getAllFoodFromStorage();
 
     /**
      * Get storage information.
@@ -26,9 +28,10 @@ public interface GeneralStorage {
     /**
      * Check if the food is for this storage.
      * @param item ..
+     * @param date ..
      * @return ..
      */
-    boolean checkCondition(GeneralFood item);
+    boolean checkCondition(GeneralFood item, String date);
 
     /**
      * Getting total storage size.

@@ -36,8 +36,8 @@ abstract class ExtendedStorage implements GeneralStorage {
      * @return ..
      */
     @Override
-    public boolean checkCondition(GeneralFood item) {
-        return this.generalStorage.checkCondition(item);
+    public boolean checkCondition(GeneralFood item, String date) {
+        return this.generalStorage.checkCondition(item, date);
     }
 
 }

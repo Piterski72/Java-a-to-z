@@ -54,15 +54,18 @@ public abstract class Food implements GeneralFood {
 
     /**
      * Calculate shelf life percentage.
+     * @param inputDate ..
      * @return ..
      */
-    public double getShelfLifePercent() {
+    public double getShelfLifePercent(String inputDate) {
         SimpleDateFormat dayFormat = new SimpleDateFormat("dd.MM.yyyy");
         Date dateOne = null;
         Date dateTwo = null;
-        Date currentDate = new Date();
+        Date currentDate = null;
+
         double shelfLifePercentage;
         try {
+            currentDate = dayFormat.parse(inputDate);
             dateOne = dayFormat.parse(getCreateDate());
             dateTwo = dayFormat.parse(getExpireDate());
         } catch (Exception e) {

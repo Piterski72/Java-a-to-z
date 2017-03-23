@@ -32,11 +32,10 @@ public class ExtendedWareHouse extends WareHouseStorage {
 
     /**
      * Remove item.
-     * @param item ..
      */
     @Override
-    public void removeFoodItem(GeneralFood item) {
-        this.extendedWareHouseFoods.remove(item);
+    public ArrayList<GeneralFood> getAllFoodFromStorage() {
+        return this.extendedWareHouseFoods;
 
     }
 
@@ -59,9 +58,9 @@ public class ExtendedWareHouse extends WareHouseStorage {
      * @return ..
      */
     @Override
-    public boolean checkCondition(GeneralFood value) {
-        boolean checkWarehouseFullness = this.generalStorage.checkCondition(value);
-        double foodLife = value.getShelfLifePercent();
+    public boolean checkCondition(GeneralFood value, String date) {
+        boolean checkWarehouseFullness = this.generalStorage.checkCondition(value, date);
+        double foodLife = value.getShelfLifePercent(date);
         return (foodLife <= TWENTYFIVE && (!checkWarehouseFullness));
     }
 

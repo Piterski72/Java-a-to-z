@@ -33,11 +33,10 @@ public class ExtendedReproductFactory extends ExtendedStorage {
 
     /**
      * Remove item.
-     * @param item ..
      */
     @Override
-    public void removeFoodItem(GeneralFood item) {
-        reproductFactoryFoods.remove(item);
+    public ArrayList<GeneralFood> getAllFoodFromStorage() {
+        return this.reproductFactoryFoods;
     }
 
     /**
@@ -59,8 +58,8 @@ public class ExtendedReproductFactory extends ExtendedStorage {
      * @return ..
      */
     @Override
-    public boolean checkCondition(GeneralFood item) {
-        return (item.getShelfLifePercent() > STO & (item.getName().contains(CAN_REPRODUCT)));
+    public boolean checkCondition(GeneralFood item, String date) {
+        return (item.getShelfLifePercent(date) > STO & (item.getName().contains(CAN_REPRODUCT)));
     }
 
     /**

@@ -3,12 +3,15 @@ package ru.nivanov.Start;
 import ru.nivanov.Foods.GeneralFood;
 import ru.nivanov.Storages.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Nikolay Ivanov on 28.02.2017.
  */
 public class ControlQuality {
+    private String checkDate = "01.03.2017";
     private int count = 0;
     private ArrayList<GeneralFood> foodList = new ArrayList<>();
     private boolean[] checkInStorage;
@@ -22,6 +25,22 @@ public class ControlQuality {
     public ControlQuality(ArrayList<GeneralFood> foodList) {
         this.foodList = foodList;
         this.checkInStorage = new boolean[foodList.size()];
+    }
+
+    /**
+     * Date of starting storage getter.
+     * @return ..
+     */
+    public String getCheckDate() {
+        return this.checkDate;
+    }
+
+    /**
+     * New start storage date setter.
+     * @param checkDate ..
+     */
+    public void setCheckDate(String checkDate) {
+        this.checkDate = checkDate;
     }
 
     /**
@@ -62,11 +81,12 @@ public class ControlQuality {
 
     /**
      * Method for food spreading to main storages.
+     * @param date ..
      */
-    private void setFoodDestination() {
+    private void setFoodDestination(String date) {
         for (int i = 0; i < foodList.size(); i++) {
             for (GeneralStorage storage : mainStorages) {
-                if (storage.checkCondition(foodList.get(i)) && (!this.checkInStorage[i])) {
+                if (storage.checkCondition(foodList.get(i), date) && (!this.checkInStorage[i])) {
                     storage.addFoodItem(foodList.get(i));
                     count++;
                     break;
@@ -77,11 +97,12 @@ public class ControlQuality {
 
     /**
      * Method for food spreading to special storages.
+     * @param date ..
      */
-    private void setSpecialFoodDestination() {
+    private void setSpecialFoodDestination(String date) {
         for (int i = 0; i < foodList.size(); i++) {
             for (GeneralStorage storage : specialStorages) {
-                if (storage.checkCondition(foodList.get(i))) {
+                if (storage.checkCondition(foodList.get(i), date)) {
                     storage.addFoodItem(foodList.get(i));
                     this.checkInStorage[i] = true;
                     count++;
@@ -95,9 +116,11 @@ public class ControlQuality {
      * All food to all storages. First, use special storages then main storages.
      */
     public void setAllFoodDestination() {
+        System.out.println(String.format("Information valid upon: %s", getCheckDate()));
+        System.out.println(System.getProperty("line.separator"));
         boolean fillStorageOK = false;
-        setSpecialFoodDestination();
-        setFoodDestination();
+        setSpecialFoodDestination(getCheckDate());
+        setFoodDestination(getCheckDate());
         if (count == foodList.size()) {
             fillStorageOK = true;
         }
@@ -122,5 +145,28 @@ public class ControlQuality {
             value.getStorageInfo();
             System.out.println(System.getProperty("line.separator"));
         }
+    }
+
+    /**
+     * Resort food using current date.
+     */
+    public void resort() {
+        ArrayList<GeneralFood> tempFoodList = new ArrayList<>();
+        ArrayList<GeneralStorage> tempStorages = new ArrayList<>();
+        tempStorages.addAll(getMainStorages());
+        tempStorages.addAll(getSpecialStorages());
+        for (GeneralStorage storage : tempStorages) {
+            tempFoodList.addAll(storage.getAllFoodFromStorage());
+        }
+        ControlQuality resortedFood = new ControlQuality(tempFoodList);
+        SimpleDateFormat dayFormat = new SimpleDateFormat("dd.MM.yyyy");
+        String currentDate = dayFormat.format(new Date());
+        resortedFood.setCheckDate(currentDate);
+        resortedFood.installMainStorages();
+        resortedFood.installSpecialStorages();
+        resortedFood.setAllFoodDestination();
+        resortedFood.getMainStoragesInfo();
+        resortedFood.getSpecialStoragesInfo();
+
     }
 }

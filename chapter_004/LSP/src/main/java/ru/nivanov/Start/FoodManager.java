@@ -36,5 +36,7 @@ public class FoodManager {
         foodControl.getMainStoragesInfo();
         foodControl.getSpecialStoragesInfo();
 
+        foodControl.resort();
+
     }
 }

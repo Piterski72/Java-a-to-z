@@ -28,7 +28,7 @@ public class TrashStorageTest {
         GeneralFood[] foods = {foodOne, foodTwo};
         underTest.addFoodItem(foodOne);
         underTest.addFoodItem(foodTwo);
-        GeneralFood[] expected = {underTest.getTrashFoods().get(0), underTest.getTrashFoods().get(1)};
+        GeneralFood[] expected = {underTest.getAllFoodFromStorage().get(0), underTest.getAllFoodFromStorage().get(1)};
         assertThat(foods, is(expected));
     }
 
@@ -36,14 +36,14 @@ public class TrashStorageTest {
      * Test for remove item.
      */
     @Test
-    public void whenRemoveFoodItemThenReturnResult() {
+    public void whenGetAllFoodItemsThenReturnResult() {
         GeneralFood foodOne = new MilkFood("milk", TEN, "02.03.2017", "22.03.2017");
         GeneralFood foodTwo = new MilkFood("milk", TEN, "02.03.2017", "22.03.2017");
         underTest.addFoodItem(foodOne);
         underTest.addFoodItem(foodTwo);
-        underTest.removeFoodItem(foodOne);
-        int expected = underTest.getTrashFoods().size();
-        assertThat(expected, is(1));
+        underTest.getAllFoodFromStorage();
+        int expected = underTest.getAllFoodFromStorage().size();
+        assertThat(expected, is(2));
     }
 
     /**
@@ -53,8 +53,8 @@ public class TrashStorageTest {
     public void whenCheckConditionThenReturnResult() {
         GeneralFood foodOne = new MilkFood("milk", TEN, "02.03.2017", "22.03.2017");
         GeneralFood foodTwo = new MilkFood("milk", TEN, "02.01.2017", "22.02.2017");
-        boolean expectedFalse = underTest.checkCondition(foodOne);
-        boolean expectedTrue = underTest.checkCondition(foodTwo);
+        boolean expectedFalse = underTest.checkCondition(foodOne, "03.03.2017");
+        boolean expectedTrue = underTest.checkCondition(foodTwo, "10.03.2017");
         boolean[] test = {expectedFalse, expectedTrue};
         boolean[] expected = {false, true};
         assertThat(test, is(expected));

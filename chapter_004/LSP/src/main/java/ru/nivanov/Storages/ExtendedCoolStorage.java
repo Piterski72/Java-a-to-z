@@ -35,11 +35,10 @@ public class ExtendedCoolStorage extends ExtendedStorage {
 
     /**
      * Remove item.
-     * @param item ..
      */
     @Override
-    public void removeFoodItem(GeneralFood item) {
-        this.extendedCoolStorage.remove(item);
+    public ArrayList<GeneralFood> getAllFoodFromStorage() {
+        return this.extendedCoolStorage;
 
     }
 
@@ -60,9 +59,9 @@ public class ExtendedCoolStorage extends ExtendedStorage {
      * @return ..
      */
     @Override
-    public boolean checkCondition(GeneralFood item) {
+    public boolean checkCondition(GeneralFood item, String date) {
         boolean checkForCoolStorage = item.getName().contains(LOW_TEMP);
-        return (item.getShelfLifePercent() < TWENTYFIVE && checkForCoolStorage);
+        return (item.getShelfLifePercent(date) < TWENTYFIVE && checkForCoolStorage);
     }
 
     /**

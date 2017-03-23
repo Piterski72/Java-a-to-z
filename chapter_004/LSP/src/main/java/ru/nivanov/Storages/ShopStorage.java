@@ -16,35 +16,20 @@ public class ShopStorage implements GeneralStorage {
     private ArrayList<GeneralFood> shopFoods = new ArrayList<>();
 
     /**
-     * Getter.
-     * @return ..
-     */
-    public ArrayList<GeneralFood> getShopFoods() {
-        return shopFoods;
-    }
-
-    /**
      * Add item.
      * @param item ..
      */
     @Override
     public void addFoodItem(GeneralFood item) {
-        double itemLife = item.getShelfLifePercent();
-        if (itemLife > TWENTYFIVE & itemLife <= SEVENTYFIVE) {
-            this.shopFoods.add(item);
-        } else if (itemLife > SEVENTYFIVE & itemLife <= STO) {
-            item.setNewPrice(item.getPrice() * (1.00 - (double) item.getDiscount() / STO));
-            this.shopFoods.add(item);
-        }
+        this.shopFoods.add(item);
     }
 
     /**
      * Remove item.
-     * @param item ..
      */
     @Override
-    public void removeFoodItem(GeneralFood item) {
-        this.shopFoods.remove(item);
+    public ArrayList<GeneralFood> getAllFoodFromStorage() {
+        return this.shopFoods;
     }
 
     /**
@@ -62,8 +47,11 @@ public class ShopStorage implements GeneralStorage {
      * @return ..
      */
     @Override
-    public boolean checkCondition(GeneralFood value) {
-        double foodLife = value.getShelfLifePercent();
+    public boolean checkCondition(GeneralFood value, String date) {
+        double foodLife = value.getShelfLifePercent(date);
+        if (foodLife > SEVENTYFIVE & foodLife <= STO) {
+            value.setNewPrice(value.getPrice() * (1.00 - (double) value.getDiscount() / STO));
+        }
         return (foodLife > TWENTYFIVE & foodLife < STO);
     }
 

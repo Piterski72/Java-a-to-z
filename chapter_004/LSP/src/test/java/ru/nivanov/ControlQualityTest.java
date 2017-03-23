@@ -37,7 +37,7 @@ public class ControlQualityTest {
     public void whenSetFoodDestinationThenReturnResult() {
         GeneralFood mockFood = mock(MilkFood.class);
         //add food behavior
-        when(mockFood.getShelfLifePercent()).thenReturn((double) 1);
+        when(mockFood.getShelfLifePercent("01.03.2017")).thenReturn((double) 1);
         when(mockFood.getName()).thenReturn("");
         ArrayList<GeneralFood> testFood = new ArrayList<>();
         testFood.add(mockFood);

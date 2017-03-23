@@ -14,14 +14,6 @@ public class TrashStorage implements GeneralStorage {
     private ArrayList<GeneralFood> trashFoods = new ArrayList<>();
 
     /**
-     * Getter for trashFoods.
-     * @return ..
-     */
-    public ArrayList<GeneralFood> getTrashFoods() {
-        return trashFoods;
-    }
-
-    /**
      * Add item.
      * @param item ..
      */
@@ -32,11 +24,10 @@ public class TrashStorage implements GeneralStorage {
 
     /**
      * Remove item.
-     * @param item ..
      */
     @Override
-    public void removeFoodItem(GeneralFood item) {
-        this.trashFoods.remove(item);
+    public ArrayList<GeneralFood> getAllFoodFromStorage() {
+        return this.trashFoods;
 
 
     }
@@ -47,7 +38,7 @@ public class TrashStorage implements GeneralStorage {
     @Override
     public void getStorageInfo() {
         System.out.println("TrashStorage information");
-        for (GeneralFood items : getTrashFoods()) {
+        for (GeneralFood items : getAllFoodFromStorage()) {
             System.out.println(items);
         }
     }
@@ -56,8 +47,8 @@ public class TrashStorage implements GeneralStorage {
      * @return ..
      */
     @Override
-    public boolean checkCondition(GeneralFood value) {
-        return (value.getShelfLifePercent() > STO);
+    public boolean checkCondition(GeneralFood value, String data) {
+        return (value.getShelfLifePercent(data) > STO);
     }
 
     /**

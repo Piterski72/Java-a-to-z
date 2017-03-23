@@ -20,9 +20,11 @@ public interface GeneralFood {
     String getCreateDate();
 
     /**
+     * Get shelf life.
+     * @param date ..
      * @return ..
      */
-    double getShelfLifePercent();
+    double getShelfLifePercent(String date);
 
     /**
      * @return ..

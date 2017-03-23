@@ -24,8 +24,8 @@ public class WareHouseStorage implements GeneralStorage {
      * Remove item.
      */
     @Override
-    public void removeFoodItem(GeneralFood item) {
-        this.wareHouseFoods.remove(item);
+    public ArrayList<GeneralFood> getAllFoodFromStorage() {
+        return this.wareHouseFoods;
     }
 
     /**
@@ -47,8 +47,8 @@ public class WareHouseStorage implements GeneralStorage {
      * @return ..
      */
     @Override
-    public boolean checkCondition(GeneralFood value) {
-        double foodLife = value.getShelfLifePercent();
+    public boolean checkCondition(GeneralFood value, String date) {
+        double foodLife = value.getShelfLifePercent(date);
         return (foodLife <= TWENTYFIVE && checkSizeCondition());
     }
 
