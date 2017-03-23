@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class TrashStorage implements GeneralStorage {
     private static final int TOTAL_SIZE = 100;
     private static final int STO = 100;
-    private static int storageSize;
     private ArrayList<GeneralFood> trashFoods = new ArrayList<>();
 
     /**

@@ -71,9 +71,12 @@ public abstract class Food implements GeneralFood {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        assert dateTwo != null;
+        assert currentDate != null;
         if (currentDate.after(dateTwo)) {
             shelfLifePercentage = STOODIN;
         } else {
+            assert dateOne != null;
             double shelfLife = dateTwo.getTime() - dateOne.getTime();
             double currentLife = currentDate.getTime() - dateOne.getTime();
             shelfLifePercentage = currentLife / shelfLife * STO;

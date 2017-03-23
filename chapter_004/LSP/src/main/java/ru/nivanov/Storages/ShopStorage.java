@@ -12,7 +12,6 @@ public class ShopStorage implements GeneralStorage {
     private static final int TWENTYFIVE = 25;
     private static final int SEVENTYFIVE = 75;
     private static final int STO = 100;
-    private static int storageSize = 0;
     private ArrayList<GeneralFood> shopFoods = new ArrayList<>();
 
     /**

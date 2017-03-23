@@ -31,7 +31,7 @@ public class ControlQuality {
      * Date of starting storage getter.
      * @return ..
      */
-    public String getCheckDate() {
+    private String getCheckDate() {
         return this.checkDate;
     }
 
@@ -39,7 +39,7 @@ public class ControlQuality {
      * New start storage date setter.
      * @param checkDate ..
      */
-    public void setCheckDate(String checkDate) {
+    private void setCheckDate(String checkDate) {
         this.checkDate = checkDate;
     }
 
@@ -55,7 +55,7 @@ public class ControlQuality {
      * Getter for special storiges.
      * @return ..
      */
-    public ArrayList<GeneralStorage> getSpecialStorages() {
+    private ArrayList<GeneralStorage> getSpecialStorages() {
         return specialStorages;
     }
 
