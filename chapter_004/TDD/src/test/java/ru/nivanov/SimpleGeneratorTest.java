@@ -13,9 +13,10 @@ import static org.junit.Assert.assertThat;
 public class SimpleGeneratorTest {
     /**
      * Test for normal condition.
+     * @throws KeysException ..
      */
     @Test
-    public void whenGenerateOkThenReturnResult() {
+    public void whenGenerateOkThenReturnResult() throws KeysException {
         String template = "I am ${name}, Who are ${subject}?";
         HashMap<String, String> map = new HashMap<>();
         map.put("name", "Petr");
@@ -28,32 +29,32 @@ public class SimpleGeneratorTest {
 
     /**
      * Test for more keys in map.
+     * @throws KeysException ..
      */
-    @Test
-    public void whenGenerateMoreKeysInMapThenReturnResult() {
+    @Test(expected = KeysException.class)
+    public void whenGenerateMoreKeysInMapThenReturnResult() throws KeysException {
         String template = "Help, ${sos}, ${sos}, ${sos}";
         HashMap<String, String> map = new HashMap<>();
         map.put("sos", "Aaa");
         map.put("subject", "you");
         SimpleGenerator underTest = new SimpleGenerator();
-        String result = underTest.generate(template, map);
-        String expected = "Help, Aaa, Aaa, Aaa";
-        assertThat(result, is(expected));
+        underTest.generate(template, map);
+
     }
 
     /**
      * Test for less keys in map.
+     * @throws KeysException ..
      */
-    @Test
-    public void whenGenerateLessKeysInMapThenReturnResult() {
+    @Test(expected = KeysException.class)
+    public void whenGenerateLessKeysInMapThenReturnResult() throws KeysException {
         String template = "I am ${name}, Who are ${subject}?";
         HashMap<String, String> map = new HashMap<>();
         map.put("name", "Petr");
         //map.put("subject", "you");
         SimpleGenerator underTest = new SimpleGenerator();
-        String result = underTest.generate(template, map);
-        String expected = "I am Petr, Who are ${subject}?";
-        assertThat(result, is(expected));
+        underTest.generate(template, map);
+
     }
 
 }
