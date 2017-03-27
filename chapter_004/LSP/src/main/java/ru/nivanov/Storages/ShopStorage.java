@@ -51,7 +51,7 @@ public class ShopStorage implements GeneralStorage {
         if (foodLife > SEVENTYFIVE & foodLife <= STO) {
             value.setNewPrice(value.getPrice() * (1.00 - (double) value.getDiscount() / STO));
         }
-        return (foodLife > TWENTYFIVE & foodLife < STO);
+        return (foodLife > TWENTYFIVE & foodLife <= STO);
     }
 
     /**

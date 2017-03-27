@@ -84,10 +84,10 @@ public class ControlQuality {
      * @param date ..
      */
     private void setFoodDestination(String date) {
-        for (int i = 0; i < foodList.size(); i++) {
+        for (int i = 0; i < this.foodList.size(); i++) {
             for (GeneralStorage storage : mainStorages) {
-                if (storage.checkCondition(foodList.get(i), date) && (!this.checkInStorage[i])) {
-                    storage.addFoodItem(foodList.get(i));
+                if (storage.checkCondition(this.foodList.get(i), date) && (!this.checkInStorage[i])) {
+                    storage.addFoodItem(this.foodList.get(i));
                     count++;
                     break;
                 }
@@ -100,10 +100,10 @@ public class ControlQuality {
      * @param date ..
      */
     private void setSpecialFoodDestination(String date) {
-        for (int i = 0; i < foodList.size(); i++) {
+        for (int i = 0; i < this.foodList.size(); i++) {
             for (GeneralStorage storage : specialStorages) {
-                if (storage.checkCondition(foodList.get(i), date)) {
-                    storage.addFoodItem(foodList.get(i));
+                if (storage.checkCondition(this.foodList.get(i), date)) {
+                    storage.addFoodItem(this.foodList.get(i));
                     this.checkInStorage[i] = true;
                     count++;
                     break;
@@ -121,7 +121,7 @@ public class ControlQuality {
         boolean fillStorageOK = false;
         setSpecialFoodDestination(getCheckDate());
         setFoodDestination(getCheckDate());
-        if (count == foodList.size()) {
+        if (count == this.foodList.size()) {
             fillStorageOK = true;
         }
         System.out.println(String.format("Result of storage filling is: %s", fillStorageOK));
@@ -151,22 +151,27 @@ public class ControlQuality {
      * Resort food using current date.
      */
     public void resort() {
-        ArrayList<GeneralFood> tempFoodList = new ArrayList<>();
+        this.foodList.clear();
         ArrayList<GeneralStorage> tempStorages = new ArrayList<>();
         tempStorages.addAll(getMainStorages());
         tempStorages.addAll(getSpecialStorages());
         for (GeneralStorage storage : tempStorages) {
-            tempFoodList.addAll(storage.getAllFoodFromStorage());
+            this.foodList.addAll(storage.getAllFoodFromStorage());
         }
-        ControlQuality resortedFood = new ControlQuality(tempFoodList);
+        for (GeneralStorage mainStorages : getMainStorages()) {
+            mainStorages.getAllFoodFromStorage().clear();
+        }
+        for (GeneralStorage specialStorages : getSpecialStorages()) {
+            specialStorages.getAllFoodFromStorage().clear();
+        }
         SimpleDateFormat dayFormat = new SimpleDateFormat("dd.MM.yyyy");
         String currentDate = dayFormat.format(new Date());
-        resortedFood.setCheckDate(currentDate);
-        resortedFood.installMainStorages();
-        resortedFood.installSpecialStorages();
-        resortedFood.setAllFoodDestination();
-        resortedFood.getMainStoragesInfo();
-        resortedFood.getSpecialStoragesInfo();
+        setCheckDate(currentDate);
+        this.count = 0;
+        this.checkInStorage = new boolean[this.foodList.size()];
+        setAllFoodDestination();
+        getMainStoragesInfo();
+        getSpecialStoragesInfo();
 
     }
 }

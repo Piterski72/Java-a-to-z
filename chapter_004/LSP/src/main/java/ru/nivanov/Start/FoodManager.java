@@ -28,7 +28,7 @@ public class FoodManager {
         foodProducts.add(new VegetableFood("parrot", TEN, "01.03.2017", "11.04.2017"));
         foodProducts.add(new VegetableFood("svekla", TEN, "01.03.2017", "11.04.2017"));
         foodProducts.add(new ReproductFood("tvorog", TEN, "01.02.2017", "28.02.2017"));
-        foodProducts.add(new LowTempVegetables("tomato", SEVEN, "12.03.2017", "30.03.2017"));
+        foodProducts.add(new LowTempVegetables("tomato", SEVEN, "11.03.2017", "30.03.2017"));
         ControlQuality foodControl = new ControlQuality(foodProducts);
         foodControl.installMainStorages();
         foodControl.installSpecialStorages();
