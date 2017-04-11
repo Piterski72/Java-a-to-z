@@ -13,7 +13,7 @@ public class CheckWinRecursTest {
      * test for checking if win conditions is working properly.
      */
     @Test
-    public void whenWinComditionTrueThenReturnResult() {
+    public void whenWinConditionTrueThenReturnResult() {
         String[] rowOne = {"O", "X", "O"};
         String[] rowTwo = {"X", "O", "X"};
         String[] rowThree = {"X", "X", "X"};
@@ -23,6 +23,22 @@ public class CheckWinRecursTest {
         CheckWinRecurs underTest = new CheckWinRecurs(field);
         boolean result = underTest.winCombination();
         assertThat(result, is(true));
+    }
+
+    /**
+     * test for checking if win conditions is working properly.
+     */
+    @Test
+    public void whenWinConditionFalseThenReturnResult() {
+        String[] rowOne = {"O", "X", "O"};
+        String[] rowTwo = {"X", "O", "X"};
+        String[] rowThree = {"X", "O", "X"};
+
+        String[][] field = {rowOne, rowTwo, rowThree};
+
+        CheckWinRecurs underTest = new CheckWinRecurs(field);
+        boolean result = underTest.winCombination();
+        assertThat(result, is(false));
     }
 
 
