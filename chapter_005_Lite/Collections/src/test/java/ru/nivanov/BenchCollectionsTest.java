@@ -34,7 +34,7 @@ public class BenchCollectionsTest {
     public void whenDeleteThenReturnResult() {
         TreeSet<String> treeSet = new TreeSet<>();
         underTest.add(treeSet, test, count);
-        underTest.delete(treeSet, 2);
+        underTest.remove(treeSet, 2);
         assertThat(treeSet.size(), is(1));
     }
 

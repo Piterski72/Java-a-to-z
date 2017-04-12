@@ -9,8 +9,8 @@ import java.util.*;
  */
 public class BenchCollections {
     private static final String FOR_TEST = "forTestingCollections";
-    private static final int ITERATIONS_ADD = 20000;
-    private static final int ITERATIONS_DEL = 6000;
+    private static final int ITERATIONS_ADD = 100000;
+    private static final int ITERATIONS_DEL = 25000;
     private static Collection<String> oneLinked = new LinkedList<>();
     private static Collection<String> twoArray = new ArrayList<>();
     private static Collection<String> threeTree = new TreeSet<>();
@@ -25,9 +25,9 @@ public class BenchCollections {
         long resultAddTwo = bench.add(twoArray, FOR_TEST, ITERATIONS_ADD);
         long resultAddThree = bench.add(threeTree, FOR_TEST, ITERATIONS_ADD);
 
-        long resultRemoveOne = bench.delete(oneLinked, ITERATIONS_DEL);
-        long resultRemoveTwo = bench.delete(twoArray, ITERATIONS_DEL);
-        long resultRemoveThree = bench.delete(threeTree, ITERATIONS_DEL);
+        long resultRemoveOne = bench.remove(oneLinked, ITERATIONS_DEL);
+        long resultRemoveTwo = bench.remove(twoArray, ITERATIONS_DEL);
+        long resultRemoveThree = bench.remove(threeTree, ITERATIONS_DEL);
 
         System.out.println(Joiner.on(System.getProperty("line.separator")).join(
                 String.format("LinkedList results, add: %d remove: %d", resultAddOne, resultRemoveOne),
@@ -56,11 +56,15 @@ public class BenchCollections {
      * @param count ..
      * @return time in milis.
      */
-    long delete(Collection<String> collection, int count) {
-        String[] toArray = collection.toArray(new String[collection.size()]);
-        String[] foRemove = Arrays.copyOf(toArray, count);
+    long remove(Collection<String> collection, int count) {
+        Iterator<String> iterator = collection.iterator();
+        int step = 0;
         long start = System.currentTimeMillis();
-        collection.removeAll(Arrays.asList(foRemove));
+        while (iterator.hasNext() && step < count) {
+            iterator.next();
+            iterator.remove();
+            step++;
+        }
         long result = System.currentTimeMillis();
         return (result - start);
     }
