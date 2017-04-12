@@ -11,9 +11,9 @@ public class BenchCollections {
     private static final String FOR_TEST = "forTestingCollections";
     private static final int ITERATIONS_ADD = 100000;
     private static final int ITERATIONS_DEL = 25000;
-    private static Collection<String> oneLinked = new LinkedList<>();
-    private static Collection<String> twoArray = new ArrayList<>();
-    private static Collection<String> threeTree = new TreeSet<>();
+    private static final Collection<String> ONE_LINKED = new LinkedList<>();
+    private static final Collection<String> TWO_ARRAY = new ArrayList<>();
+    private static final Collection<String> TREE_SET = new TreeSet<>();
 
     /**
      * Main method.
@@ -21,13 +21,13 @@ public class BenchCollections {
      */
     public static void main(String[] args) {
         BenchCollections bench = new BenchCollections();
-        long resultAddOne = bench.add(oneLinked, FOR_TEST, ITERATIONS_ADD);
-        long resultAddTwo = bench.add(twoArray, FOR_TEST, ITERATIONS_ADD);
-        long resultAddThree = bench.add(threeTree, FOR_TEST, ITERATIONS_ADD);
+        long resultAddOne = bench.add(ONE_LINKED, FOR_TEST, ITERATIONS_ADD);
+        long resultAddTwo = bench.add(TWO_ARRAY, FOR_TEST, ITERATIONS_ADD);
+        long resultAddThree = bench.add(TREE_SET, FOR_TEST, ITERATIONS_ADD);
 
-        long resultRemoveOne = bench.remove(oneLinked, ITERATIONS_DEL);
-        long resultRemoveTwo = bench.remove(twoArray, ITERATIONS_DEL);
-        long resultRemoveThree = bench.remove(threeTree, ITERATIONS_DEL);
+        long resultRemoveOne = bench.remove(ONE_LINKED, ITERATIONS_DEL);
+        long resultRemoveTwo = bench.remove(TWO_ARRAY, ITERATIONS_DEL);
+        long resultRemoveThree = bench.remove(TREE_SET, ITERATIONS_DEL);
 
         System.out.println(Joiner.on(System.getProperty("line.separator")).join(
                 String.format("LinkedList results, add: %d remove: %d", resultAddOne, resultRemoveOne),
