@@ -1,6 +1,7 @@
 package ru.nivanov;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ class ConvertList {
     public List<Integer> toList(int[][] array) {
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[0].length; j++) {
+            for (int j = 0; j < array[i].length; j++) {
                 result.add(array[i][j]);
             }
         }
@@ -40,16 +41,33 @@ class ConvertList {
         } else if (list.size() < rows) {
             result = new int[rows][list.size()];
         }
+        Iterator<Integer> iterator = list.iterator();
         int count = 0;
         for (int i = 0; i < rows; i++) {
             assert result != null;
             for (int j = 0; j < result[0].length; j++) {
-                if (count < list.size()) {
-                    result[i][j] = list.get(count);
-                } else {
-                    result[i][j] = 0;
+                if (count < list.size() && iterator.hasNext()) {
+                    result[i][j] = iterator.next();
                 }
                 count++;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Converting list of massives into global list.
+     * @param list ..
+     * @return ..
+     */
+    public List<Integer> convert(List<int[]> list) {
+        List<Integer> result = new ArrayList<>();
+        Iterator<int[]> iterator = list.iterator();
+        int[] current;
+        while (iterator.hasNext()) {
+            current = iterator.next();
+            for (int j = 0; j < current.length; j++) {
+                result.add(current[j]);
             }
         }
         return result;

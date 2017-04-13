@@ -100,4 +100,22 @@ public class ConvertListTest {
         assertThat(result, is(expected));
     }
 
+    /**
+     * Test for list to another list.
+     */
+    @Test
+    public void whenConvertToGlobalListThenReturnResult() {
+        List<int[]> listOfMassInts = new ArrayList<>();
+        listOfMassInts.add(new int[]{1, 2});
+        listOfMassInts.add(new int[]{three, four, five, six});
+
+        List<Integer> result = underTest.convert(listOfMassInts);
+
+        List<Integer> expected = new ArrayList<>();
+        for (int i = 0; i < six; i++) {
+            expected.add(i, i + 1);
+        }
+        assertThat(result, is(expected));
+    }
+
 }
