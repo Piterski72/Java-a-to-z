@@ -1,14 +1,16 @@
 package ru.nivanov.start;
 
+import java.util.ArrayList;
+
 /**
  * StubInput class.
  * @author nivanov.
  */
 public class StubInput implements Input {
-    private final String[] answers;
+    private final ArrayList<String> answers;
     private int position = 0;
 
-    public StubInput(String[] answers) {
+    public StubInput(ArrayList<String> answers) {
         this.answers = answers;
     }
 
@@ -18,7 +20,7 @@ public class StubInput implements Input {
      * @return answers ..
      */
     public String ask(String question) {
-        return answers[position++];
+        return answers.get(position++);
     }
 
     /**
@@ -27,7 +29,7 @@ public class StubInput implements Input {
      * @param range ..
      * @return value ..
      */
-    public int ask(String question, int[] range) {
+    public int ask(String question, ArrayList<Integer> range) {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
         for (int value : range) {

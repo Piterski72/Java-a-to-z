@@ -1,5 +1,7 @@
 package ru.nivanov.start;
 
+import java.util.ArrayList;
+
 /**
  * ValidateInput class.
  * @author nivanov.
@@ -11,7 +13,7 @@ public class ValidateInput extends ConsoleInput {
      * @param range ..
      * @return value ..
      */
-    public int ask(String question, int[] range) {
+    public int ask(String question, ArrayList<Integer> range) {
         boolean invalid = true;
         int value = -1;
         do {

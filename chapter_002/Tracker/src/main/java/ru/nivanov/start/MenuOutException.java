@@ -5,7 +5,7 @@ package ru.nivanov.start;
  * @author nivanov.
  */
 class MenuOutException extends RuntimeException {
-    public MenuOutException(String msg) {
+    MenuOutException(String msg) {
         super(msg);
     }
 }

@@ -3,6 +3,8 @@ package ru.nivanov.start;
 import ru.nivanov.models.Item;
 import ru.nivanov.models.Task;
 
+import java.util.ArrayList;
+
 /**
  * EditItem outer class.
  * @author nivanov.
@@ -43,8 +45,7 @@ public class MenuTracker {
     private static final int FIVE = 5;
     private final Input input;
     private final Tracker tracker;
-    private final int leng = 6;
-    private final UserAction[] actions = new UserAction[leng];
+    private final ArrayList<UserAction> actions = new ArrayList<>();
 
     public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
@@ -55,10 +56,11 @@ public class MenuTracker {
      * range create.
      * @return range
      */
-    public int[] getRange() {
-        int[] ranges = new int[leng];
+    public ArrayList<Integer> getRange() {
+        final int leng = 6;
+        ArrayList<Integer> ranges = new ArrayList<>(leng);
         for (int i = 0; i < leng; i++) {
-            ranges[i] = i;
+            ranges.add(i, i);
         }
         return ranges;
     }
@@ -67,12 +69,12 @@ public class MenuTracker {
      * Build menu realization.
      */
     public void fillActions() {
-        actions[0] = this.new AddItem("Add new task");
-        actions[1] = new MenuTracker.ShowItems("Show all tasks");
-        actions[2] = new EditItem("Edit item");
-        actions[THREE] = this.new DelItem("Delete task");
-        actions[FOUR] = this.new FilterItems("Set filer by name/desc");
-        actions[FIVE] = this.new AddItemComments("Add task`s comments");
+        actions.add(this.new AddItem("Add new task"));
+        actions.add(new MenuTracker.ShowItems("Show all tasks"));
+        actions.add(new EditItem("Edit item"));
+        actions.add(this.new DelItem("Delete task"));
+        actions.add(this.new FilterItems("Set filer by name/desc"));
+        actions.add(this.new AddItemComments("Add task`s comments"));
     }
 
     /**
@@ -81,7 +83,7 @@ public class MenuTracker {
      */
     public void select(int key) {
         try {
-            this.actions[key].execute(this.input, this.tracker);
+            this.actions.get(key).execute(this.input, this.tracker);
         } catch (NullPointerException npe) {
             System.out.println("Incorrect data, please try again");
         }
@@ -121,11 +123,11 @@ public class MenuTracker {
          * @param tracker ..
          */
         public void execute(Input input, Tracker tracker) {
-            Item[] res = tracker.getAll();
-            for (int j = 0; j < res.length; j++) {
-                System.out.printf("%s %s %s \n", res[j].getId(), res[j].getName(), res[j].getDescription());
-                for (int i = 0; i < res[j].getCountCom(); i++) {
-                    System.out.println(res[j].getComments()[i]);
+            ArrayList<Item> res = tracker.getAll();
+            for (int j = 0; j < res.size(); j++) {
+                System.out.printf("%s %s %s \n", res.get(j).getId(), res.get(j).getName(), res.get(j).getDescription());
+                for (int i = 0; i < res.get(j).getComments().size(); i++) {
+                    System.out.println(res.get(j).getComments().get(i));
                 }
             }
         }
@@ -184,9 +186,9 @@ public class MenuTracker {
          */
         public void execute(Input input, Tracker tracker) {
             String itemId = input.ask("Enter Id: ");
-            int before = tracker.getPosition();
+            int before = tracker.getAll().size();
             tracker.remove(itemId);
-            if (before == tracker.getPosition()) {
+            if (before == tracker.getAll().size()) {
                 System.out.println("Wrong id! Deletion imcomplete!");
             }
         }
@@ -216,18 +218,22 @@ public class MenuTracker {
          */
         public void execute(Input input, Tracker tracker) {
             String cho = input.ask("Choose filtering: name - by name, desc - by description: ");
-            if (cho.equals("name")) {
-                String name = input.ask("Enter name: ");
-                for (Item item : tracker.getByName(name)) {
-                    System.out.printf("%s %s %s \n", item.getId(), item.getName(), item.getDescription());
-                }
-            } else if (cho.equals("desc")) {
-                String desc = input.ask("Enter description: ");
-                for (Item item : tracker.getByDesc(desc)) {
-                    System.out.printf("%s %s %s \n", item.getId(), item.getName(), item.getDescription());
-                }
-            } else {
-                System.out.println("incorrect choice");
+            switch (cho) {
+                case "name":
+                    String name = input.ask("Enter name: ");
+                    for (Item item : tracker.getByName(name)) {
+                        System.out.printf("%s %s %s \n", item.getId(), item.getName(), item.getDescription());
+                    }
+                    break;
+                case "desc":
+                    String desc = input.ask("Enter description: ");
+                    for (Item item : tracker.getByDesc(desc)) {
+                        System.out.printf("%s %s %s \n", item.getId(), item.getName(), item.getDescription());
+                    }
+                    break;
+                default:
+                    System.out.println("incorrect choice");
+                    break;
             }
         }
     }

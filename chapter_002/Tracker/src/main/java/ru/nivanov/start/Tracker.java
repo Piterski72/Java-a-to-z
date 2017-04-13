@@ -2,6 +2,8 @@ package ru.nivanov.start;
 
 import ru.nivanov.models.Item;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 /**
@@ -18,17 +20,7 @@ class Tracker {
     private final int quant = 15;
     /**
      */
-    private final Item[] items = new Item[quant];
-    /**
-     */
-    private int position = 0;
-
-    /**
-     * @return position
-     */
-    public int getPosition() {
-        return this.position;
-    }
+    private final ArrayList<Item> items = new ArrayList<>();
 
     /**
      * Add Item.
@@ -37,7 +29,7 @@ class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[position++] = item;
+        this.items.add(item);
         return item;
     }
 
@@ -70,15 +62,12 @@ class Tracker {
      * @param itemId is item id
      */
     public void remove(String itemId) {
-        int indItRm = 0;
-        for (int i = 0; i < position; i++) {
-            if (items[i].getId().equals(itemId)) {
-                items[i] = null;
-                indItRm = i;
-                position--;
-                for (int j = indItRm; j < position; j++) {
-                    items[j] = items[j + 1];
-                }
+        Iterator<Item> iterator = this.items.iterator();
+        Item current;
+        while (iterator.hasNext()) {
+            current = iterator.next();
+            if (current.getId().equals(itemId)) {
+                iterator.remove();
             }
         }
     }
@@ -90,7 +79,7 @@ class Tracker {
      */
     Item findById(String id) {
         Item result = null;
-        for (Item item : items) {
+        for (Item item : this.items) {
             if (item != null && item.getId().equals(id)) {
                 result = item;
                 break;
@@ -161,12 +150,8 @@ class Tracker {
      * Getting filtered list (all not null).
      * @return massive of items (not nulls)
      */
-    public Item[] getAll() {
-        Item[] result = new Item[this.position];
-        for (int index = 0; index != this.position; index++) {
-            result[index] = this.items[index];
-        }
-        return result;
+    public ArrayList<Item> getAll() {
+        return this.items;
     }
 
     /**
@@ -174,20 +159,14 @@ class Tracker {
      * @param name input parameter
      * @return massive of items
      */
-    public Item[] getByName(String name) {
-        Item[] tempN = new Item[this.position];
-        int count = 0;
-        for (int index = 0; index != this.position; index++) {
-            if (this.items[index].getName().equals(name)) {
-                tempN[count] = this.items[index];
-                count++;
+    public ArrayList<Item> getByName(String name) {
+        ArrayList<Item> tempN = new ArrayList<>();
+        for (Item item : this.items) {
+            if (item.getName().equals(name)) {
+                tempN.add(item);
             }
         }
-        Item[] resultN = new Item[count];
-        for (int i = 0; i < count; i++) {
-            resultN[i] = tempN[i];
-        }
-        return resultN;
+        return tempN;
     }
 
     /**
@@ -195,19 +174,13 @@ class Tracker {
      * @param desc input parameter
      * @return massive of items
      */
-    public Item[] getByDesc(String desc) {
-        Item[] tempD = new Item[this.position];
-        int count = 0;
-        for (int index = 0; index != this.position; index++) {
-            if (this.items[index].getDescription().equals(desc)) {
-                tempD[count] = this.items[index];
-                count++;
+    public ArrayList<Item> getByDesc(String desc) {
+        ArrayList<Item> tempD = new ArrayList<>();
+        for (Item item : this.items) {
+            if (item.getDescription().equals(desc)) {
+                tempD.add(item);
             }
         }
-        Item[] resultD = new Item[count];
-        for (int i = 0; i < count; i++) {
-            resultD[i] = tempD[i];
-        }
-        return resultD;
+        return tempD;
     }
 }

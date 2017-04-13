@@ -9,7 +9,7 @@ class StartUI {
     private final Input input;
     private final Tracker tracker;
 
-    public StartUI(Input input, Tracker tracker) {
+    StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
     }

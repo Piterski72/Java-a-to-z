@@ -1,5 +1,7 @@
 package ru.nivanov.models;
 
+import java.util.ArrayList;
+
 /**
  * Item class.
  * @author nivanov.
@@ -7,10 +9,7 @@ package ru.nivanov.models;
 public class Item {
     /**
      */
-    private final int numComm = 20;
-    /**
-     */
-    private final String[] comments = new String[numComm];
+    private final ArrayList<String> comments = new ArrayList<>();
     /**
      */
     private String id;
@@ -23,12 +22,6 @@ public class Item {
     /**
      */
     private long create;
-    /**
-     */
-    private int num = 0;
-    /**
-     */
-    private int countCom = 0;
 
     /**
      */
@@ -45,13 +38,6 @@ public class Item {
         this.name = name;
         this.description = description;
         this.create = create;
-    }
-
-    /**
-     * @return number of non empty comments
-     */
-    public int getCountCom() {
-        return this.countCom;
     }
 
     /**
@@ -123,19 +109,14 @@ public class Item {
      * @param comments input param
      */
     public void addCommentz(String comments) {
-        this.comments[num++] = comments;
-        countCom++;
+        this.comments.add(comments);
     }
 
     /**
      * Getting comment text.
      * @return commResult massive
      */
-    public String[] getComments() {
-        String[] commResult = new String[this.countCom];
-        for (int i = 0; i < countCom; i++) {
-            commResult[i] = this.comments[i];
-        }
-        return commResult;
+    public ArrayList<String> getComments() {
+        return this.comments;
     }
 }

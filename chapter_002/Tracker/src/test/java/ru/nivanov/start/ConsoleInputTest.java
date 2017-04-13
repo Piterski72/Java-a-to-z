@@ -3,6 +3,8 @@ package ru.nivanov.start;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -13,6 +15,7 @@ import static org.junit.Assert.assertThat;
  */
 
 public class ConsoleInputTest {
+    private final int three = 3;
     /**
      * Test for console input.
      */
@@ -30,7 +33,8 @@ public class ConsoleInputTest {
     public void whenNotExceptionThenReturnInput() {
         System.setIn(new ByteArrayInputStream("2".getBytes()));
         ConsoleInput test = new ConsoleInput();
-        final int[] row = {1, 2, 3};
+        ArrayList<Integer> row = new ArrayList<>();
+        row.addAll(Arrays.asList(1, 2, three));
         int expect = test.ask("Enter number: ", row);
         assertThat(expect, is(2));
     }
@@ -42,7 +46,8 @@ public class ConsoleInputTest {
     public void whenExceptionTrueThenReturnMOE() {
         System.setIn(new ByteArrayInputStream("4".getBytes()));
         ConsoleInput test = new ConsoleInput();
-        final int[] row = {1, 2, 3};
+        ArrayList<Integer> row = new ArrayList<>();
+        row.addAll(Arrays.asList(1, 2, three));
         boolean err = false;
         try {
             test.ask("Enter number: ", row);

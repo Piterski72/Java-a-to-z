@@ -3,6 +3,7 @@ package ru.nivanov.start;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -13,6 +14,9 @@ import static org.junit.Assert.assertThat;
  */
 
 public class ValidateInputTest {
+    private final int three = 3;
+    private final ArrayList<Integer> row = new ArrayList<>();
+
     /**
      * Test for validate correct input.
      */
@@ -20,7 +24,9 @@ public class ValidateInputTest {
     public void whenInput2ThenReturnOk() {
         System.setIn(new ByteArrayInputStream("2".getBytes()));
         ValidateInput test = new ValidateInput();
-        final int[] row = {1, 2, 3};
+        row.add(1);
+        row.add(2);
+        row.add(three);
         int expect = test.ask("Enter number: ", row);
         assertThat(expect, is(2));
     }
@@ -32,7 +38,6 @@ public class ValidateInputTest {
     public void whenInputZeroThenFalse() {
         ValidateInput test = new ValidateInput();
         System.setIn(new ByteArrayInputStream("0".getBytes()));
-        final int[] row = {1, 2, 3};
         boolean err = false;
         try {
             test.ask("Enter number: ", row);
@@ -49,7 +54,6 @@ public class ValidateInputTest {
     public void whenInput4ThenFalse() {
         ValidateInput test = new ValidateInput();
         System.setIn(new ByteArrayInputStream("4".getBytes()));
-        final int[] row = {1, 2, 3};
         boolean err = false;
         try {
             test.ask("Enter number: ", row);
@@ -66,7 +70,6 @@ public class ValidateInputTest {
     public void whenInputSymbolThenFalse() {
         ValidateInput test = new ValidateInput();
         System.setIn(new ByteArrayInputStream("q".getBytes()));
-        final int[] row = {1, 2, 3};
         boolean err = false;
         try {
             test.ask("Enter number: ", row);
