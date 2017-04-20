@@ -35,7 +35,7 @@ public class BankTest {
         three = new User("Joshua", passThree);
         four = new User("Ann", passFour);
 
-        Map<User, List<Account>> userListMap = new TreeMap<>();
+        Map<User, List<Account>> userListMap = new HashMap<>();
         underTestBank = new Bank(userListMap);
         underTestBank.addUser(one);
         underTestBank.addUser(two);
@@ -154,5 +154,18 @@ public class BankTest {
         results[1] = resultTwo;
         assertThat(expected, is(results));
     }
+
+    /**
+     * Test for removing non existing user from bank.
+     */
+    @Test(expected = UserNotFoundException.class)
+    public void whenDeleteNonExistingUserThenException() {
+        setUp();
+        User five = new User("Pablo", 1);
+        final int result = 3;
+        underTestBank.deleteUser(five);
+
+    }
+
 
 }

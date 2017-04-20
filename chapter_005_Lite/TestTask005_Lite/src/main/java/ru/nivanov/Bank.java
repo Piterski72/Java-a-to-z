@@ -1,12 +1,14 @@
 package ru.nivanov;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Nikolay Ivanov on 18.04.2017.
  */
 class Bank {
-    private final int thousandMinus = -1000;
 
     private Map<User, List<Account>> userListMap;
 
@@ -22,7 +24,7 @@ class Bank {
      * Getter for map.
      * @return ..
      */
-    public Map<User, List<Account>> getUserListMap() {
+    Map<User, List<Account>> getUserListMap() {
         return userListMap;
     }
 
@@ -30,42 +32,43 @@ class Bank {
      * Adding user.
      * @param user ..
      */
-    public void addUser(User user) {
-        List<Account> userAcounts = new ArrayList<>();
-        int requisite = Long.valueOf(System.currentTimeMillis()).intValue() / (thousandMinus);
-        Account defaultAccount = new Account(0, requisite);
-        userAcounts.add(defaultAccount);
-        this.userListMap.put(user, userAcounts);
+    void addUser(User user) {
+        if (this.userListMap.containsKey(user)) {
+            System.out.println("User already exists");
+        } else {
+            List<Account> userAcounts = new ArrayList<>();
+            final int thousandMinus = -1000;
+            int requisite = Long.valueOf(System.currentTimeMillis()).intValue() / (thousandMinus);
+            Account defaultAccount = new Account(0, requisite);
+            userAcounts.add(defaultAccount);
+            this.userListMap.put(user, userAcounts);
+        }
     }
 
     /**
      * Deleting user.
      * @param user ..
+     * @throws UserNotFoundException ..
      */
-    public void deleteUser(User user) {
-
-
-        Set<User> userSet = this.userListMap.keySet();
-        Iterator<User> userIterator = userSet.iterator();
-        while (userIterator.hasNext()) {
-            User currentUser = userIterator.next();
-            if (currentUser.equals(user)) {
-                List<Account> accounts = getUserAccounts(user);
-                boolean isEmty = true;
-                for (Account val : accounts) {
-                    if (val.getValue() != 0) {
-                        isEmty = false;
-                        System.out.println(
-                                String.format("Cannot delete user %s, pass %d : non-empty aacount", user.getName(),
-                                        user.getPassport()));
-                    }
-                }
-                if (isEmty) {
-                    this.userListMap.remove(user);
-                    System.out.println(String.format("User %s pass %d deleted", user.getName(), user.getPassport()));
+    void deleteUser(User user) throws UserNotFoundException {
+        if (this.userListMap.containsKey(user)) {
+            List<Account> accounts = getUserAccounts(user);
+            boolean isEmty = true;
+            for (Account val : accounts) {
+                if (val.getValue() != 0) {
+                    isEmty = false;
+                    System.out.println(
+                            String.format("Cannot delete user %s, pass %d : non-empty aacount", user.getName(),
+                                    user.getPassport()));
                     break;
                 }
             }
+            if (isEmty) {
+                this.userListMap.remove(user);
+                System.out.println(String.format("User %s pass %d deleted", user.getName(), user.getPassport()));
+            }
+        } else {
+            throw new UserNotFoundException("User not found");
         }
     }
 
@@ -73,42 +76,54 @@ class Bank {
      * Add acount to user.
      * @param user ..
      * @param account ..
+     * @throws UserNotFoundException ..
      */
-    public void addAccountToUser(User user, Account account) {
-        List<Account> userAcount = getUserAccounts(user);
-        userAcount.add(account);
-        this.userListMap.put(user, userAcount);
-
+    void addAccountToUser(User user, Account account) throws UserNotFoundException {
+        if (this.userListMap.containsKey(user)) {
+            List<Account> userAcount = getUserAccounts(user);
+            userAcount.add(account);
+            this.userListMap.put(user, userAcount);
+        } else {
+            throw new UserNotFoundException("User not found");
+        }
     }
 
     /**
      * Delete acount from user.
      * @param user ..
      * @param account ..
+     * @throws UserNotFoundException ..
      */
-    public void deleteAccountFromUser(User user, Account account) {
-        List<Account> userAcount = getUserAccounts(user);
-        Iterator<Account> iterator = userAcount.iterator();
-        while (iterator.hasNext()) {
-            Account currentAcount = iterator.next();
-            if (currentAcount.equals(account) && account.getValue() == 0) {
-                iterator.remove();
-            } else if (currentAcount.equals(account) && account.getValue() != 0) {
-                System.out.println(String.format("Account not empty, value = %.2f", account.getValue()));
-                System.out.println("Need to be epty to delete");
+    void deleteAccountFromUser(User user, Account account) throws UserNotFoundException {
+        if (this.userListMap.containsKey(user)) {
+            List<Account> userAccounts = getUserAccounts(user);
+            Iterator<Account> iter = userAccounts.iterator();
+            while (iter.hasNext()) {
+                Account current = iter.next();
+                if (current.getValue() == 0) {
+                    iter.remove();
+                    break;
+                } else {
+                    System.out.println("Account not empty or not found");
+                }
             }
+        } else {
+            throw new UserNotFoundException("User not found");
         }
-        this.userListMap.put(user, userAcount);
     }
 
     /**
      * Get all user acounts.
      * @param user ..
      * @return ..
+     * @throws UserNotFoundException ..
      */
-    public List<Account> getUserAccounts(User user) {
-        return this.userListMap.get(user);
-
+    List<Account> getUserAccounts(User user) throws UserNotFoundException {
+        if (this.userListMap.containsKey(user)) {
+            return this.userListMap.get(user);
+        } else {
+            throw new UserNotFoundException("User not found");
+        }
     }
 
     /**
@@ -120,34 +135,24 @@ class Bank {
      * @param amount ..
      * @return ..
      */
-    public boolean transferMoney(User srcUser, Account srcAccount, User dstUser, Account dstAccount, double amount) {
-        boolean tranferFromSourceComplete = false;
-        boolean tranferToDestComplete = false;
-
-        List<Account> userSourceAcount = getUserAccounts(srcUser);
-        Iterator<Account> srcIterator = userSourceAcount.iterator();
-        while (srcIterator.hasNext()) {
-            Account currentSourceAcount = srcIterator.next();
-            if (currentSourceAcount.equals(srcAccount) && currentSourceAcount.getValue() > amount) {
-                currentSourceAcount.setValue((currentSourceAcount.getValue() - amount));
-                tranferFromSourceComplete = true;
-                break;
+    boolean transferMoney(User srcUser, Account srcAccount, User dstUser, Account dstAccount, double amount) {
+        boolean tranferComplete = false;
+        if (this.userListMap.containsKey(srcUser) && this.userListMap.containsKey(dstUser)) {
+            List<Account> userSourceAcount = getUserAccounts(srcUser);
+            List<Account> userDestAcount = getUserAccounts(dstUser);
+            for (Account source : userSourceAcount) {
+                for (Account dest : userDestAcount) {
+                    if (source.equals(srcAccount) && source.getValue() > amount && dest.equals(dstAccount)) {
+                        source.setValue(source.getValue() - amount);
+                        dest.setValue(dest.getValue() + amount);
+                        tranferComplete = true;
+                        break;
+                    }
+                }
             }
+        } else {
+            throw new UserNotFoundException("user source/dest not found");
         }
-        this.userListMap.put(srcUser, userSourceAcount);
-
-        List<Account> userDestAcount = getUserAccounts(dstUser);
-        Iterator<Account> dstIterator = userDestAcount.iterator();
-        while (dstIterator.hasNext()) {
-            Account currentDestAcount = dstIterator.next();
-            if (currentDestAcount.equals(dstAccount)) {
-                currentDestAcount.setValue((currentDestAcount.getValue() + amount));
-                tranferToDestComplete = true;
-                break;
-            }
-        }
-        this.userListMap.put(dstUser, userDestAcount);
-
-        return (tranferFromSourceComplete && tranferToDestComplete);
+        return tranferComplete;
     }
 }
