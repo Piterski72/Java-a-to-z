@@ -3,7 +3,7 @@ package ru.nivanov;
 /**
  * Created by Nikolay Ivanov on 18.04.2017.
  */
-class User implements Comparable<User> {
+class User implements Comparable {
     private String name;
     private int passport;
 
@@ -59,7 +59,7 @@ class User implements Comparable<User> {
      * Compares this object with the specified object for order.  Returns a
      * negative integer, zero, or a positive integer as this object is less
      * than, equal to, or greater than the specified object.
-     * @param user the object to be compared.
+     * @param object the object to be compared.
      * @return a negative integer, zero, or a positive integer as this object
      * is less than, equal to, or greater than the specified object.
      * @throws NullPointerException if the specified object is null
@@ -67,7 +67,8 @@ class User implements Comparable<User> {
      * from being compared to this object.
      */
     @Override
-    public int compareTo(User user) {
+    public int compareTo(Object object) {
+        User user = (User) object;
         int compareResult = 0;
         if (this.equals(user)) {
             compareResult = 0;

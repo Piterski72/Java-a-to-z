@@ -166,6 +166,4 @@ public class BankTest {
         underTestBank.deleteUser(five);
 
     }
-
-
 }
