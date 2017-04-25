@@ -1,6 +1,7 @@
 package ru.nivanov;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Created by Nikolay Ivanov on 25.04.2017.
@@ -26,15 +27,17 @@ class SimpleNumbersIterator implements Iterator {
      */
     @Override
     public boolean hasNext() {
-        return ((Integer) next() != 0);
+        return index < values.length && (!checkForNoSimpleNumbersRemaining());
+
     }
 
     /**
      * Returns the next element in the iteration.
      * @return the next element in the iteration
+     * @throws java.util.NoSuchElementException ..
      */
     @Override
-    public Object next() {
+    public Object next() throws NoSuchElementException {
         while (index < values.length) {
             int result;
             if (values[index] == 1 || values[index] == 2 || values[index] == three) {
@@ -57,6 +60,35 @@ class SimpleNumbersIterator implements Iterator {
             }
             index++;
         }
-        return 0;
+        throw new NoSuchElementException();
+    }
+
+    /**
+     * Checks for simple numbers remaining.
+     * @return result.
+     */
+    private boolean checkForNoSimpleNumbersRemaining() {
+        boolean endOfIteration = false;
+        for (int i = index; i < values.length; i++) {
+            if (values[i] == 1 || values[i] == 2 || values[i] == three) {
+                return false;
+            } else if (values[i] % 2 != 0) {
+                int matches = 0;
+                for (int j = three; j < values[i]; j++) {
+                    if (values[i] % j == 0) {
+                        System.out.println("!!");
+                        endOfIteration = true;
+                    } else {
+                        matches++;
+                    }
+                }
+                if (matches == (values[i] - three)) {
+                    return false;
+                }
+            } else if (values[i] % 2 == 0) {
+                endOfIteration = true;
+            }
+        }
+        return endOfIteration;
     }
 }
