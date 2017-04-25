@@ -5,16 +5,16 @@ import java.util.Iterator;
 /**
  * Created by Nikolay Ivanov on 24.04.2017.
  */
-class ArrayTwoDimIterator implements Iterator {
-    private final int[][] values;
-    private int horIndex = 0;
-    private int vertIndex = 0;
+public class EvenNumbersIterator implements Iterator {
+    private final int[] values;
+    private int index = 0;
+    private int evenResult = 0;
 
     /**
      * Constructor.
      * @param values ..
      */
-    ArrayTwoDimIterator(int[][] values) {
+    EvenNumbersIterator(int[] values) {
         this.values = values;
     }
 
@@ -26,7 +26,7 @@ class ArrayTwoDimIterator implements Iterator {
      */
     @Override
     public boolean hasNext() {
-        return ((this.values[0].length + this.values.length - 1) > (horIndex + vertIndex));
+        return (evenResult != -1);
     }
 
     /**
@@ -35,13 +35,18 @@ class ArrayTwoDimIterator implements Iterator {
      */
     @Override
     public Object next() {
-        if (vertIndex < values.length) {
-            return values[horIndex][vertIndex++];
-        } else {
-            horIndex++;
-            vertIndex = 0;
-            return values[horIndex][vertIndex++];
-        }
 
+        while (index < values.length) {
+            if (values[index] % 2 == 0) {
+                evenResult = values[index];
+                index++;
+                return evenResult;
+            } else {
+                index++;
+            }
+        }
+        return evenResult = -1;
     }
+
+
 }
