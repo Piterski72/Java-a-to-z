@@ -5,7 +5,7 @@ import java.util.Iterator;
 /**
  * Created by Nikolay Ivanov on 24.04.2017.
  */
-public class EvenNumbersIterator implements Iterator {
+class EvenNumbersIterator implements Iterator {
     private final int[] values;
     private int index = 0;
     private int evenResult = 0;

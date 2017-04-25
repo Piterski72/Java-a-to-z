@@ -11,8 +11,6 @@ import static org.junit.Assert.assertThat;
 public class ArrayTwoDimIteratorTest {
     private final int three = 3;
     private final int four = 4;
-    private final int five = 5;
-    private final int six = 6;
 
     /**
      * Test for next method.
@@ -35,6 +33,7 @@ public class ArrayTwoDimIteratorTest {
     public void whenHasNextCorrectThenReturnResult() {
         ArrayTwoDimIterator it = new ArrayTwoDimIterator(new int[][]{{1, 2}, {three, four}});
 
+        final int six = 6;
         boolean[] results = new boolean[six];
         results[0] = it.hasNext();
         it.next();
@@ -45,6 +44,7 @@ public class ArrayTwoDimIteratorTest {
         results[three] = it.hasNext();
         it.next();
         results[four] = it.hasNext();
+        final int five = 5;
         results[five] = it.hasNext();
 
         boolean[] expected = {true, true, true, true, false, false};

@@ -10,8 +10,6 @@ import static org.junit.Assert.assertThat;
  */
 public class EvenNumbersIteratorTest {
     private final int three = 3;
-    private final int four = 4;
-    private final int five = 5;
     private final int six = 6;
     private final int eight = 8;
 
@@ -42,6 +40,8 @@ public class EvenNumbersIteratorTest {
      */
     @Test
     public void whenNextCorrectThenReturnResult() {
+        final int four = 4;
+        final int five = 5;
         EvenNumbersIterator enit = new EvenNumbersIterator(new int[]{six, eight, three, four, five, 2});
 
         int[] results = new int[]{(Integer) enit.next(),
