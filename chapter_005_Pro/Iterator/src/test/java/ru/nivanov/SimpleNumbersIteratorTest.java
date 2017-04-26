@@ -18,7 +18,8 @@ public class SimpleNumbersIteratorTest {
      */
     @Test
     public void whenHasNextThenReturnResult() {
-        SimpleNumbersIterator snit = new SimpleNumbersIterator(new int[]{1, three, six, four, six});
+        final int nine = 9;
+        SimpleNumbersIterator snit = new SimpleNumbersIterator(new int[]{1, three, six, four, nine});
         boolean one = snit.hasNext();
         snit.next();
         snit.next();
@@ -39,8 +40,7 @@ public class SimpleNumbersIteratorTest {
         SimpleNumbersIterator snit = new SimpleNumbersIterator(new int[]{1, 2, three, four, five, six, seven});
         int[] result = new int[]{(Integer) snit.next(),
                                  (Integer) snit.next(),
-                                 (Integer) snit.next(),
-                                 (Integer) snit.next(), (Integer) snit.next(),};
+                                 (Integer) snit.next(), (Integer) snit.next(), (Integer) snit.next(),};
         int[] expected = new int[]{1, 2, three, five, seven};
         assertThat(result, is(expected));
 
