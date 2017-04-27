@@ -40,7 +40,9 @@ public class SimpleNumbersIteratorTest {
         SimpleNumbersIterator snit = new SimpleNumbersIterator(new int[]{1, 2, three, four, five, six, seven});
         int[] result = new int[]{(Integer) snit.next(),
                                  (Integer) snit.next(),
-                                 (Integer) snit.next(), (Integer) snit.next(), (Integer) snit.next(),};
+                                 (Integer) snit.next(),
+                                 (Integer) snit.next(),
+                                 (Integer) snit.next(),};
         int[] expected = new int[]{1, 2, three, five, seven};
         assertThat(result, is(expected));
 
