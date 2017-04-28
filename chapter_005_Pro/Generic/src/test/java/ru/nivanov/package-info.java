@@ -1,5 +1,5 @@
 /**
  * //TODO add comments.
- * @since 0.1
+ * @since 0.2
  */
 package ru.nivanov;

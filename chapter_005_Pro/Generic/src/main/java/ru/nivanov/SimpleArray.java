@@ -56,7 +56,6 @@ class SimpleArray<E> {
             }
         }
     }
-
     /**
      * Update value in position pos.
      * @param value ..
@@ -67,6 +66,4 @@ class SimpleArray<E> {
             this.objects[pos] = value;
         }
     }
-
-
 }
