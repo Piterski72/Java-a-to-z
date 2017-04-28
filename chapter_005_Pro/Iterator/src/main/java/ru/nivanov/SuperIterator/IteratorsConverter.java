@@ -1,6 +1,7 @@
 package ru.nivanov.SuperIterator;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Created by Nikolay Ivanov on 26.04.2017.
@@ -28,20 +29,18 @@ public class IteratorsConverter implements ConverterOfIterators {
             }
 
             @Override
-            public Integer next() {
-                Integer result;
+            public Integer next() throws NoSuchElementException {
+
                 if (index == null) {
                     index = it.next();
-                    result = index.next();
-                    return result;
+                    return index.next();
 
                 } else if (index.hasNext()) {
-                    result = index.next();
-                    return result;
+                    return index.next();
+
                 } else {
                     index = it.next();
-                    result = index.next();
-                    return result;
+                    return index.next();
                 }
             }
         };
