@@ -65,6 +65,16 @@ public class SimpleArray<E> {
     }
 
     /**
+     * Delete method.
+     * @param pos ..
+     */
+    public void delete2(int pos) {
+        this.index--;
+        System.arraycopy(this.objects, (pos + 1), this.objects, pos, (this.objects.length - pos - 1));
+        this.objects[this.objects.length - 1] = null;
+    }
+
+    /**
      * Update value in position pos.
      * @param value ..
      * @param pos ..

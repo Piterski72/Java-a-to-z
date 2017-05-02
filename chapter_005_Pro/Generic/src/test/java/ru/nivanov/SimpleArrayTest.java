@@ -66,6 +66,22 @@ public class SimpleArrayTest {
     }
 
     /**
+     * Test for delete string object.
+     */
+    @Test
+    public void whenDelete2StringObjectThenReturnResult() {
+        final int four = 4;
+        SimpleArray<String> underTest = new SimpleArray<>(new String[five]);
+        for (int i = 1; i < six; i++) {
+            underTest.add("test" + i);
+        }
+        underTest.delete2(four);
+        Object[] result = underTest.getObjects();
+        String[] expected = {"test1", "test2", "test3", "test4", null};
+        assertThat(result, is(expected));
+    }
+
+    /**
      * Test for updating values.
      */
     @Test
