@@ -1,28 +1,34 @@
 package ru.nivanov;
 
-import java.util.Arrays;
-
 /**
  * Created by Nikolay Ivanov on 27.04.2017.
  * @param <E> generic.
  */
-class SimpleArray<E> {
-    private E[] objects;
+public class SimpleArray<E> {
+    private final E[] objects;
     private int index = 0;
 
     /**
      * Constructor.
      * @param objects ..
      */
-    SimpleArray(E[] objects) {
+    public SimpleArray(E[] objects) {
         this.objects = objects;
+    }
+
+    /**
+     * Constructor with size.
+     * @param size ..
+     */
+    public SimpleArray(int size) {
+        this.objects = (E[]) new Object[size];
     }
 
     /**
      * Getter for objects.
      * @return ..
      */
-    E[] getObjects() {
+    public E[] getObjects() {
         return this.objects;
     }
 
@@ -30,7 +36,7 @@ class SimpleArray<E> {
      * Add method.
      * @param value ..
      */
-    void add(E value) {
+    public void add(E value) {
         this.objects[index++] = value;
     }
 
@@ -39,31 +45,41 @@ class SimpleArray<E> {
      * @param position ..
      * @return ..
      */
-    E get(int position) {
+    public E get(int position) {
         return this.objects[position];
     }
 
     /**
      * Delete method.
-     * @param value ..
+     * @param pos ..
      */
-    void delete(E value) {
-        for (int i = 0; i < this.objects.length; i++) {
-            if (this.objects[i].equals(value)) {
-                System.arraycopy(this.objects, (i + 1), this.objects, i, this.objects.length - i - 1);
-                this.objects = Arrays.copyOf(this.objects, this.objects.length - 1);
-                break;
+    public void delete(int pos) {
+        this.index--;
+        for (int i = pos; i < this.objects.length; i++) {
+            if ((i + 1) < this.objects.length) {
+                this.objects[i] = this.objects[i + 1];
+            } else {
+                this.objects[i] = null;
             }
         }
     }
+
     /**
      * Update value in position pos.
      * @param value ..
      * @param pos ..
      */
-    void update(E value, int pos) {
+    public void update(E value, int pos) {
         if (pos < this.objects.length) {
             this.objects[pos] = value;
         }
+    }
+
+    /**
+     * Size getter.
+     * @return ..
+     */
+    public int getLength() {
+        return this.objects.length;
     }
 }

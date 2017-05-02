@@ -22,6 +22,7 @@ public class SimpleArrayTest {
         String result = underTest.get(0);
         assertThat(result, is("test"));
     }
+
     /**
      * Test for adding integer objects.
      */
@@ -32,37 +33,38 @@ public class SimpleArrayTest {
         int result = underTest.get(0);
         assertThat(result, is(2));
     }
+
     /**
      * Test for delete integer object.
      */
     @Test
     public void whenDeleteIntegerObjectThenReturnResult() {
         final int three = 3;
-        final int four = 4;
         SimpleArray<Integer> underTest = new SimpleArray<>(new Integer[five]);
         for (int i = 1; i < six; i++) {
             underTest.add(i);
         }
         underTest.delete(three);
-        Integer[] result = underTest.getObjects();
-        Integer[] expected = {1, 2, four, five};
+        Object[] result = underTest.getObjects();
+        Integer[] expected = {1, 2, three, five, null};
         assertThat(result, is(expected));
     }
+
     /**
      * Test for delete string object.
      */
     @Test
     public void whenDeleteStringObjectThenReturnResult() {
-
         SimpleArray<String> underTest = new SimpleArray<>(new String[five]);
         for (int i = 1; i < six; i++) {
             underTest.add("test" + i);
         }
-        underTest.delete("test3");
-        String[] result = underTest.getObjects();
-        String[] expected = {"test1", "test2", "test4", "test5"};
+        underTest.delete(2);
+        Object[] result = underTest.getObjects();
+        String[] expected = {"test1", "test2", "test4", "test5", null};
         assertThat(result, is(expected));
     }
+
     /**
      * Test for updating values.
      */
