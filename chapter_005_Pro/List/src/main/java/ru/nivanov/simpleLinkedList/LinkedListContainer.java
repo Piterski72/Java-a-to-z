@@ -15,6 +15,14 @@ public class LinkedListContainer<E> implements SimpleLinkedContainer<E> {
     private int size;
 
     /**
+     * Size getter.
+     * @return size
+     */
+    int getSize() {
+        return size;
+    }
+
+    /**
      * Add method.
      * @param value ..
      */
@@ -80,7 +88,7 @@ public class LinkedListContainer<E> implements SimpleLinkedContainer<E> {
      * @param index ..
      * @return ..
      */
-    private Node<E> node(int index) {
+    Node<E> node(int index) {
         if (index < (size >> 1)) {
             Node<E> x = first;
             for (int i = 0; i < index; i++) {
@@ -94,6 +102,36 @@ public class LinkedListContainer<E> implements SimpleLinkedContainer<E> {
             }
             return x;
         }
+    }
+
+    /**
+     * Unlinks non-null node x.
+     * @param x ..
+     * @return ..
+     */
+    E unlink(Node<E> x) {
+        // assert x != null;
+        final E element = x.item;
+        final Node<E> next = x.next;
+        final Node<E> prev = x.prev;
+
+        if (prev == null) {
+            first = next;
+        } else {
+            prev.next = next;
+            x.prev = null;
+        }
+
+        if (next == null) {
+            last = prev;
+        } else {
+            next.prev = prev;
+            x.next = null;
+        }
+
+        x.item = null;
+        size--;
+        return element;
     }
 
     /**
@@ -117,5 +155,6 @@ public class LinkedListContainer<E> implements SimpleLinkedContainer<E> {
             this.prev = prev;
         }
     }
+
 
 }
