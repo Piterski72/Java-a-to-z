@@ -1,6 +1,6 @@
 package ru.nivanov;
 
-import ru.nivanov.Output.Output;
+import ru.nivanov.output.Output;
 
 /**
  * Created by Nikolay Ivanov on 27.03.2017.

@@ -29,7 +29,7 @@ class InteractCalc {
     }
 
     /**
-     * Start method.
+     * start method.
      */
     private void start() {
         CalculatorMenu calcMenu = new CalculatorMenu(calculator, new ConsoleIO(new Scanner(System.in), System.out));

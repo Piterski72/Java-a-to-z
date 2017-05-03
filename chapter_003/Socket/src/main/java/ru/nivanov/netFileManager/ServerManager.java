@@ -91,7 +91,7 @@ class ServerManager {
                 this.dos.writeUTF(String.format("--  %s %s", action.key(), sep));
             }
         }
-        this.dos.writeUTF("Input menu number: ");
+        this.dos.writeUTF("input menu number: ");
         //this.dis.readUTF();
     }
 

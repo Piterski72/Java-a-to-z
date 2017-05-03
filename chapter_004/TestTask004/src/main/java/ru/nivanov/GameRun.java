@@ -1,9 +1,9 @@
 package ru.nivanov;
 
-import ru.nivanov.Input.ConsoleInput;
-import ru.nivanov.Input.Input;
-import ru.nivanov.Output.ConsoleOutput;
-import ru.nivanov.Output.Output;
+import ru.nivanov.input.ConsoleInput;
+import ru.nivanov.input.Input;
+import ru.nivanov.output.ConsoleOutput;
+import ru.nivanov.output.Output;
 
 /**
  * Created by Nikolay Ivanov on 28.03.2017.
@@ -16,7 +16,7 @@ public class GameRun {
     public static void main(String[] args) {
         Input in = new ConsoleInput();
         Output out = new ConsoleOutput();
-        out.write("Start the game...");
+        out.write("start the game...");
         out.write("This is simple tic-tac-toe game.");
 
         SetUpGame setNew = new SetUpGame(in, out);

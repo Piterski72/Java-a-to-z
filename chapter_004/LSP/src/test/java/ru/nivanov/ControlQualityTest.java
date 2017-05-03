@@ -1,9 +1,9 @@
 package ru.nivanov;
 
 import org.junit.Test;
-import ru.nivanov.Foods.GeneralFood;
-import ru.nivanov.Foods.MilkFood;
-import ru.nivanov.Start.ControlQuality;
+import ru.nivanov.foods.GeneralFood;
+import ru.nivanov.foods.MilkFood;
+import ru.nivanov.start.ControlQuality;
 
 import java.util.ArrayList;
 

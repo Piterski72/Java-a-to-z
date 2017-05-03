@@ -1,7 +1,7 @@
 package ru.nivanov;
 
-import ru.nivanov.Input.Input;
-import ru.nivanov.Output.Output;
+import ru.nivanov.input.Input;
+import ru.nivanov.output.Output;
 
 /**
  * Created by Nikolay Ivanov on 28.03.2017.

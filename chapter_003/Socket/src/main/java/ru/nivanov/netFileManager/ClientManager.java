@@ -73,7 +73,7 @@ class ClientManager {
         do {
             str = this.dis.readUTF();
             System.out.println(str);
-        } while (!str.equals("Input menu number: "));
+        } while (!str.equals("input menu number: "));
     }
 
     /**

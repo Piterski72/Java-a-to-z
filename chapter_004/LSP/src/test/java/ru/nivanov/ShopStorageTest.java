@@ -1,10 +1,10 @@
 package ru.nivanov;
 
 import org.junit.Test;
-import ru.nivanov.Foods.GeneralFood;
-import ru.nivanov.Foods.MilkFood;
-import ru.nivanov.Foods.VegetableFood;
-import ru.nivanov.Storages.ShopStorage;
+import ru.nivanov.foods.GeneralFood;
+import ru.nivanov.foods.MilkFood;
+import ru.nivanov.foods.VegetableFood;
+import ru.nivanov.storages.ShopStorage;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;

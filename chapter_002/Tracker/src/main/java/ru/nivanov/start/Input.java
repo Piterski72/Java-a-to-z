@@ -3,7 +3,7 @@ package ru.nivanov.start;
 import java.util.ArrayList;
 
 /**
- * Input interface.
+ * input interface.
  * @author nivanov.
  */
 interface Input {
