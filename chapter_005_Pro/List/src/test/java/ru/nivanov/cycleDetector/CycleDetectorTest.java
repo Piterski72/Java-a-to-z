@@ -34,4 +34,26 @@ public class CycleDetectorTest {
         assertThat(result, is(true));
     }
 
+    /**
+     * Test for cycle detection.
+     */
+    @Test
+    public void whenHasCycleNewReturnTrue() {
+
+        Node<Integer> first = new Node<>(1);
+        Node<Integer> second = new Node<>(2);
+        Node<Integer> third = new Node<>(three);
+        Node<Integer> forth = new Node<>(four);
+
+        first.setNext(second);
+        second.setNext(third);
+        third.setNext(forth);
+        forth.setNext(first);
+
+        CycleDetector<Integer> underTest = new CycleDetector<>();
+        boolean result = underTest.hasCycleNew(first);
+        assertThat(result, is(true));
+    }
+
+
 }

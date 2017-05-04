@@ -29,4 +29,23 @@ public class CycleDetector<T> {
         }
         return false;
     }
+
+    /**
+     * Method for finding cycles in lists.
+     * @param first ..
+     * @return true if cycle found or false if not.
+     */
+    public boolean hasCycleNew(Node<T> first) {
+        Node<T> currentOne = first.getNext();
+        Node<T> currentTwo = currentOne.getNext();
+        while (!currentOne.equals(currentTwo)) {
+            if (currentOne == null || currentTwo == null) {
+                return false;
+            }
+            currentOne = currentOne.getNext();
+            currentTwo = currentTwo.getNext().getNext();
+        }
+        return true;
+
+    }
 }
