@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 /**
  * Created by Nikolay Ivanov on 04.05.2017.
+ * @param <E> ..
  */
 class LinkedListSet<E> implements Iterator<E> {
 
@@ -14,7 +15,7 @@ class LinkedListSet<E> implements Iterator<E> {
     /**
      * Constructor.
      */
-    public LinkedListSet() {
+    LinkedListSet() {
         this.linkedList = new LinkedList<>();
 
     }

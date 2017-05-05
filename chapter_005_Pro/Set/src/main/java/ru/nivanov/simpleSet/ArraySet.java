@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  * Created by Nikolay Ivanov on 04.05.2017.
  * @param <E> ..
  */
-class ArraySet<E> implements Iterator<E> {
+class ArraySet<E extends Comparable<E>> implements Iterator<E> {
     private final int defaultSize = 10;
     private Object[] container;
     private int size;
@@ -37,20 +37,81 @@ class ArraySet<E> implements Iterator<E> {
     }
 
     /**
-     * Add method.
+     * Add object that not already in collection.
      * @param element ..
      */
     public void add(E element) {
         if (checkForUnique(element)) {
-            if (this.position <= (this.container.length - 1)) {
-                this.container[position++] = element;
-            } else {
-                this.container = Arrays.copyOf(this.container, (this.container.length + defaultSize));
-                this.container[position++] = element;
-                this.size = this.container.length;
+            addAfterCheck(element);
+        }
+    }
 
+    /**
+     * Add object that not already in collection.
+     * @param element ..
+     */
+    public void addFast(E element) {
+        if (position == 0) {
+            this.container[position++] = element;
+        } else {
+            int found = binaryFind(element);
+            if (found < 0) {
+                int index = -found - 1;
+                if (index < 0 || index >= position) {
+                    this.container = Arrays.copyOf(this.container, (this.container.length + defaultSize));
+                }
+                System.arraycopy(this.container, index, this.container, index + 1, this.container.length - index - 1);
+                this.container[index] = element;
+                position++;
             }
         }
+    }
+
+    /**
+     * Fast search for element.
+     * @param elem ..
+     * @return index of found.
+     */
+    private int binaryFind(E elem) {
+        int low = 0;
+        int high = position - 1;
+        int mid;
+        while (low <= high) {
+            mid = (low + high) >>> 1;
+            E midVal = (E) this.container[mid];
+            int cmp = midVal.compareTo(elem);
+            if (cmp < 0) {
+                low = mid + 1;
+            } else if (cmp > 0) {
+                high = mid - 1;
+            } else {
+                return mid;
+            }
+        }
+        return -(low + 1);
+    }
+
+    /**
+     * Adds element after check for unique.
+     * @param element ..
+     */
+    private void addAfterCheck(E element) {
+        if (checkCapacity()) {
+            this.container[position++] = element;
+        } else {
+            this.container = Arrays.copyOf(this.container, (this.container.length + defaultSize));
+            this.container[position++] = element;
+            this.size = this.container.length;
+
+        }
+    }
+
+    /**
+     * Check array capacity.
+     * @return ..
+     */
+    private boolean checkCapacity() {
+        return (this.position <= (this.container.length - 1));
     }
 
     /**
