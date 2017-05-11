@@ -1,9 +1,9 @@
-package ru.nivanov.equalsOverriding;
+package ru.nivanov;
 
 import java.util.Calendar;
 
 /**
- * Created by Nikolay Ivanov on 10.05.2017.
+ * Created by Nikolay Ivanov on 11.05.2017.
  */
 public class User {
     private String name;
@@ -22,16 +22,27 @@ public class User {
         this.birthday = birthday;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        if (children != user.children) return false;
-        if (!name.equals(user.name)) return false;
-        return birthday.equals(user.birthday);
+    /**
+     * Name getter.
+     * @return ..
+     */
+    public String getName() {
+        return name;
     }
 
+    /**
+     * Children getter.
+     * @return ..
+     */
+    public int getChildren() {
+        return children;
+    }
+
+    /**
+     * Birthday getter.
+     * @return ..
+     */
+    public Calendar getBirthday() {
+        return birthday;
+    }
 }

@@ -12,18 +12,18 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by Nikolay Ivanov on 10.05.2017.
  */
-public class UserTest {
+public class UserEqualsOverTest {
     /**
      * Test for adding users when override equals and no override to hashCode.
      */
     @Test
     public void whenAddUsersWithOverridedEquals() {
-        User userOne = new User("Ann", 1, new GregorianCalendar(1998, 12, 10));
-        User userTwo = new User("Ann", 1, new GregorianCalendar(1998, 12, 10));
+        UserEqualsOver userEqualsOverOne = new UserEqualsOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
+        UserEqualsOver userEqualsOverTwo = new UserEqualsOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
 
-        Map<User, Object> userObjectMap = new HashMap<>();
-        userObjectMap.put(userOne, "first");
-        userObjectMap.put(userTwo, "second");
+        Map<UserEqualsOver, Object> userObjectMap = new HashMap<>();
+        userObjectMap.put(userEqualsOverOne, "first");
+        userObjectMap.put(userEqualsOverTwo, "second");
 
         System.out.println(userObjectMap);
 

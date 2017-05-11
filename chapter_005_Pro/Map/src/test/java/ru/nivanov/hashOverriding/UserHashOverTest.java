@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by Nikolay Ivanov on 10.05.2017.
  */
-public class UserTest {
+public class UserHashOverTest {
 
     /**
      * Test for adding users when override hashCode and no override to equals.
@@ -20,12 +20,12 @@ public class UserTest {
     @Test
     public void whenAddUsersWithOverridedHashcode() {
 
-        User userOne = new User("Ann", 1, new GregorianCalendar(1998, 12, 10));
-        User userTwo = new User("Ann", 1, new GregorianCalendar(1998, 12, 10));
+        UserHashOver userHashOverOne = new UserHashOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
+        UserHashOver userHashOverTwo = new UserHashOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
 
-        Map<User, Object> userObjectMap = new HashMap<>();
-        userObjectMap.put(userOne, "first");
-        userObjectMap.put(userTwo, "second");
+        Map<UserHashOver, Object> userObjectMap = new HashMap<>();
+        userObjectMap.put(userHashOverOne, "first");
+        userObjectMap.put(userHashOverTwo, "second");
 
         System.out.println(userObjectMap);
 
