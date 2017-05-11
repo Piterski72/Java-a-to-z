@@ -21,11 +21,11 @@ public class UserHashOverTest {
     public void whenAddUsersWithOverridedHashcode() {
 
         UserHashOver ann = new UserHashOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
-        UserHashOver ann1 = new UserHashOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
+        UserHashOver ann2 = new UserHashOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
 
         Map<UserHashOver, Object> userObjectMap = new HashMap<>();
         userObjectMap.put(ann, "first");
-        userObjectMap.put(ann1, "second");
+        userObjectMap.put(ann2, "second");
 
         System.out.println(userObjectMap);
 
