@@ -19,11 +19,11 @@ public class UserEqualsOverTest {
     @Test
     public void whenAddUsersWithOverridedEquals() {
         UserEqualsOver ann = new UserEqualsOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
-        UserEqualsOver ann1 = new UserEqualsOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
+        UserEqualsOver ann2 = new UserEqualsOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
 
         Map<UserEqualsOver, Object> userObjectMap = new HashMap<>();
         userObjectMap.put(ann, "first");
-        userObjectMap.put(ann1, "second");
+        userObjectMap.put(ann2, "second");
 
         System.out.println(userObjectMap);
 
