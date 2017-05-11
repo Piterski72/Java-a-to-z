@@ -26,23 +26,23 @@ public class User {
      * Name getter.
      * @return ..
      */
-    public String getName() {
-        return name;
+    protected String getName() {
+        return this.name;
     }
 
     /**
      * Children getter.
      * @return ..
      */
-    public int getChildren() {
-        return children;
+    protected int getChildren() {
+        return this.children;
     }
 
     /**
      * Birthday getter.
      * @return ..
      */
-    public Calendar getBirthday() {
-        return birthday;
+    protected Calendar getBirthday() {
+        return this.birthday;
     }
 }

@@ -14,7 +14,7 @@ public class UserHashOver extends User {
      * @param children ..
      * @param birthday ..
      */
-    public UserHashOver(String name, int children, Calendar birthday) {
+    UserHashOver(String name, int children, Calendar birthday) {
         super(name, children, birthday);
     }
 

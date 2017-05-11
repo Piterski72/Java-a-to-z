@@ -20,12 +20,12 @@ public class UserHashOverTest {
     @Test
     public void whenAddUsersWithOverridedHashcode() {
 
-        UserHashOver userHashOverOne = new UserHashOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
-        UserHashOver userHashOverTwo = new UserHashOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
+        UserHashOver one = new UserHashOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
+        UserHashOver two = new UserHashOver("Ann", 1, new GregorianCalendar(1998, 12, 10));
 
         Map<UserHashOver, Object> userObjectMap = new HashMap<>();
-        userObjectMap.put(userHashOverOne, "first");
-        userObjectMap.put(userHashOverTwo, "second");
+        userObjectMap.put(one, "first");
+        userObjectMap.put(two, "second");
 
         System.out.println(userObjectMap);
 

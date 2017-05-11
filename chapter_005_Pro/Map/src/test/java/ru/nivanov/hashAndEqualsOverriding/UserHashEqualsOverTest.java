@@ -18,14 +18,14 @@ public class UserHashEqualsOverTest {
      */
     @Test
     public void whenAddUsersWithOverridedEqualsAndHash() {
-        UserHashEqualsOver userHashEqualsOverOne = new UserHashEqualsOver("Ann", 1,
+        UserHashEqualsOver one = new UserHashEqualsOver("Ann", 1,
                 new GregorianCalendar(1998, 12, 10));
-        UserHashEqualsOver userHashEqualsOverTwo = new UserHashEqualsOver("Ann", 1,
+        UserHashEqualsOver two = new UserHashEqualsOver("Ann", 1,
                 new GregorianCalendar(1998, 12, 10));
 
         Map<UserHashEqualsOver, Object> userObjectMap = new HashMap<>();
-        userObjectMap.put(userHashEqualsOverOne, "first");
-        userObjectMap.put(userHashEqualsOverTwo, "second");
+        userObjectMap.put(one, "first");
+        userObjectMap.put(two, "second");
 
         System.out.println(userObjectMap);
 

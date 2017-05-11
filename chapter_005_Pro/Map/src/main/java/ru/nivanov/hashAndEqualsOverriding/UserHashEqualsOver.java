@@ -14,7 +14,7 @@ public class UserHashEqualsOver extends User {
      * @param children ..
      * @param birthday ..
      */
-    public UserHashEqualsOver(String name, int children, Calendar birthday) {
+    UserHashEqualsOver(String name, int children, Calendar birthday) {
         super(name, children, birthday);
     }
 
@@ -23,11 +23,11 @@ public class UserHashEqualsOver extends User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UserHashEqualsOver userHashEqualsOver = (UserHashEqualsOver) o;
+        UserHashEqualsOver o1 = (UserHashEqualsOver) o;
 
-        if (getChildren() != userHashEqualsOver.getChildren()) return false;
-        if (!getName().equals(userHashEqualsOver.getName())) return false;
-        return getBirthday().equals(userHashEqualsOver.getBirthday());
+        if (getChildren() != o1.getChildren()) return false;
+        if (!getName().equals(o1.getName())) return false;
+        return getBirthday().equals(o1.getBirthday());
     }
 
     @Override
