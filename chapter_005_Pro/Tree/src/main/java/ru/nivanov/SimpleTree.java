@@ -3,7 +3,7 @@ package ru.nivanov;
 /**
  * Created by Nikolay Ivanov on 17.05.2017.
  */
-public interface SimpleTree<E extends Comparable<E>> extends Iterable<Node<E>> {
+interface SimpleTree<E extends Comparable<E>> extends Iterable<Node<E>> {
     /**
      * Добавить элемент child в parent.
      * Parent может иметь список child.

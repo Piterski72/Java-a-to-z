@@ -42,6 +42,33 @@ public class TreeTest {
 
         }
         assertThat(result, is("EFBGCHDA"));
+    }
+
+    /**
+     * Test if tree is binary.
+     */
+    @Test
+    public void whenCheckForBinaryTreeThenReturnResult() {
+
+        Node<Integer> rootOne = new Node<>(1);
+
+        Tree<Integer> treeOne = new Tree<>(rootOne);
+
+        treeOne.add(rootOne, new Node<>(0));
+        treeOne.add(rootOne, new Node<>(2));
+
+        Node<Integer> rootTwo = new Node<>(1);
+
+        Tree<Integer> treeTwo = new Tree<>(rootTwo);
+
+        treeTwo.add(rootTwo, new Node<>(0));
+        treeTwo.add(rootTwo, new Node<>(1));
+        treeTwo.add(rootTwo, new Node<>(2));
+
+        boolean[] results = {treeOne.isBinary(), treeTwo.isBinary()};
+        boolean[] expected = {true, false};
+
+        assertThat(results, is(expected));
 
     }
 }

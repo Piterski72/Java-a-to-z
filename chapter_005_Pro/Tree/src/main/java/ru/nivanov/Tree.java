@@ -75,6 +75,20 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     }
 
     /**
+     * Detects if tree is binary tree.
+     * @return result
+     */
+    public boolean isBinary() {
+        markAllUnvisited(root);
+        while (iterator().hasNext()) {
+            if (iterator().next().childen.size() > 2) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * Returns an iterator over elements of type {@code T}.
      * @return an Iterator.
      */
