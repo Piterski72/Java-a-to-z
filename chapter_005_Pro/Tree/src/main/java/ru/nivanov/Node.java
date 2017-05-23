@@ -1,14 +1,13 @@
 package ru.nivanov;
 
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by Nikolay Ivanov on 18.05.2017.
  */
 public class Node<E> {
 
-    List<Node<E>> childen;
+    LinkedList<Node<E>> childen;
     boolean visitResult;
     E value;
 
@@ -29,13 +28,19 @@ public class Node<E> {
 
         Node<?> node = (Node<?>) o;
 
-        if (!childen.equals(node.childen)) return false;
-        return value.equals(node.value);
+        return childen.equals(node.childen) && value.equals(node.value);
     }
 
     @Override
     public int hashCode() {
-        int result = childen.hashCode();
+        int result = 0;
+        if (childen.size() == 0) {
+            result = 19;
+        } else {
+            for (Node<E> value : childen) {
+                result = result + value.value.hashCode();
+            }
+        }
         result = 31 * result + value.hashCode();
         return result;
     }

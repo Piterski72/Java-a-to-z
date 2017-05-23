@@ -4,42 +4,44 @@ import org.junit.Test;
 
 import java.util.Iterator;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 /**
  * Created by Nikolay Ivanov on 20.05.2017.
  */
 public class TreeTest {
+    /**
+     * Test for add and iterate.
+     */
     @Test
     public void whenAddToTreeThenReturnResult() {
 
-        Node<Integer> parent = new Node<>(0);
+        Node<String> parent = new Node<>("A");
 
-        Tree<Integer> underTest = new Tree<>(parent);
+        Tree<String> underTest = new Tree<>(parent);
 
-        Node<Integer> childOne = new Node<>(1);
-        Node<Integer> childTwo = new Node<>(2);
-        Node<Integer> childThree = new Node<>(3);
+        Node<String> childOne = new Node<>("B");
+        Node<String> childTwo = new Node<>("C");
+        Node<String> childThree = new Node<>("D");
 
         underTest.add(parent, childOne);
         underTest.add(parent, childTwo);
         underTest.add(parent, childThree);
 
+        underTest.add(childOne, new Node<>("E"));
+        underTest.add(childOne, new Node<>("F"));
+        underTest.add(childTwo, new Node<>("G"));
+        underTest.add(childThree, new Node<>("H"));
 
-        underTest.add(childOne, new Node<>(4));
-        underTest.add(childOne, new Node<>(5));
-        underTest.add(childOne, new Node<>(6));
+        Iterator<Node<String>> iter = underTest.iterator();
 
+        String result = "";
+        while (iter.hasNext()) {
+            result = result + iter.next().value;
 
-        Iterator<Node<Integer>> iter = underTest.iterator();
-
-        boolean result = iter.hasNext();
-        System.out.println(result);
-
-        System.out.println(iter.next().value);
-        System.out.println(iter.next().value);
-        System.out.println(iter.next().value);
-        System.out.println(iter.hasNext());
-        System.out.println(iter.next().value);
-
+        }
+        assertThat(result, is("EFBGCHDA"));
 
     }
 

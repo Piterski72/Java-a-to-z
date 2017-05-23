@@ -1,13 +1,14 @@
 package ru.nivanov;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 /**
  * Created by Nikolay Ivanov on 17.05.2017.
  */
 public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     private Node<E> root;
-    private Set<Node<E>> nodeSet;
 
     /**
      * Constructor.
@@ -15,7 +16,6 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      */
     public Tree(Node<E> root) {
         this.root = root;
-        nodeSet = new HashSet<>();
     }
 
     /**
@@ -25,49 +25,43 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * @param child child.
      * @return result.
      */
-    @Override
     public boolean add(Node<E> parent, Node<E> child) {
-
-        Node<E> val = new Node<E>(null);
-
+        boolean result = false;
         if (compare(parent, root) == 0) {
             root.childen.add(child);
+            root.visitResult = false;
             return true;
         } else {
-            val = searchNode(parent);
-            System.out.println(val.value);
-
-            val.childen.add(child);
-            return true;
-        }
-
-    }
-
-    /**
-     * Search node.
-     * @param value ..
-     * @return result.
-     */
-    public Node<E> searchNode(Node<E> value) {
-        Node<E> current = new Node<E>(null);
-        while (this.iterator().hasNext()) {
-            current = this.iterator().next();
-            if (compare(value, current) == 0) {
-                break;
+            Node<E> current;
+            while (iterator().hasNext()) {
+                if (compare(current = iterator().next(), parent) == 0) {
+                    current.childen.add(child);
+                    current.visitResult = false;
+                    result = true;
+                    break;
+                }
             }
         }
-        return current;
-
-
+        markAllUnvisited(root);
+        return result;
     }
 
     /**
-     * Returns an iterator over elements of type {@code T}.
-     * @return an Iterator.
+     * Marks all nodes unvisited.
+     * @param currentNode ..
      */
-    @Override
-    public Iterator<Node<E>> iterator() {
-        return new TreeIterator();
+    public void markAllUnvisited(Node<E> currentNode) {
+        currentNode.visitResult = false;
+
+        for (Node<E> value : currentNode.childen) {
+            if (value.childen.size() != 0) {
+                value.visitResult = false;
+                markAllUnvisited(value);
+            } else {
+                value.visitResult = false;
+            }
+        }
+
     }
 
     /**
@@ -78,6 +72,15 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      */
     public int compare(Node<E> one, Node<E> two) {
         return one.value.compareTo(two.value);
+    }
+
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<Node<E>> iterator() {
+        return new TreeIterator();
     }
 
     /**
@@ -93,11 +96,6 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         public TreeIterator() {
             currentRoot = root;
             tempList.addLast(root);
-            if (nodeSet != null || !nodeSet.isEmpty()) {
-                for (Node<E> value : nodeSet) {
-                    value.visitResult = false;
-                }
-            }
         }
 
         /**
@@ -108,12 +106,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
          */
         @Override
         public boolean hasNext() {
-            for (Node<E> item : root.childen) {
-                if (!item.visitResult) {
-                    return true;
-                }
-            }
-            return false;
+            return !root.visitResult;
         }
 
         /**
@@ -123,35 +116,34 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
          */
         @Override
         public Node<E> next() {
-
             while (!tempList.isEmpty()) {
+                for (Node<E> node : currentRoot.childen) {
+                    if (node.childen.size() == 0 && !node.visitResult) {
+                        node.visitResult = true;
+                        currentRoot = tempList.getLast();
+                        return node;
 
-                Iterator<Node<E>> iter = currentRoot.childen.iterator();
-
-                while (iter.hasNext()) {
-
-                    currentRoot = iter.next();
-
-                    if (!currentRoot.visitResult) {
-                        tempList.addLast(currentRoot);
+                    } else if (node.childen.size() > 0 && !node.visitResult) {
+                        currentRoot = node;
+                        tempList.add(currentRoot);
                         break;
                     }
                 }
-
-                if (currentRoot.childen.isEmpty() || !iter.hasNext()) {
-                    Node<E> visit = tempList.removeLast();
-                    visit.visitResult = true;
-                    nodeSet.add(visit);
-                    currentRoot = tempList.getLast();
-
-                    return visit;
+                currentRoot = tempList.getLast();
+                if (currentRoot.childen.getLast().visitResult) {
+                    Node<E> result = tempList.removeLast();
+                    result.visitResult = true;
+                    if (tempList.size() != 0) {
+                        currentRoot = tempList.getLast();
+                        return result;
+                    }
+                    return result;
                 }
-
             }
             throw new NoSuchElementException();
 
         }
-    }
 
+    }
 
 }
