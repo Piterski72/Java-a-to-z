@@ -14,7 +14,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * Constructor.
      * @param root ..
      */
-    public Tree(Node<E> root) {
+    Tree(Node<E> root) {
         this.root = root;
     }
 
@@ -50,7 +50,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * Marks all nodes unvisited.
      * @param currentNode ..
      */
-    public void markAllUnvisited(Node<E> currentNode) {
+    private void markAllUnvisited(Node<E> currentNode) {
         currentNode.visitResult = false;
 
         for (Node<E> value : currentNode.childen) {
@@ -70,7 +70,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * @param two ..
      * @return result ..
      */
-    public int compare(Node<E> one, Node<E> two) {
+    private int compare(Node<E> one, Node<E> two) {
         return one.value.compareTo(two.value);
     }
 
@@ -93,7 +93,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         /**
          * Constructor.
          */
-        public TreeIterator() {
+        TreeIterator() {
             currentRoot = root;
             tempList.addLast(root);
         }

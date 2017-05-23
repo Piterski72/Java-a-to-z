@@ -44,15 +44,4 @@ public class TreeTest {
         assertThat(result, is("EFBGCHDA"));
 
     }
-
-    @Test
-    public void iterator() throws Exception {
-
-    }
-
-    @Test
-    public void compare() throws Exception {
-
-    }
-
 }
