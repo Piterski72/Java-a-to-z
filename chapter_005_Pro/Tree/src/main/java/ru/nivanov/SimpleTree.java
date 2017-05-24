@@ -2,6 +2,7 @@ package ru.nivanov;
 
 /**
  * Created by Nikolay Ivanov on 17.05.2017.
+ * @param <E> ..
  */
 interface SimpleTree<E extends Comparable<E>> extends Iterable<Node<E>> {
     /**

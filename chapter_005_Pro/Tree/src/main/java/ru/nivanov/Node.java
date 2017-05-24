@@ -4,12 +4,13 @@ import java.util.LinkedList;
 
 /**
  * Created by Nikolay Ivanov on 18.05.2017.
+ * @param <E> ..
  */
 public class Node<E> {
 
-    LinkedList<Node<E>> childen;
-    boolean visitResult;
-    E value;
+    private LinkedList<Node<E>> childen;
+    private boolean visitResult;
+    private E value;
 
     /**
      * Constructor.
@@ -21,27 +22,51 @@ public class Node<E> {
         this.visitResult = false;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Node<?> node = (Node<?>) o;
-
-        return childen.equals(node.childen) && value.equals(node.value);
+    /**
+     * Children list getter.
+     * @return ..
+     */
+    public LinkedList<Node<E>> getChilden() {
+        return childen;
     }
 
-    @Override
-    public int hashCode() {
-        int result = 0;
-        if (childen.size() == 0) {
-            result = 19;
-        } else {
-            for (Node<E> value : childen) {
-                result = result + value.value.hashCode();
-            }
-        }
-        result = 31 * result + value.hashCode();
-        return result;
+    /**
+     * Children setter.
+     * @param childen ..
+     */
+    public void setChilden(LinkedList<Node<E>> childen) {
+        this.childen = childen;
+    }
+
+    /**
+     * Result of visiting getter.
+     * @return ..
+     */
+    public boolean isVisitResult() {
+        return visitResult;
+    }
+
+    /**
+     * Visit result setter.
+     * @param visitResult ..
+     */
+    public void setVisitResult(boolean visitResult) {
+        this.visitResult = visitResult;
+    }
+
+    /**
+     * Value getter.
+     * @return ..
+     */
+    public E getValue() {
+        return value;
+    }
+
+    /**
+     * Value setter.
+     * @param value ..
+     */
+    public void setValue(E value) {
+        this.value = value;
     }
 }

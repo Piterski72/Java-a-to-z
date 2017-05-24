@@ -38,7 +38,7 @@ public class TreeTest {
 
         String result = "";
         while (iter.hasNext()) {
-            result = result + iter.next().value;
+            result = result + iter.next().getValue();
 
         }
         assertThat(result, is("EFBGCHDA"));

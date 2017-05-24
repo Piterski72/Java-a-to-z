@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 
 /**
  * Created by Nikolay Ivanov on 17.05.2017.
+ * @param <E> ..
  */
 public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     private Node<E> root;
@@ -28,15 +29,15 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     public boolean add(Node<E> parent, Node<E> child) {
         boolean result = false;
         if (compare(parent, root) == 0) {
-            root.childen.add(child);
-            root.visitResult = false;
+            root.getChilden().add(child);
+            root.setVisitResult(false);
             return true;
         } else {
             Node<E> current;
             while (iterator().hasNext()) {
                 if (compare(current = iterator().next(), parent) == 0) {
-                    current.childen.add(child);
-                    current.visitResult = false;
+                    current.getChilden().add(child);
+                    current.setVisitResult(false);
                     result = true;
                     break;
                 }
@@ -51,14 +52,14 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * @param currentNode ..
      */
     private void markAllUnvisited(Node<E> currentNode) {
-        currentNode.visitResult = false;
+        currentNode.setVisitResult(false);
 
-        for (Node<E> value : currentNode.childen) {
-            if (value.childen.size() != 0) {
-                value.visitResult = false;
+        for (Node<E> value : currentNode.getChilden()) {
+            if (value.getChilden().size() != 0) {
+                value.setVisitResult(false);
                 markAllUnvisited(value);
             } else {
-                value.visitResult = false;
+                value.setVisitResult(false);
             }
         }
 
@@ -71,7 +72,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * @return result ..
      */
     private int compare(Node<E> one, Node<E> two) {
-        return one.value.compareTo(two.value);
+        return one.getValue().compareTo(two.getValue());
     }
 
     /**
@@ -81,7 +82,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     public boolean isBinary() {
         markAllUnvisited(root);
         while (iterator().hasNext()) {
-            if (iterator().next().childen.size() > 2) {
+            if (iterator().next().getChilden().size() > 2) {
                 return false;
             }
         }
@@ -101,8 +102,8 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * Iterator class.
      */
     class TreeIterator implements Iterator<Node<E>> {
-        LinkedList<Node<E>> tempList = new LinkedList<>();
-        Node<E> currentRoot;
+        private LinkedList<Node<E>> tempList = new LinkedList<>();
+        private Node<E> currentRoot;
 
         /**
          * Constructor.
@@ -120,7 +121,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
          */
         @Override
         public boolean hasNext() {
-            return !root.visitResult;
+            return !root.isVisitResult();
         }
 
         /**
@@ -131,22 +132,22 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         @Override
         public Node<E> next() {
             while (!tempList.isEmpty()) {
-                for (Node<E> node : currentRoot.childen) {
-                    if (node.childen.size() == 0 && !node.visitResult) {
-                        node.visitResult = true;
+                for (Node<E> node : currentRoot.getChilden()) {
+                    if (node.getChilden().size() == 0 && !node.isVisitResult()) {
+                        node.setVisitResult(true);
                         currentRoot = tempList.getLast();
                         return node;
 
-                    } else if (node.childen.size() > 0 && !node.visitResult) {
+                    } else if (node.getChilden().size() > 0 && !node.isVisitResult()) {
                         currentRoot = node;
                         tempList.add(currentRoot);
                         break;
                     }
                 }
                 currentRoot = tempList.getLast();
-                if (currentRoot.childen.getLast().visitResult) {
+                if (currentRoot.getChilden().getLast().isVisitResult()) {
                     Node<E> result = tempList.removeLast();
-                    result.visitResult = true;
+                    result.setVisitResult(true);
                     if (tempList.size() != 0) {
                         currentRoot = tempList.getLast();
                         return result;
