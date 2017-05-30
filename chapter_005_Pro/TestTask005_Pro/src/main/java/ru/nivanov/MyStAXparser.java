@@ -33,6 +33,7 @@ public class MyStAXparser {
 
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
+
             if (event.isStartElement()) {
                 StartElement current = event.asStartElement();
                 if (current.getName().getLocalPart().equals("AddOrder")) {

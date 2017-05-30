@@ -173,43 +173,43 @@ class OrderBook {
             sb.append(sep);
             sb.append("BID              ASK");
             sb.append(sep);
-            sb.append("Volume@Price - Volume@Price");
+            sb.append("Volume@Price  -  Volume@Price");
             sb.append(sep);
 
             while (buyIter.hasNext() && sellIter.hasNext()) {
                 Map.Entry<Float, Order> currentBuy = buyIter.next();
                 Map.Entry<Float, Order> currentSell = sellIter.next();
 
-                sb.append(String.format("%,8d", currentBuy.getValue().getVolume()));
+                sb.append(String.format("%,9d", currentBuy.getValue().getVolume()));
                 sb.append("@");
                 sb.append(String.format("%5.1f", currentBuy.getKey()));
                 sb.append(" - ");
-                sb.append(String.format("%,8d", currentSell.getValue().getVolume()));
+                sb.append(String.format("%,9d", currentSell.getValue().getVolume()));
                 sb.append("@");
                 sb.append(String.format("%5.1f", currentSell.getKey()));
                 sb.append(sep);
 
             }
             if (buyIter.hasNext()) {
-                Map.Entry<Float, Order> currentBuy = buyIter.next();
+
                 while (buyIter.hasNext()) {
-                    sb.append(String.format("%,8d", currentBuy.getValue().getVolume()));
+                    Map.Entry<Float, Order> currentBuy = buyIter.next();
+                    sb.append(String.format("%,9d", currentBuy.getValue().getVolume()));
                     sb.append("@");
                     sb.append(String.format("%5.1f", currentBuy.getKey()));
                     sb.append(" - ");
-                    sb.append("----");
+                    sb.append(String.format("%13s", "------"));
                     sb.append(sep);
-                    currentBuy = buyIter.next();
+
                 }
             } else if (sellIter.hasNext()) {
-                Map.Entry<Float, Order> currentSell = sellIter.next();
                 while (sellIter.hasNext()) {
-                    sb.append("----");
-                    sb.append(String.format("%,8d", currentSell.getValue().getVolume()));
+                    Map.Entry<Float, Order> currentSell = sellIter.next();
+                    sb.append(String.format("%18s", "------  "));
+                    sb.append(String.format("%,9d", currentSell.getValue().getVolume()));
                     sb.append("@");
                     sb.append(String.format("%5.1f", currentSell.getKey()));
                     sb.append(sep);
-                    currentSell = sellIter.next();
                 }
             }
             System.out.println(sb);
