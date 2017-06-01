@@ -27,7 +27,7 @@ class Order {
      * Book field getter.
      * @return ..
      */
-    public String getBook() {
+    String getBook() {
         return book;
     }
 
@@ -35,7 +35,7 @@ class Order {
      * Order type getter.
      * @return ..
      */
-    public String getOrderType() {
+    String getOrderType() {
         return orderType;
     }
 
@@ -43,7 +43,7 @@ class Order {
      * Price getter.
      * @return ..
      */
-    public float getPrice() {
+    float getPrice() {
         return price;
     }
 
@@ -51,7 +51,7 @@ class Order {
      * Volume getter.
      * @return ..
      */
-    public int getVolume() {
+    int getVolume() {
         return volume;
     }
 
@@ -59,7 +59,7 @@ class Order {
      * Volume setter.
      * @param volume ..
      */
-    public void setVolume(int volume) {
+    void setVolume(int volume) {
         this.volume = volume;
     }
 

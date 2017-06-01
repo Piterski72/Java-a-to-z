@@ -1,72 +1,73 @@
 package ru.nivanov;
 
-import javax.xml.namespace.QName;
-import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.Attribute;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
+import javax.xml.stream.XMLStreamReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Created by Nikolay Ivanov on 26.05.2017.
  */
-public class MyStAXparser {
-    private static final int THOUSAND = 1000;
+class MyStAXparser {
+    private static final int THREE = 3;
+    private static final int FOUR = 4;
+    private HashMap<Integer, Order> unsortedAll = new HashMap<>();
+    private Set<String> bookNames = new TreeSet<>();
+
 
     /**
-     * Main method.
-     * @param args ..
+     * Parse method.
      * @throws FileNotFoundException ..
      * @throws XMLStreamException ..
      */
-    public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
-        long start = System.currentTimeMillis();
-        OrderBook unsort = new OrderBook("root");
-
+    void parse() throws FileNotFoundException, XMLStreamException {
         File orders = new File("c:/java/orders.xml");
         XMLInputFactory factory = XMLInputFactory.newFactory();
-        XMLEventReader reader = factory.createXMLEventReader(new FileInputStream(orders));
 
-        while (reader.hasNext()) {
-            XMLEvent event = reader.nextEvent();
+        XMLStreamReader readerNew = factory.createXMLStreamReader(new FileInputStream(orders));
 
-            if (event.isStartElement()) {
-                StartElement current = event.asStartElement();
-                if (current.getName().getLocalPart().equals("AddOrder")) {
-                    Attribute book = current.getAttributeByName(new QName("book"));
-                    Attribute oper = current.getAttributeByName(new QName("operation"));
-                    Attribute price = current.getAttributeByName(new QName("price"));
-                    Attribute vol = current.getAttributeByName(new QName("volume"));
-                    Attribute id = current.getAttributeByName(new QName("orderId"));
-                    Order order = new Order(book.getValue(), oper.getValue(), Float.parseFloat(price.getValue()),
-                            Integer.parseInt(vol.getValue()));
-                    unsort.getUnsorted().put(Integer.parseInt(id.getValue()), order);
-                    if (!unsort.getBookNames().contains(book.getValue())) {
-                        unsort.getBookNames().add(book.getValue());
+        while (readerNew.hasNext()) {
+            readerNew.next();
+            if (readerNew.getEventType() == XMLStreamConstants.START_ELEMENT) {
+                if (readerNew.getName().getLocalPart().equals("AddOrder")) {
+                    String book = readerNew.getAttributeValue(0);
+                    String oper = readerNew.getAttributeValue(1);
+                    float price = Float.parseFloat(readerNew.getAttributeValue(2));
+                    int volume = Integer.parseInt(readerNew.getAttributeValue(THREE));
+                    int id = Integer.parseInt(readerNew.getAttributeValue(FOUR));
+                    Order order = new Order(book, oper, price, volume);
+                    unsortedAll.put(id, order);
+                    if (!this.bookNames.contains(book)) {
+                        this.bookNames.add(book);
                     }
 
-                } else if (current.getName().getLocalPart().equals("DeleteOrder")) {
-
-                    Attribute idDel = current.getAttributeByName(new QName("orderId"));
-
-                    unsort.getUnsorted().remove(Integer.parseInt(idDel.getValue()));
-
+                } else if (readerNew.getName().getLocalPart().equals("DeleteOrder")) {
+                    int idDel = Integer.parseInt(readerNew.getAttributeValue(1));
+                    unsortedAll.remove(idDel);
                 }
-
             }
-
         }
+    }
 
-        unsort.fillBooks();
-        unsort.bookExecute();
-        unsort.printBooks();
-        long end = System.currentTimeMillis();
-        System.out.println((end - start) / THOUSAND);
+    /**
+     * Getter for all unsorted orders.
+     * @return ..
+     */
+    HashMap<Integer, Order> getUnsortedAll() {
+        return unsortedAll;
+    }
 
-
+    /**
+     * Getter for all book names.
+     * @return ..
+     */
+    Set<String> getBookNames() {
+        return bookNames;
     }
 }

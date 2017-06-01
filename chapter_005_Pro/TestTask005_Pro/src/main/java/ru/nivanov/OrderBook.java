@@ -7,12 +7,10 @@ import java.util.*;
  */
 class OrderBook {
     private String name;
-    private HashMap<Integer, Order> unsorted = new HashMap<>();
-    private List<OrderBook> orderBooksList;
-    private Set<String> bookNames = new TreeSet<>();
     private TreeMap<Float, Order> buyOrders;
     private TreeMap<Float, Order> sellOrders;
     private String sep = System.getProperty("line.separator");
+    private Set<OrderBook> orderBooksSet;
 
     /**
      * Constructor.
@@ -43,56 +41,39 @@ class OrderBook {
     }
 
     /**
-     * Getter for unsorted orders.
-     * @return ..
-     */
-    HashMap<Integer, Order> getUnsorted() {
-        return unsorted;
-    }
-
-    /**
-     * Book names set getter.
-     * @return ..
-     */
-    Set<String> getBookNames() {
-        return bookNames;
-    }
-
-    /**
      * Filling books with sell and buy orders.
      */
-    void fillBooks() {
-        bookSetup();
-        Collection<Order> ordersList = unsorted.values();
+    void fillBooksNew(HashMap<Integer, Order> unsort, Set<String> bookNamesSet) {
+        bookSetupNew(bookNamesSet);
+        Collection<Order> ordersList = unsort.values();
         Iterator<Order> iter = ordersList.iterator();
         while (iter.hasNext()) {
             Order current = iter.next();
-
-            for (int i = 0; i < orderBooksList.size(); i++) {
-                if (current.getBook().equals(orderBooksList.get(i).name)) {
+            for (OrderBook currentBook : orderBooksSet) {
+                if (current.getBook().equals(currentBook.name)) {
                     if (current.getOrderType().equals("BUY")) {
 
-                        if (orderBooksList.get(i).buyOrders.containsKey(current.getPrice())) {
-                            int newVolume = current.getVolume() + orderBooksList.get(i).buyOrders.get(
+                        if (currentBook.buyOrders.containsKey(current.getPrice())) {
+                            int newVolume = current.getVolume() + currentBook.buyOrders.get(
                                     current.getPrice()).getVolume();
 
                             current.setVolume(newVolume);
-                            orderBooksList.get(i).buyOrders.put(current.getPrice(), current);
+                            currentBook.buyOrders.put(current.getPrice(), current);
                             break;
                         } else {
-                            orderBooksList.get(i).buyOrders.put(current.getPrice(), current);
+                            currentBook.buyOrders.put(current.getPrice(), current);
                             break;
                         }
                     } else {
 
-                        if (orderBooksList.get(i).sellOrders.containsKey(current.getPrice())) {
-                            int newVolume = current.getVolume() + orderBooksList.get(i).sellOrders.get(
+                        if (currentBook.sellOrders.containsKey(current.getPrice())) {
+                            int newVolume = current.getVolume() + currentBook.sellOrders.get(
                                     current.getPrice()).getVolume();
                             current.setVolume(newVolume);
-                            orderBooksList.get(i).sellOrders.put(current.getPrice(), current);
+                            currentBook.sellOrders.put(current.getPrice(), current);
                             break;
                         } else {
-                            orderBooksList.get(i).sellOrders.put(current.getPrice(), current);
+                            currentBook.sellOrders.put(current.getPrice(), current);
                             break;
                         }
                     }
@@ -104,20 +85,24 @@ class OrderBook {
     /**
      * Setting up sell orders and buy ordres collections.
      */
-    private void bookSetup() {
-        orderBooksList = new ArrayList<>();
-        for (String value : bookNames) {
-            orderBooksList.add(newOrderBook(value));
-
+    private void bookSetupNew(Set<String> bookSet) {
+        orderBooksSet = new TreeSet<>(new Comparator<OrderBook>() {
+            @Override
+            public int compare(OrderBook o1, OrderBook o2) {
+                return o1.name.compareTo(o2.name);
+            }
+        });
+        for (String value : bookSet) {
+            orderBooksSet.add(newOrderBook(value));
         }
     }
 
     /**
      * Executing matching logic.
      */
-    void bookExecute() {
+    void bookExecuteNew() {
 
-        for (OrderBook book : orderBooksList) {
+        for (OrderBook book : orderBooksSet) {
 
             Iterator<Map.Entry<Float, Order>> buyIter = book.buyOrders.entrySet().iterator();
             Iterator<Map.Entry<Float, Order>> sellIter = book.sellOrders.entrySet().iterator();
@@ -164,8 +149,8 @@ class OrderBook {
     /**
      * Printing books.
      */
-    void printBooks() {
-        for (OrderBook book : orderBooksList) {
+    void printBooksNew() {
+        for (OrderBook book : orderBooksSet) {
             Iterator<Map.Entry<Float, Order>> buyIter = book.buyOrders.entrySet().iterator();
             Iterator<Map.Entry<Float, Order>> sellIter = book.sellOrders.entrySet().iterator();
             StringBuilder sb = new StringBuilder();
@@ -217,5 +202,19 @@ class OrderBook {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        OrderBook orderBook = (OrderBook) o;
+
+        return name.equals(orderBook.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 }
 
