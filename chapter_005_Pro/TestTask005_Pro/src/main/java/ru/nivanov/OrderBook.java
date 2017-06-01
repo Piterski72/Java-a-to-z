@@ -42,6 +42,8 @@ class OrderBook {
 
     /**
      * Filling books with sell and buy orders.
+     * @param unsort ..
+     * @param bookNamesSet ..
      */
     void fillBooksNew(HashMap<Integer, Order> unsort, Set<String> bookNamesSet) {
         bookSetupNew(bookNamesSet);
@@ -84,6 +86,7 @@ class OrderBook {
 
     /**
      * Setting up sell orders and buy ordres collections.
+     * @param bookSet ..
      */
     private void bookSetupNew(Set<String> bookSet) {
         orderBooksSet = new TreeSet<>(new Comparator<OrderBook>() {
@@ -204,8 +207,12 @@ class OrderBook {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         OrderBook orderBook = (OrderBook) o;
 

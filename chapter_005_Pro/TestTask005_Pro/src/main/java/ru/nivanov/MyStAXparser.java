@@ -20,7 +20,6 @@ class MyStAXparser {
     private HashMap<Integer, Order> unsortedAll = new HashMap<>();
     private Set<String> bookNames = new TreeSet<>();
 
-
     /**
      * Parse method.
      * @throws FileNotFoundException ..
