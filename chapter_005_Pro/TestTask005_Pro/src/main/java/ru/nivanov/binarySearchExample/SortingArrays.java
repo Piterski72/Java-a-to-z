@@ -13,13 +13,14 @@ class SortingArrays {
      * @param sorted array
      * @param unsorted array
      */
-    public SortingArrays(int[] sorted, int[] unsorted) {
+    SortingArrays(int[] sorted, int[] unsorted) {
         this.sorted = sorted;
         this.unsorted = unsorted;
     }
 
     /**
      * Sorting operation.
+     * @return resulting array.
      */
     public int[] sorting() {
         int index;
@@ -40,6 +41,8 @@ class SortingArrays {
     /**
      * Detecting insertion position.
      * @param value ..
+     * @param array ..
+     * @param last ..
      * @return position
      */
     private int insertPosition(int value, int[] array, int last) {
