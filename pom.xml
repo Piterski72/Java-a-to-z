@@ -20,6 +20,7 @@
         <module>chapter_004</module>
         <module>chapter_005_Lite</module>
         <module>chapter_005_Pro</module>
+        <module>chapter_006</module>
     </modules>
 
 
@@ -28,11 +29,6 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>19.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.21</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
