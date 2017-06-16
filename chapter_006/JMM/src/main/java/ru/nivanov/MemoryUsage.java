@@ -10,18 +10,24 @@ public class MemoryUsage {
      * @param args ..
      */
     public static void main(String[] args) {
-        System.out.println("start");
 
-        info();
+        //System.out.println("start");
 
-        User[] users = new User[103941];
+        //info();
+        long start = System.currentTimeMillis();
+
+
+        User[] users = new User[100000];
 
         for (int i = 0; i < users.length; i++) {
             users[i] = new User("test" + i);
         }
 
-        System.out.println("finish");
-        info();
+
+        //System.out.println("finish");
+        //info();
+        long end = System.currentTimeMillis() - start;
+        System.out.println(end);
 
     }
 
