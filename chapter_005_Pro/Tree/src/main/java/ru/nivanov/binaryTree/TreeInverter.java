@@ -19,7 +19,7 @@ class TreeInverter<E extends Comparable<E>> {
     }
 
     /**
-     * Inverting tree method (dfs).
+     * Inverting tree method (DFS).
      * @param node ..
      */
     public void invertTreeDfs(BinaryNode<E> node) {
@@ -36,7 +36,7 @@ class TreeInverter<E extends Comparable<E>> {
     }
 
     /**
-     * Inverting tree method (dfs).
+     * Inverting tree method (BFS).
      * @param node ..
      */
     public void invertTreeBfs(BinaryNode<E> node) {
