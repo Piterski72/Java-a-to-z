@@ -16,6 +16,14 @@ class SearchBinaryTree<E extends Comparable<E>> {
     }
 
     /**
+     * Root getter.
+     * @return ..
+     */
+    public BinaryNode<E> getRoot() {
+        return root;
+    }
+
+    /**
      * Insert new node in binary tree.
      * @param element ..
      */
