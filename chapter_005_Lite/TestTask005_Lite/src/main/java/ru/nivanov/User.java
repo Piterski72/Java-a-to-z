@@ -4,8 +4,8 @@ package ru.nivanov;
  * Created by Nikolay Ivanov on 18.04.2017.
  */
 class User implements Comparable {
-    private String name;
-    private int passport;
+    private final String name;
+    private final int passport;
 
     /**
      * Constructor.

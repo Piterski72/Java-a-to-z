@@ -10,7 +10,7 @@ import java.util.Map;
  */
 class Bank {
 
-    private Map<User, List<Account>> userListMap;
+    private final Map<User, List<Account>> userListMap;
 
     /**
      * Constructor.

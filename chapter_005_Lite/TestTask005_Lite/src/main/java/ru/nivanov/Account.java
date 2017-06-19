@@ -4,8 +4,8 @@ package ru.nivanov;
  * Created by Nikolay Ivanov on 18.04.2017.
  */
 class Account {
+    private final int requisites;
     private double value;
-    private int requisites;
 
     /**
      * Constructor.
