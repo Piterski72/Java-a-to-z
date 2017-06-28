@@ -4,8 +4,12 @@ package ru.nivanov;
  * Created by Nikolay Ivanov on 26.06.2017.
  */
 public class AsynchOperations {
-    private static final String input = "this is a test string line for counting words and spaces in it";
+    private static String input = "this is a test string line for counting words and spaces in it";
 
+    /**
+     * Main method.
+     * @param args ..
+     */
     public static void main(String[] args) {
         System.out.println("Start");
 

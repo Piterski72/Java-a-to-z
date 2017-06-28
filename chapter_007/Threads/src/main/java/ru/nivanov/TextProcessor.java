@@ -12,22 +12,24 @@ class TextProcessor {
      * Constructor.
      * @param line ..
      */
-    public TextProcessor(String line) {
+    TextProcessor(String line) {
         this.line = line;
     }
 
     /**
      * Counts words in text line.
+     * @return ..
      */
-    public int wordsCount() {
+    int wordsCount() {
         StringTokenizer stringTokenizer = new StringTokenizer(this.line, " ");
         return stringTokenizer.countTokens();
     }
 
     /**
      * Counts spaces in text line.
+     * @return ..
      */
-    public int spacesCount() {
+    int spacesCount() {
         int spaces = 0;
         char[] temp = this.line.toCharArray();
         for (char var : temp) {
