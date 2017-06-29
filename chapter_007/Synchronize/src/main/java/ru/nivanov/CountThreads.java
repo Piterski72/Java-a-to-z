@@ -1,5 +1,8 @@
 package ru.nivanov;
 
+import net.jcip.annotations.GuardedBy;
+import net.jcip.annotations.ThreadSafe;
+
 /**
  * Created by Nikolay Ivanov on 29.06.2017.
  */
@@ -56,10 +59,10 @@ public class CountThreads implements Runnable {
     /**
      * Class count.
      */
+    @ThreadSafe
     public static final class Count {
-        /**
-         * @GuardedBy Count object.
-         */
+
+        @GuardedBy("Count.this")
         int value = 0;
 
         /**
@@ -75,7 +78,7 @@ public class CountThreads implements Runnable {
 
         /**
          * Getter for value.
-         * @return ..
+         * @return value
          */
         int getValue() {
             return value;
