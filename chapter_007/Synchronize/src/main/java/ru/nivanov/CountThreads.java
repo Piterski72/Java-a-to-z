@@ -63,7 +63,7 @@ public class CountThreads implements Runnable {
     public static final class Count {
 
         @GuardedBy("Count.this")
-        int value = 0;
+        private int value = 0;
 
         /**
          * Increment method.
