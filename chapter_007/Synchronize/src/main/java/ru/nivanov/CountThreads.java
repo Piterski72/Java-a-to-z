@@ -80,7 +80,7 @@ public class CountThreads implements Runnable {
          * Getter for value.
          * @return value
          */
-        int getValue() {
+        synchronized int getValue() {
             return value;
         }
     }

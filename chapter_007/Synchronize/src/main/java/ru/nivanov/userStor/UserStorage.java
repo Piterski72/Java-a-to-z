@@ -60,7 +60,7 @@ class UserStorage {
      * @param userId ..
      * @return ..
      */
-    User search(int userId) {
+    synchronized User search(int userId) {
         if (this.users.containsKey(userId)) {
             return this.users.get(userId);
         } else {
