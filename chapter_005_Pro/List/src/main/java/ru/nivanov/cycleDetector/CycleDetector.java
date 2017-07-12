@@ -1,6 +1,6 @@
 package ru.nivanov.cycleDetector;
 
-import ru.nivanov.simpleArrayList.ArrayContainer;
+import ru.nivanov.simpleListThreadSafe.ArrayContainer;
 
 /**
  * Created by Nikolay Ivanov on 04.05.2017.

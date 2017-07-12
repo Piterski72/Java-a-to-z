@@ -1,4 +1,4 @@
-package ru.nivanov.simpleArrayList;
+package ru.nivanov.simpleListThreadSafe;
 
 import org.junit.Test;
 

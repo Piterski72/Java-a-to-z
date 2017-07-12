@@ -2,4 +2,4 @@
  * //TODO add comments.
  * @since 0.1
  */
-package ru.nivanov.simpleArrayList;
+package ru.nivanov.simpleListThreadSafe;

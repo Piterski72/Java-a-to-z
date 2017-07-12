@@ -1,4 +1,4 @@
-package ru.nivanov.simpleArrayList;
+package ru.nivanov.simpleListThreadSafe;
 
 /**
  * Created by Nikolay Ivanov on 02.05.2017.

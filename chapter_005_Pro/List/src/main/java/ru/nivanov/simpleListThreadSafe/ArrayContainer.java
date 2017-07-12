@@ -1,4 +1,4 @@
-package ru.nivanov.simpleArrayList;
+package ru.nivanov.simpleListThreadSafe;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ public class ArrayContainer<E> implements SimpleContainer<E> {
      * Constructor.
      * @param size ..
      */
-    public ArrayContainer(int size) {
+    ArrayContainer(int size) {
         if (size > 0) {
             this.size = size;
             this.container = new Object[size];
