@@ -48,14 +48,16 @@ public class BomberMan extends Figure {
             possibleMoves = validateMove(currentPosCell);
             for (Cell move : possibleMoves) {
                 if (move != null) {
-                    if (!move.isBlocked() && move.getContent() == null) {
-                        tryMove(move);
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                    synchronized (move) {
+                        if (!move.isBlocked() && move.getContent() == null) {
+                            tryMove(move);
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            break;
                         }
-                        break;
                     }
                 }
             }

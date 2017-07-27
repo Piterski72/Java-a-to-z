@@ -45,23 +45,27 @@ public class Monster extends Figure {
                     if (possibleMoves.get(select) != null) {
 
                         Cell destination = possibleMoves.get(select);
+                        synchronized (destination) {
+                            if (!destination.isBlocked() && destination.getContent() == null) {
+                                tryMove(destination);
+                                break;
+                            } else if (destination.getContent() != null && destination.getContent().id().equals(
+                                    "player")) {
+                                System.out.println(String.format("monster %s kills the player!", this.getName()));
+                                Game.setIsFinished(true);
+                                break;
 
-                        if (!destination.isBlocked() && destination.getContent() == null) {
-                            tryMove(destination);
-                            break;
-                        } else if (destination.getContent() != null && destination.getContent().id().equals("player")) {
-                            System.out.println(String.format("monster %s kills the player!", this.getName()));
-                            Game.setIsFinished(true);
-                            break;
-
-                        } else if (destination.getContent() != null && destination.getContent().id().equals(
-                                "monster")) {
-                            try {
-                                Thread.sleep(5000);
-                                System.out.println(String.format("Monster %s is sleeping", this.getName()));
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
                             }
+                            if (destination.getContent() != null && destination.getContent().id().equals("monster")) {
+                                try {
+                                    Thread.sleep(5000);
+                                    System.out.println(String.format("Monster %s is sleeping", this.getName()));
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+
                         }
                     }
                 }
