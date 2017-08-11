@@ -4,7 +4,9 @@ import ru.nivanov.models.Item;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * Tracker.
@@ -20,7 +22,7 @@ class Tracker {
     private final int quant = 15;
     /**
      */
-    private final ArrayList<Item> items = new ArrayList<>();
+    private final List<Item> items = new ArrayList<>();
 
     /**
      * Add Item.
@@ -150,7 +152,7 @@ class Tracker {
      * Getting filtered list (all not null).
      * @return massive of items (not nulls)
      */
-    public ArrayList<Item> getAll() {
+    public List<Item> getAll() {
         return this.items;
     }
 
@@ -159,14 +161,11 @@ class Tracker {
      * @param name input parameter
      * @return massive of items
      */
-    public ArrayList<Item> getByName(String name) {
-        ArrayList<Item> tempN = new ArrayList<>();
-        for (Item item : this.items) {
-            if (item.getName().equals(name)) {
-                tempN.add(item);
-            }
-        }
-        return tempN;
+    public List<Item> getByName(String name) {
+
+        List<Item> tempN = new ArrayList<>();
+        return tempN = this.items.stream().filter(p -> p.getName().equals(name)).collect(Collectors.toList());
+
     }
 
     /**

@@ -32,13 +32,8 @@ public class StubInput implements Input {
     public int ask(String question, ArrayList<Integer> range) {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
-        for (int value : range) {
-            if (value == key) {
-                exist = true;
-                break;
-            }
-        }
-        if (exist) {
+
+        if (range.stream().anyMatch(p -> p == key)) {
             return key;
         } else {
             throw new MenuOutException("Out of menu range");

@@ -5,6 +5,7 @@ import ru.nivanov.models.Item;
 import ru.nivanov.models.Task;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -63,7 +64,7 @@ public class TrackerTest {
         Item one = tracker.add(new Task("first task", "first desc"));
         Item two = tracker.add(new Task("second task", "second desc"));
         tracker.remove(one.getId());
-        ArrayList<Item> temp = tracker.getAll();
+        List<Item> temp = tracker.getAll();
         assertThat(temp.size(), is(1));
     }
 
@@ -76,7 +77,7 @@ public class TrackerTest {
         tracker.add(new Task("first task", "first desc"));
         tracker.add(new Task("second task", "second desc"));
         tracker.add(new Task("third task", "third desc"));
-        ArrayList<Item> temp = tracker.getAll();
+        List<Item> temp = tracker.getAll();
         String testId = temp.get(2).getId();
         Item found = tracker.findById(testId);
         assertThat(found, is(temp.get(2)));
@@ -90,7 +91,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         tracker.add(new Task("first task", "first desc"));
         tracker.add(new Task("second task", "second desc"));
-        ArrayList<Item> temp = tracker.getAll();
+        List<Item> temp = tracker.getAll();
         Item testN = tracker.findByName("second task");
         String testId = testN.getId();
         assertThat(testId, is(temp.get(1).getId()));
@@ -104,7 +105,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         tracker.add(new Task("first task", "first desc"));
         tracker.add(new Task("second task", "second desc"));
-        ArrayList<Item> temp = tracker.getAll();
+        List<Item> temp = tracker.getAll();
         Item testN = tracker.findByDesc("second desc");
         String testId = testN.getId();
         assertThat(testId, is(temp.get(1).getId()));
@@ -121,7 +122,7 @@ public class TrackerTest {
         tracker.add(new Task("first task", "3 desc"));
         tracker.add(new Task("first task", "first desc"));
         tracker.add(new Task("temp task", "temp desc"));
-        ArrayList<Item> resultN = tracker.getByName("first task");
+        List<Item> resultN = tracker.getByName("first task");
         int count = 0;
         for (Item aResultN : resultN) {
             if (!aResultN.getName().equals("first task")) {

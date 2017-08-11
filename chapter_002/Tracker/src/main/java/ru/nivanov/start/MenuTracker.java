@@ -4,6 +4,8 @@ import ru.nivanov.models.Item;
 import ru.nivanov.models.Task;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * EditItem outer class.
@@ -58,9 +60,11 @@ public class MenuTracker {
      */
     public ArrayList<Integer> getRange() {
         final int leng = 6;
+
         ArrayList<Integer> ranges = new ArrayList<>(leng);
         for (int i = 0; i < leng; i++) {
             ranges.add(i, i);
+
         }
         return ranges;
     }
@@ -93,11 +97,8 @@ public class MenuTracker {
      * Show menu realization.
      */
     public void show() {
-        for (UserAction action : this.actions) {
-            if (action != null) {
-                System.out.println(action.info());
-            }
-        }
+        this.actions.stream().filter(Objects::nonNull).forEach(p -> System.out.println(p.info()));
+
     }
 
     /**
@@ -123,7 +124,7 @@ public class MenuTracker {
          * @param tracker ..
          */
         public void execute(Input input, Tracker tracker) {
-            ArrayList<Item> res = tracker.getAll();
+            List<Item> res = tracker.getAll();
             for (int j = 0; j < res.size(); j++) {
                 System.out.printf("%s %s %s \n", res.get(j).getId(), res.get(j).getName(), res.get(j).getDescription());
                 for (int i = 0; i < res.get(j).getComments().size(); i++) {

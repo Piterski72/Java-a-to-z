@@ -6,6 +6,7 @@ import ru.nivanov.models.Task;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -34,7 +35,7 @@ public class StartUITest {
         Input input = new StubInput(userActs);
         new StartUI(input, tracker).init();
         Item newOne = tracker.findByName("new task");
-        ArrayList<Item> result = tracker.getAll();
+        List<Item> result = tracker.getAll();
         assertThat(newOne.getId(), is(result.get(0).getId()));
     }
 
@@ -103,7 +104,7 @@ public class StartUITest {
         Input input = new StubInput(userAns);
         new StartUI(input, tracker).init();
 
-        ArrayList<Item> result = tracker.getAll();
+        List<Item> result = tracker.getAll();
         ArrayList<String> comms = result.get(0).getComments();
         assertThat(comms.get(0), is("new comment"));
     }
