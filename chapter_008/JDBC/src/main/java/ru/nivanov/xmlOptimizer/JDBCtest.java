@@ -1,14 +1,19 @@
-package ru.nivanov;
+package ru.nivanov.xmlOptimizer;
 
 import javax.xml.stream.XMLStreamException;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
 
 /**
  * Created by Nikolay Ivanov on 29.08.2017.
  */
 public class JDBCtest {
 
+    private static final Properties PROPERTIES = new Properties();
     private String conStr;
     private int numOfRec;
 
@@ -18,15 +23,27 @@ public class JDBCtest {
      */
     public static void main(String[] args) {
 
+        long start = System.currentTimeMillis();
+
         Connection conn = null;
+
         JDBCtest worker = new JDBCtest();
-        XmlCreator creator = new XmlCreator("C:\\sql\\1.xml");
-        XmlExecutor xmlExecutor = new XmlExecutor("C:\\sql\\1.xsl", "C:\\sql\\2.xml");
+
+        worker.setUp();
+
+        String input = worker.getXslFile().getPath();
+        String filePathOne = PROPERTIES.getProperty("fileOne");
+        String filePathTwo = PROPERTIES.getProperty("fileTwo");
+
+        XmlCreator creator = new XmlCreator(filePathOne);
+        XmlExecutor xmlExecutor = new XmlExecutor(input, filePathTwo);
         XmlParser xmlParser = new XmlParser();
 
-        final int numOfRecords = 999000;
+        final int numOfRecords = 99;
 
-        worker.init("jdbc:sqlite:C:/sql/sqlite/base/mybase.s3db", numOfRecords);
+        String basePath = PROPERTIES.getProperty("sqlite_loc");
+
+        worker.init(basePath, numOfRecords);
         try {
             conn = DriverManager.getConnection(worker.getConStr());
             worker.createTable(conn);
@@ -46,6 +63,7 @@ public class JDBCtest {
                 e.printStackTrace();
             }
         }
+        System.out.println(System.currentTimeMillis() - start);
     }
 
     /**
@@ -53,7 +71,7 @@ public class JDBCtest {
      * @param conn ..
      */
     private void insertRecords(Connection conn) {
-        long start = System.currentTimeMillis();
+
         PreparedStatement prst = null;
 
         try {
@@ -79,7 +97,6 @@ public class JDBCtest {
                 e.printStackTrace();
             }
         }
-        System.out.println(System.currentTimeMillis() - start);
     }
 
     /**
@@ -149,4 +166,35 @@ public class JDBCtest {
         this.setConStr(line);
         this.setNumOfRec(number);
     }
+
+    /**
+     * Setting properties.
+     */
+    public void setUp() {
+
+        try (InputStream io = getClass().getResourceAsStream("/forXml/app.properties")) {
+            try {
+                PROPERTIES.load(io);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Getter for xsl file from resources.
+     * @return file.
+     */
+    private File getXslFile() {
+
+        File result;
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        result = new File(classLoader.getResource("forXml/1.xsl").getFile());
+
+        return result;
+    }
+
 }

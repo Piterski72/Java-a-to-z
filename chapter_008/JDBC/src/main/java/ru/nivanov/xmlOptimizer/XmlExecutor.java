@@ -1,4 +1,4 @@
-package ru.nivanov;
+package ru.nivanov.xmlOptimizer;
 
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;

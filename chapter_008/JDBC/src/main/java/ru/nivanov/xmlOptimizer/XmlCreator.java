@@ -1,4 +1,4 @@
-package ru.nivanov;
+package ru.nivanov.xmlOptimizer;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

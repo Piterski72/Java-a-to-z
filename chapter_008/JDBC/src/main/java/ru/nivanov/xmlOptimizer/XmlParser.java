@@ -1,4 +1,4 @@
-package ru.nivanov;
+package ru.nivanov.xmlOptimizer;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
