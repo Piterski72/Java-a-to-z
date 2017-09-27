@@ -40,7 +40,7 @@ public class JDBCstart {
             baseHandler.insertRecords(conn);
             String fileOne = creator.generateXML(conn);
             String fileTwo = xmlExecutor.transformXML(fileOne);
-            long result = xmlParser.parseXML(fileTwo);
+            xmlParser.parseXML(fileTwo);
 
         } catch (SQLException | FileNotFoundException | XMLStreamException e) {
             e.printStackTrace();
