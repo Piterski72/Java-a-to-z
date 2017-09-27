@@ -26,8 +26,7 @@ public class JDBCstart {
 
         baseHandler.setUp();
 
-        JDBCstart worker = new JDBCstart();
-        String input = worker.getXslFile().getPath();
+        String input = new JDBCstart().getXslFile().getPath();
 
         XmlCreator creator = new XmlCreator(baseHandler.getFilePathOne());
         XmlExecutor xmlExecutor = new XmlExecutor(input, baseHandler.getFilePathTwo());
@@ -42,7 +41,6 @@ public class JDBCstart {
             String fileOne = creator.generateXML(conn);
             String fileTwo = xmlExecutor.transformXML(fileOne);
             long result = xmlParser.parseXML(fileTwo);
-            System.out.println(result);
 
         } catch (SQLException | FileNotFoundException | XMLStreamException e) {
             e.printStackTrace();
@@ -70,5 +68,4 @@ public class JDBCstart {
 
         return result;
     }
-
 }
