@@ -20,7 +20,7 @@ public class JDBCstart {
 
         long start = System.currentTimeMillis();
 
-        final int numOfRecords = 99;
+        final int numOfRecords = 1000000;
 
         BaseHandler baseHandler = new BaseHandler(numOfRecords);
 
