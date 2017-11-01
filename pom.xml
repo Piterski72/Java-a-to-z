@@ -23,6 +23,8 @@
         <module>chapter_006</module>
         <module>chapter_007</module>
         <module>chapter_008</module>
+        <module>chapter_009</module>
+
     </modules>
 
 
@@ -120,7 +122,7 @@
                             <exclude>ru/nivanov/models/*.class</exclude>
                             <exclude>ru/nivanov/start/StartUI.class</exclude>
                             <exclude>ru/nivanov/userChat/ConsoleChat.class</exclude>
-                            <exclude>ru/nivanov/DropAbuse.class</exclude>
+                            <exclude>ru/nivanov/servlets/EchoServlet.class</exclude>
                         </excludes>
                     </instrumentation>
                     <check>
