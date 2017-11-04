@@ -26,17 +26,21 @@ public class UsersServlet extends HttpServlet {
 
         resp.setContentType("text/html");
         PrintWriter writer = resp.getWriter();
+        DbaseHandler test = new DbaseHandler();
+        test.loadProps();
+        test.connectToBase();
 
-        Map<Integer, User> map = this.baseHandler.showUsers();
+        Map<Integer, User> map = test.showUsers();
         for (Map.Entry entry : map.entrySet()) {
             int id = (int) entry.getKey();
             User user = (User) entry.getValue();
             writer.println(
-                    String.format("id=%d name= %s login= %s email= %s date= %s", id, user.getName(), user.getLogin(),
+                    String.format("id= %d name= %s login= %s email= %s date= %s", id, user.getName(), user.getLogin(),
                             user.getEmail(), new Date(user.getCreateDate())));
 
         }
         writer.flush();
+        test.closeConnection();
 
     }
 
@@ -81,8 +85,9 @@ public class UsersServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        this.baseHandler = new DbaseHandler();
-        this.baseHandler.loadProps();
-        this.baseHandler.connectToBase();
+        // this.baseHandler = new DbaseHandler();
+        // this.baseHandler.loadProps();
+        // this.baseHandler.connectToBase();
     }
+
 }

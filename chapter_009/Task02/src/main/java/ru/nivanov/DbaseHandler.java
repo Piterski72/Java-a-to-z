@@ -31,6 +31,7 @@ class DbaseHandler {
         InputStream io = getClass().getResourceAsStream("/db.properties");
         try {
             this.props.load(io);
+            LOG.info("props loaded!");
 
         } catch (IOException e) {
             LOG.error(e.getMessage(), e);
@@ -47,6 +48,7 @@ class DbaseHandler {
         String pass = this.props.getProperty("password");
         try {
             this.conn = DriverManager.getConnection(url, username, pass);
+            LOG.info("base connected!");
 
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
@@ -138,10 +140,16 @@ class DbaseHandler {
      */
     Map<Integer, User> showUsers() {
 
+
         Statement st = null;
         ResultSet rs = null;
 
         try {
+            try {
+                Class.forName("org.postgresql.Driver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
             st = this.conn.createStatement();
             rs = st.executeQuery("SELECT * FROM users");
 
