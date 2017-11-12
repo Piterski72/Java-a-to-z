@@ -19,18 +19,15 @@ import java.util.Map;
 public class UsersServlet extends HttpServlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(UsersServlet.class);
-    private DbaseHandler baseHandler;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         resp.setContentType("text/html");
         PrintWriter writer = resp.getWriter();
-        DbaseHandler test = new DbaseHandler();
-        test.loadProps();
-        test.connectToBase();
 
-        Map<Integer, User> map = test.showUsers();
+
+        Map<Integer, User> map = DbaseHandler2.getBase().showUsers();
         for (Map.Entry entry : map.entrySet()) {
             int id = (int) entry.getKey();
             User user = (User) entry.getValue();
@@ -40,8 +37,6 @@ public class UsersServlet extends HttpServlet {
 
         }
         writer.flush();
-        test.closeConnection();
-
     }
 
     @Override
@@ -53,7 +48,7 @@ public class UsersServlet extends HttpServlet {
         String email = req.getParameter("email");
         long date = System.currentTimeMillis();
 
-        this.baseHandler.addUser(new User(name, login, email, date));
+        DbaseHandler2.getBase().addUser(new User(name, login, email, date));
 
     }
 
@@ -61,33 +56,22 @@ public class UsersServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
 
-        int id = Integer.parseInt(req.getParameter("userID"));
+        String id = req.getParameter("id");
         String login = req.getParameter("login");
         String name = req.getParameter("name");
         String email = req.getParameter("email");
         long date = System.currentTimeMillis();
 
-        this.baseHandler.updateUser(id, new User(name, login, email, date));
+        DbaseHandler2.getBase().updateUser(id, new User(name, login, email, date));
 
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        int id = Integer.parseInt(req.getParameter("userID"));
-        this.baseHandler.deleteUser(id);
+        String id = req.getParameter("id");
+        DbaseHandler2.getBase().deleteUser(id);
     }
 
-    @Override
-    public void destroy() {
-        this.baseHandler.closeConnection();
-    }
-
-    @Override
-    public void init() throws ServletException {
-        // this.baseHandler = new DbaseHandler();
-        // this.baseHandler.loadProps();
-        // this.baseHandler.connectToBase();
-    }
 
 }
