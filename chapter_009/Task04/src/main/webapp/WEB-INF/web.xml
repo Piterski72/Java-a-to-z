@@ -1,0 +1,37 @@
+<web-app
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        version="3.0"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <servlet>
+        <servlet-name>CreateServlet</servlet-name>
+        <servlet-class>ru.nivanov.CreateServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreateServlet</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>ru.nivanov.DeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateServlet</servlet-name>
+        <servlet-class>ru.nivanov.UpdateServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateServlet</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+
+</web-app>
