@@ -1,6 +1,7 @@
 package ru.nivanov;
 
 import ru.nivanov.model.TableHtml;
+import ru.nivanov.model.UserStore;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +22,6 @@ public class UsersServlet extends HttpServlet {
         PrintWriter writer = resp.getWriter();
         writer.println(new TableHtml().getTable());
 
-        writer.flush();
-
         writer.append(
                 "<!DOCTYPE html>\n" + "<html lang=\"en\">\n" + "<head>\n" + "    <meta charset=\"UTF-8\">\n" + "    <title>Menu</title>\n" + "</head>\n" + "<body>\n" + "<br>" + "<form action=").append(
                 req.getContextPath()).append("/update>").append("<button type='submit'>Edit user</button>").append(
@@ -34,4 +33,8 @@ public class UsersServlet extends HttpServlet {
 
     }
 
+    @Override
+    public void destroy() {
+        UserStore.getBase().shutDownDataSource();
+    }
 }

@@ -96,6 +96,7 @@ public class UserStore {
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
         }
+
     }
 
     /**
@@ -142,6 +143,17 @@ public class UserStore {
         }
 
         return this.userMap;
+    }
+
+    /**
+     * Closing pool.
+     */
+    public void shutDownDataSource() {
+        try {
+            this.pool.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
