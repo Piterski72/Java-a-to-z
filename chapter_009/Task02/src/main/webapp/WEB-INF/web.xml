@@ -8,6 +8,7 @@
         <servlet-name>UsersServlet</servlet-name>
 
         <servlet-class>ru.nivanov.UsersServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>

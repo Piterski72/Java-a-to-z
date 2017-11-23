@@ -33,7 +33,7 @@ public class QuartzSched {
 
             // Trigger the job to run now, and then repeat every day at 12-00
             CronTrigger trigger = newTrigger().withIdentity("trigger1", "group1").withSchedule(
-                    cronSchedule("0 0 12 * * ?")).forJob("job1", "group1").build();
+                    cronSchedule("0/15 * * * * ?")).forJob("job1", "group1").build();
 
             // Tell quartz to schedule the job using our trigger
 
