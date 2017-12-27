@@ -27,7 +27,7 @@ public class UsersServlet extends HttpServlet {
         PrintWriter writer = resp.getWriter();
 
 
-        Map<Integer, User> map = DbaseHandler2.getBase().showUsers();
+        Map<Integer, User> map = DbaseHandler.getBase().showUsers();
         for (Map.Entry entry : map.entrySet()) {
             int id = (int) entry.getKey();
             User user = (User) entry.getValue();
@@ -48,7 +48,7 @@ public class UsersServlet extends HttpServlet {
         String email = req.getParameter("email");
         long date = System.currentTimeMillis();
 
-        DbaseHandler2.getBase().addUser(new User(name, login, email, date));
+        DbaseHandler.getBase().addUser(new User(name, login, email, date));
 
     }
 
@@ -62,7 +62,9 @@ public class UsersServlet extends HttpServlet {
         String email = req.getParameter("email");
         long date = System.currentTimeMillis();
 
-        DbaseHandler2.getBase().updateUser(id, new User(name, login, email, date));
+        User newUser = new User(name, login, email, date);
+
+        DbaseHandler.getBase().updateUser(id, newUser);
 
     }
 
@@ -70,7 +72,7 @@ public class UsersServlet extends HttpServlet {
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         String id = req.getParameter("id");
-        DbaseHandler2.getBase().deleteUser(id);
+        DbaseHandler.getBase().deleteUser(id);
     }
 
 

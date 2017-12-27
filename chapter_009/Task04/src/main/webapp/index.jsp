@@ -1,5 +1,5 @@
-<%@ page import="ru.nivanov.model.User" %>
-<%@ page import="ru.nivanov.model.UserStore" %>
+<%@ page import="ru.User" %>
+<%@ page import="ru.UserStore" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.

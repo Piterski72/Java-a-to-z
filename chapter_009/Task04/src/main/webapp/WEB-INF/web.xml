@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>CreateServlet</servlet-name>
-        <servlet-class>ru.nivanov.CreateServlet</servlet-class>
+        <servlet-class>ru.CreateServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -16,7 +16,7 @@
 
     <servlet>
         <servlet-name>DeleteServlet</servlet-name>
-        <servlet-class>ru.nivanov.DeleteServlet</servlet-class>
+        <servlet-class>ru.DeleteServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -26,7 +26,7 @@
 
     <servlet>
         <servlet-name>UpdateServlet</servlet-name>
-        <servlet-class>ru.nivanov.UpdateServlet</servlet-class>
+        <servlet-class>ru.UpdateServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>UsersServlet</servlet-name>
-        <servlet-class>ru.nivanov.UsersServlet</servlet-class>
+        <servlet-class>ru.UsersServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
@@ -17,7 +17,7 @@
 
     <servlet>
         <servlet-name>CreateServlet</servlet-name>
-        <servlet-class>ru.nivanov.CreateServlet</servlet-class>
+        <servlet-class>ru.CreateServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -27,7 +27,7 @@
 
     <servlet>
         <servlet-name>DeleteServlet</servlet-name>
-        <servlet-class>ru.nivanov.DeleteServlet</servlet-class>
+        <servlet-class>ru.DeleteServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -37,7 +37,7 @@
 
     <servlet>
         <servlet-name>UpdateServlet</servlet-name>
-        <servlet-class>ru.nivanov.UpdateServlet</servlet-class>
+        <servlet-class>ru.UpdateServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

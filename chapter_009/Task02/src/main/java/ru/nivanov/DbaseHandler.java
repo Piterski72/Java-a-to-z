@@ -130,6 +130,8 @@ class DbaseHandler {
      */
     Map<Integer, User> showUsers() {
 
+        this.userMap.clear();
+
         try (Connection conn = this.pool.getConnection();
              Statement st = conn.createStatement();
              ResultSet rs = st.executeQuery("SELECT * FROM users")) {
