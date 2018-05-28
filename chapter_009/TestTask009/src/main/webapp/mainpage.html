@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Main page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--DataTables plug-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="js/crud.js?<?php echo time(); ?>"></script>
+    <script type="text/javascript" src="js/listinfo.js?<?php echo time(); ?>"></script>
+    <script type="text/javascript" src="js/userinfo.js?<?php echo time(); ?>"></script>
+    <script type="text/javascript" language="JavaScript">
+        ord = Math.random() * 1000000000020000;
+    </script>
+    <!--DataTables plugin select extension-->
+    <script src="https://cdn.datatables.net/select/1.2.5/js/dataTables.select.min.js"></script>
+
+    <style>
+
+        caption {
+            display: table-caption;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body onload="roleList('#ro', 'user')">
+
+<h2>Main page</h2>
+
+<p style="float: left">User role is: </p>
+<p id="urole">user role here</p>
+<br>
+
+<a href="logout" class="btn btn-info" role="button">
+    <span class="glyphicon glyphicon-log-out"></span> Log out
+</a>
+
+<br>
+<p>To update records, check row, input values in cells and press <b>update</b></p>
+<br>
+<label for="addr"><b>Address</b></label>
+<input id="addrinput" type="text" placeholder="Enter address" name="address" required>
+<button type="submit" id="addr">Search</button>
+
+<label for="rol"><b>Role</b></label>
+<input id="rlinput" type="text" placeholder="Enter role" name="rolename" required>
+<button type="submit" id="rol">Search</button>
+
+<label for="rol"><b>Music</b></label>
+<input id="musinput" type="text" placeholder="Enter music" name="music" required>
+<button type="submit" id="mus">Search</button>
+
+<button type="button" id="all" class="btn btn-info">No filters</button>
+<br>
+<table id="dtbl" border="1px" cellpadding="3px" class="table-editable" data-toggle="table">
+    <caption>Users management</caption>
+    <thead>
+    <tr bgcolor="#a9a9a9">
+        <th></th>
+        <th>ident</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Music</th>
+        <th>Role</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    </thead>
+
+    <tbody></tbody>
+
+    <tfoot class="admin">
+    <tr bgcolor="#a9a9a9">
+        <th></th>
+        <th>ident</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Music</th>
+        <th>Role</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr id='tradd' bgcolor="#98fb98">
+        <td></td>
+        <td>id..</td>
+        <td contenteditable='true'>new name here</td>
+        <td contenteditable='true'>new address here</td>
+        <td contenteditable='true'>new music here</td>
+        <td id="ro"></td>
+        <td colspan="2">
+            <button type='button' id='add' class="btn btn-info btn-block"><span class="glyphicon glyphicon-plus"></span>
+                NEW
+            </button>
+        </td>
+    </tr>
+
+    </tfoot>
+</table>
+
+</body>
+</html>
