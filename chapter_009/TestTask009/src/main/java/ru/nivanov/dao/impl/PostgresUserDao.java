@@ -20,10 +20,7 @@ public class PostgresUserDao implements UserDao {
 
     @Override
     public int create(User user) {
-
         int result = -1;
-        ResultSet rs;
-
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
              PreparedStatement pst = conn.prepareStatement(
                      "INSERT INTO public.user (username, addressident, roleident) VALUES (?, ?, ?)",
@@ -32,12 +29,12 @@ public class PostgresUserDao implements UserDao {
             pst.setInt(2, user.getAddressid());
             pst.setInt(3, user.getRoleid());
             pst.executeUpdate();
-            rs = pst.getGeneratedKeys();
-            if (rs.next()) {
-                result = rs.getInt("userid");
-                user.setId(result);
+            try (ResultSet rs = pst.getGeneratedKeys()) {
+                if (rs.next()) {
+                    result = rs.getInt("userid");
+                    user.setId(result);
+                }
             }
-            rs.close();
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
         }
@@ -47,7 +44,6 @@ public class PostgresUserDao implements UserDao {
             Set<Integer> musicTypes = new CopyOnWriteArraySet<>();
             user.setMusicTypeList(musicTypes);
         }
-
         return result;
     }
 
@@ -57,31 +53,23 @@ public class PostgresUserDao implements UserDao {
      * @return ..
      */
     private Set<Integer> setMusicType(User user) {
-        PreparedStatement pst = null;
         Set<Integer> musTypes = user.getMusicType();
         int userid = user.getId();
-
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection()) {
-            pst = conn.prepareStatement("DELETE FROM public.usermusik WHERE iduser = ?");
+        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+             PreparedStatement pst = conn.prepareStatement("DELETE FROM public.usermusik WHERE iduser = ?")) {
             pst.setInt(1, user.getId());
             pst.executeUpdate();
 
             for (Integer val : musTypes) {
-                pst = conn.prepareStatement("INSERT INTO public.usermusik (iduser, idmusik) VALUES (?, ?)");
-                pst.setInt(1, userid);
-                pst.setInt(2, val);
-                pst.executeUpdate();
+                try (PreparedStatement pst2 = conn.prepareStatement(
+                        "INSERT INTO public.usermusik (iduser, idmusik) VALUES (?, ?)")) {
+                    pst2.setInt(1, userid);
+                    pst2.setInt(2, val);
+                    pst2.executeUpdate();
+                }
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        } finally {
-            if (pst != null) {
-                try {
-                    pst.close();
-                } catch (SQLException e) {
-                    LOG.error(e.getMessage(), e);
-                }
-            }
         }
         return musTypes;
     }
@@ -132,31 +120,23 @@ public class PostgresUserDao implements UserDao {
 
     @Override
     public User getById(int id) {
-        ResultSet rs = null;
         User foundUser = new User();
         foundUser.setName("empty");
-
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
              PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.user WHERE userid = ?")) {
             pst.setInt(1, id);
-            rs = pst.executeQuery();
-            if (rs.next()) {
-                foundUser = new User();
-                foundUser.setId(rs.getInt("userid"));
-                foundUser.setName(rs.getString("username"));
-                foundUser.setAddressid(rs.getInt("addressident"));
-                foundUser.setRoleid(rs.getInt("roleident"));
-                foundUser.setMusicTypeList(this.getMusikType(id));
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    foundUser = new User();
+                    foundUser.setId(rs.getInt("userid"));
+                    foundUser.setName(rs.getString("username"));
+                    foundUser.setAddressid(rs.getInt("addressident"));
+                    foundUser.setRoleid(rs.getInt("roleident"));
+                    foundUser.setMusicTypeList(this.getMusikType(id));
+                }
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        } finally {
-            try {
-                assert rs != null;
-                rs.close();
-            } catch (SQLException e) {
-                LOG.error(e.getMessage(), e);
-            }
         }
         return foundUser;
     }
@@ -167,36 +147,27 @@ public class PostgresUserDao implements UserDao {
      * @return ..
      */
     private Set<Integer> getMusikType(int userid) {
-        ResultSet rs = null;
         Set<Integer> musTypes = new CopyOnWriteArraySet<>();
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
              PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.usermusik WHERE iduser = ?")) {
             pst.setInt(1, userid);
-            rs = pst.executeQuery();
-            while (rs.next()) {
-                musTypes.add(rs.getInt("idmusik"));
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    musTypes.add(rs.getInt("idmusik"));
+                }
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    LOG.error(e.getMessage(), e);
-                }
-            }
         }
         return musTypes;
     }
 
     @Override
     public Collection<User> getAll() {
-        ResultSet rs;
         Collection<User> users = new CopyOnWriteArrayList<>();
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
-             Statement st = conn.createStatement()) {
-            rs = st.executeQuery("SELECT * FROM public.user");
+             Statement st = conn.createStatement();
+             ResultSet rs = st.executeQuery("SELECT * FROM public.user")) {
             while (rs.next()) {
                 User current = new User();
                 current.setId(rs.getInt("userid"));
@@ -211,6 +182,5 @@ public class PostgresUserDao implements UserDao {
         }
         return users;
     }
-
 }
 

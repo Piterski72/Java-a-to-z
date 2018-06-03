@@ -19,20 +19,17 @@ public class PostgresAddressDao implements AddressDao {
 
     @Override
     public int create(Address entity) {
-
         int result = -1;
-        ResultSet rs;
-
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
              PreparedStatement pst = conn.prepareStatement("INSERT INTO public.adress (location) VALUES (?)",
                      Statement.RETURN_GENERATED_KEYS)) {
             pst.setString(1, entity.getLocation());
             pst.executeUpdate();
-            rs = pst.getGeneratedKeys();
-            if (rs.next()) {
-                result = rs.getInt("addrid");
+            try (ResultSet rs = pst.getGeneratedKeys()) {
+                if (rs.next()) {
+                    result = rs.getInt("addrid");
+                }
             }
-            rs.close();
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
         }
@@ -41,7 +38,6 @@ public class PostgresAddressDao implements AddressDao {
 
     @Override
     public Address update(int id, Address entity) {
-
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
              PreparedStatement pst = conn.prepareStatement("UPDATE public.adress SET location =? WHERE addrid=?")) {
             pst.setString(1, entity.getLocation());
@@ -70,10 +66,9 @@ public class PostgresAddressDao implements AddressDao {
     @Override
     public Collection<Address> getAll() {
         List<Address> addrlist = new CopyOnWriteArrayList<>();
-        ResultSet rs = null;
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
-             PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.adress")) {
-            rs = pst.executeQuery();
+             PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.adress");
+             ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
                 Address current = new Address();
                 current.setId(rs.getInt("addrid"));
@@ -82,13 +77,6 @@ public class PostgresAddressDao implements AddressDao {
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        } finally {
-            try {
-                assert rs != null;
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
         return addrlist;
     }
@@ -96,26 +84,18 @@ public class PostgresAddressDao implements AddressDao {
     @Override
     public Address getById(int id) {
         Address addr = new Address();
-        ResultSet rs = null;
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
              PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.adress WHERE addrid=?")) {
             pst.setInt(1, id);
-            rs = pst.executeQuery();
-            if (rs.next()) {
-                addr.setId(rs.getInt("addrid"));
-                addr.setLocation(rs.getString("location"));
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    addr.setId(rs.getInt("addrid"));
+                    addr.setLocation(rs.getString("location"));
+                }
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        } finally {
-            try {
-                assert rs != null;
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
         return addr;
     }
-
 }

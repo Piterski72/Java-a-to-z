@@ -18,20 +18,17 @@ public class PostgresMusicTypeDao implements MusicTypeDao {
 
     @Override
     public int create(MusicType entity) {
-
         int result = -1;
-        ResultSet rs;
-
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
              PreparedStatement pst = conn.prepareStatement("INSERT INTO public.musictype (music) VALUES (?)",
                      Statement.RETURN_GENERATED_KEYS)) {
             pst.setString(1, entity.getType());
             pst.executeUpdate();
-            rs = pst.getGeneratedKeys();
-            if (rs.next()) {
-                result = rs.getInt("musid");
+            try (ResultSet rs = pst.getGeneratedKeys()) {
+                if (rs.next()) {
+                    result = rs.getInt("musid");
+                }
             }
-            rs.close();
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
         }
@@ -40,8 +37,6 @@ public class PostgresMusicTypeDao implements MusicTypeDao {
 
     @Override
     public MusicType update(int id, MusicType entity) {
-
-
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
              PreparedStatement pst = conn.prepareStatement("UPDATE public.musictype SET music =? WHERE musid=?")) {
             pst.setString(1, entity.getType());
@@ -60,7 +55,6 @@ public class PostgresMusicTypeDao implements MusicTypeDao {
              PreparedStatement pst = conn.prepareStatement("DELETE  FROM public.musictype WHERE musid=?")) {
             pst.setInt(1, id);
             result = pst.executeUpdate();
-
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
         }
@@ -70,10 +64,9 @@ public class PostgresMusicTypeDao implements MusicTypeDao {
     @Override
     public Collection<MusicType> getAll() {
         Collection<MusicType> muslist = new CopyOnWriteArrayList<>();
-        ResultSet rs = null;
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
-             PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.musictype")) {
-            rs = pst.executeQuery();
+             PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.musictype");
+             ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
                 MusicType current = new MusicType();
                 current.setId(rs.getInt("musid"));
@@ -82,13 +75,6 @@ public class PostgresMusicTypeDao implements MusicTypeDao {
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        } finally {
-            try {
-                assert rs != null;
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
         return muslist;
     }
@@ -96,24 +82,17 @@ public class PostgresMusicTypeDao implements MusicTypeDao {
     @Override
     public MusicType getById(int id) {
         MusicType mus = new MusicType();
-        ResultSet rs = null;
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
              PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.musictype WHERE musid=?")) {
             pst.setInt(1, id);
-            rs = pst.executeQuery();
-            if (rs.next()) {
-                mus.setId(rs.getInt("musid"));
-                mus.setType(rs.getString("music"));
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    mus.setId(rs.getInt("musid"));
+                    mus.setType(rs.getString("music"));
+                }
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        } finally {
-            try {
-                assert rs != null;
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
         return mus;
     }

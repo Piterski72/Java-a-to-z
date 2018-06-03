@@ -19,18 +19,16 @@ public class PostgresRoleDao implements RoleDao {
     @Override
     public int create(Role entity) {
         int result = -1;
-        ResultSet rs;
-
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
              PreparedStatement pst = conn.prepareStatement("INSERT INTO public.role (rolename) VALUES (?)",
                      Statement.RETURN_GENERATED_KEYS)) {
             pst.setString(1, entity.getRolename());
             pst.executeUpdate();
-            rs = pst.getGeneratedKeys();
-            if (rs.next()) {
-                result = rs.getInt("roleid");
+            try (ResultSet rs = pst.getGeneratedKeys()) {
+                if (rs.next()) {
+                    result = rs.getInt("roleid");
+                }
             }
-            rs.close();
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
         }
@@ -39,7 +37,6 @@ public class PostgresRoleDao implements RoleDao {
 
     @Override
     public Role update(int id, Role entity) {
-
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
              PreparedStatement pst = conn.prepareStatement("UPDATE public.role SET rolename =? WHERE roleid=?")) {
             pst.setString(1, entity.getRolename());
@@ -58,7 +55,6 @@ public class PostgresRoleDao implements RoleDao {
              PreparedStatement pst = conn.prepareStatement("DELETE  FROM public.role WHERE roleid=?")) {
             pst.setInt(1, id);
             result = pst.executeUpdate();
-
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
         }
@@ -68,10 +64,9 @@ public class PostgresRoleDao implements RoleDao {
     @Override
     public Collection<Role> getAll() {
         Collection<Role> roles = new CopyOnWriteArrayList<>();
-        ResultSet rs = null;
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
-             PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.role")) {
-            rs = pst.executeQuery();
+             PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.role");
+             ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
                 Role current = new Role();
                 current.setId(rs.getInt("roleid"));
@@ -80,13 +75,6 @@ public class PostgresRoleDao implements RoleDao {
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        } finally {
-            try {
-                assert rs != null;
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
         return roles;
     }
@@ -94,24 +82,17 @@ public class PostgresRoleDao implements RoleDao {
     @Override
     public Role getById(int id) {
         Role role = new Role();
-        ResultSet rs = null;
         try (Connection conn = PostgresBaseUtils.getBase().getConnection();
              PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.role WHERE roleid=?")) {
             pst.setInt(1, id);
-            rs = pst.executeQuery();
-            if (rs.next()) {
-                role.setId(rs.getInt("roleid"));
-                role.setRolename(rs.getString("rolename"));
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    role.setId(rs.getInt("roleid"));
+                    role.setRolename(rs.getString("rolename"));
+                }
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        } finally {
-            try {
-                assert rs != null;
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
         return role;
     }
