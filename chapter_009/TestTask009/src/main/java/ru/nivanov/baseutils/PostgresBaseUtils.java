@@ -17,7 +17,7 @@ public class PostgresBaseUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(PostgresBaseUtils.class);
     private static final PostgresBaseUtils BASE = new PostgresBaseUtils();
-    private BasicDataSource pool;
+    private final BasicDataSource pool;
 
     /**
      * Private constructor.
@@ -47,14 +47,18 @@ public class PostgresBaseUtils {
      * Get connection
      * @return connection
      */
-    public Connection getConnection() {
+    public Connection getConnect() throws NoConnectException {
         Connection conn = null;
         try {
             conn = getBase().pool.getConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return conn;
+        if (conn != null) {
+            return conn;
+        } else {
+            throw new NoConnectException("connection not established!");
+        }
 
     }
 

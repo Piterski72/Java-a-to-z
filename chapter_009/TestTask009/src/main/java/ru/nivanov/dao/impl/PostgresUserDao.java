@@ -2,6 +2,7 @@ package ru.nivanov.dao.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.nivanov.baseutils.NoConnectException;
 import ru.nivanov.baseutils.PostgresBaseUtils;
 import ru.nivanov.dao.UserDao;
 import ru.nivanov.entity.User;
@@ -21,7 +22,7 @@ public class PostgresUserDao implements UserDao {
     @Override
     public int create(User user) {
         int result = -1;
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+        try (Connection conn = PostgresBaseUtils.getBase().getConnect();
              PreparedStatement pst = conn.prepareStatement(
                      "INSERT INTO public.user (username, addressident, roleident) VALUES (?, ?, ?)",
                      Statement.RETURN_GENERATED_KEYS)) {
@@ -36,6 +37,8 @@ public class PostgresUserDao implements UserDao {
                 }
             }
         } catch (SQLException e) {
+            LOG.error(e.getMessage(), e);
+        } catch (NoConnectException e) {
             LOG.error(e.getMessage(), e);
         }
         if (user.getMusicType() != null && !user.getMusicType().isEmpty()) {
@@ -55,7 +58,7 @@ public class PostgresUserDao implements UserDao {
     private Set<Integer> setMusicType(User user) {
         Set<Integer> musTypes = user.getMusicType();
         int userid = user.getId();
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+        try (Connection conn = PostgresBaseUtils.getBase().getConnect();
              PreparedStatement pst = conn.prepareStatement("DELETE FROM public.usermusik WHERE iduser = ?")) {
             pst.setInt(1, user.getId());
             pst.executeUpdate();
@@ -70,6 +73,8 @@ public class PostgresUserDao implements UserDao {
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
+        } catch (NoConnectException e) {
+            LOG.error(e.getMessage(), e);
         }
         return musTypes;
     }
@@ -77,7 +82,7 @@ public class PostgresUserDao implements UserDao {
     @Override
     public User update(int id, User user) {
 
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+        try (Connection conn = PostgresBaseUtils.getBase().getConnect();
              PreparedStatement pst = conn.prepareStatement(
                      "UPDATE public.user SET username = ?, addressident = ?, roleident = ? WHERE userid = ?")) {
             pst.setString(1, user.getName());
@@ -87,6 +92,8 @@ public class PostgresUserDao implements UserDao {
             pst.executeUpdate();
 
         } catch (SQLException e) {
+            LOG.error(e.getMessage(), e);
+        } catch (NoConnectException e) {
             LOG.error(e.getMessage(), e);
         }
         user.setId(id);
@@ -102,7 +109,7 @@ public class PostgresUserDao implements UserDao {
         User user = this.getById(id);
         int addrId = user.getAddressid();
 
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+        try (Connection conn = PostgresBaseUtils.getBase().getConnect();
              PreparedStatement pst = conn.prepareStatement("DELETE FROM public.user WHERE userid = ?");
              PreparedStatement pst2 = conn.prepareStatement("DELETE FROM public.usermusik WHERE iduser = ?");
              PreparedStatement pst3 = conn.prepareStatement("DELETE FROM public.adress WHERE addrid = ?")) {
@@ -114,6 +121,8 @@ public class PostgresUserDao implements UserDao {
             pst3.executeUpdate();
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
+        } catch (NoConnectException e) {
+            LOG.error(e.getMessage(), e);
         }
         return result != -1;
     }
@@ -122,7 +131,7 @@ public class PostgresUserDao implements UserDao {
     public User getById(int id) {
         User foundUser = new User();
         foundUser.setName("empty");
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+        try (Connection conn = PostgresBaseUtils.getBase().getConnect();
              PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.user WHERE userid = ?")) {
             pst.setInt(1, id);
             try (ResultSet rs = pst.executeQuery()) {
@@ -137,6 +146,8 @@ public class PostgresUserDao implements UserDao {
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
+        } catch (NoConnectException e) {
+            LOG.error(e.getMessage(), e);
         }
         return foundUser;
     }
@@ -146,9 +157,9 @@ public class PostgresUserDao implements UserDao {
      * @param userid ..
      * @return ..
      */
-    private Set<Integer> getMusikType(int userid) {
+    private Set<Integer> getMusikType(int userid) throws NoConnectException {
         Set<Integer> musTypes = new CopyOnWriteArraySet<>();
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+        try (Connection conn = PostgresBaseUtils.getBase().getConnect();
              PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.usermusik WHERE iduser = ?")) {
             pst.setInt(1, userid);
             try (ResultSet rs = pst.executeQuery()) {
@@ -165,7 +176,7 @@ public class PostgresUserDao implements UserDao {
     @Override
     public Collection<User> getAll() {
         Collection<User> users = new CopyOnWriteArrayList<>();
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+        try (Connection conn = PostgresBaseUtils.getBase().getConnect();
              Statement st = conn.createStatement();
              ResultSet rs = st.executeQuery("SELECT * FROM public.user")) {
             while (rs.next()) {
@@ -178,6 +189,8 @@ public class PostgresUserDao implements UserDao {
                 users.add(current);
             }
         } catch (SQLException e) {
+            LOG.error(e.getMessage(), e);
+        } catch (NoConnectException e) {
             LOG.error(e.getMessage(), e);
         }
         return users;

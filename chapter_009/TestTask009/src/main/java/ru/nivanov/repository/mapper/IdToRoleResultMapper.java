@@ -14,9 +14,9 @@ import java.util.Collection;
  * Created by Nikolay Ivanov on 08.05.2018.
  */
 public class IdToRoleResultMapper implements Mapper<Integer, RoleResult> {
-    private DaoFactory factory = new PostgresDaoFactory();
-    private RoleDao roleDao = factory.getRoleDao();
-    private UserDao userDao = factory.getUserDao();
+    private final DaoFactory factory = new PostgresDaoFactory();
+    private final RoleDao roleDao = factory.getRoleDao();
+    private final UserDao userDao = factory.getUserDao();
 
     @Override
     public RoleResult map(Integer val) {

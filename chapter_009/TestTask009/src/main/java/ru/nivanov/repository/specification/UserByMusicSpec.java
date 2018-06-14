@@ -6,7 +6,7 @@ import ru.nivanov.entity.MusicType;
  * Created by Nikolay Ivanov on 07.05.2018.
  */
 public class UserByMusicSpec implements SqlSpec {
-    private MusicType musicType;
+    private final MusicType musicType;
 
     /**
      * Constructor.

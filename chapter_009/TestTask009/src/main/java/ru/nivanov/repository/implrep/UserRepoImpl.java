@@ -2,6 +2,7 @@ package ru.nivanov.repository.implrep;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.nivanov.baseutils.NoConnectException;
 import ru.nivanov.baseutils.PostgresBaseUtils;
 import ru.nivanov.dao.AddressDao;
 import ru.nivanov.dao.UserDao;
@@ -34,12 +35,12 @@ import java.util.concurrent.CopyOnWriteArraySet;
  */
 public class UserRepoImpl implements UserRepository {
     private static final Logger LOG = LoggerFactory.getLogger(UserRepoImpl.class);
-    private DaoFactory factory = new PostgresDaoFactory();
-    private AddressDao addressDao = factory.getAddressDao();
-    private UserDao userDao = factory.getUserDao();
-    private Mapper<Integer, UserResult> intToUsrMap = new IdToUserResultMapper();
-    private Mapper<String, MusicType> strToMusMap = new StringToMusicMapper();
-    private Mapper<String, Role> strToRole = new StringToRoleMapper();
+    private final DaoFactory factory = new PostgresDaoFactory();
+    private final AddressDao addressDao = factory.getAddressDao();
+    private final UserDao userDao = factory.getUserDao();
+    private final Mapper<Integer, UserResult> intToUsrMap = new IdToUserResultMapper();
+    private final Mapper<String, MusicType> strToMusMap = new StringToMusicMapper();
+    private final Mapper<String, Role> strToRole = new StringToRoleMapper();
 
     @Override
     public UserResult getEntity(User entity) {
@@ -102,7 +103,7 @@ public class UserRepoImpl implements UserRepository {
 
         String query = sqlSpec.toSqlQuery();
 
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+        try (Connection conn = PostgresBaseUtils.getBase().getConnect();
              PreparedStatement pst = conn.prepareStatement(query);
              ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
@@ -110,6 +111,8 @@ public class UserRepoImpl implements UserRepository {
                 userIds.add(userid);
             }
         } catch (SQLException e) {
+            LOG.error(e.getMessage(), e);
+        } catch (NoConnectException e) {
             LOG.error(e.getMessage(), e);
         }
         for (Integer usId : userIds) {

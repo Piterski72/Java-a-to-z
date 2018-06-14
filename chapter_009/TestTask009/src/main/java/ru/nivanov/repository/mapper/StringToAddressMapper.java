@@ -11,8 +11,8 @@ import java.util.Collection;
  * Created by Nikolay Ivanov on 17.05.2018.
  */
 public class StringToAddressMapper implements Mapper<String, Address> {
-    private DaoFactory factory = new PostgresDaoFactory();
-    private AddressDao addressDao = factory.getAddressDao();
+    private final DaoFactory factory = new PostgresDaoFactory();
+    private final AddressDao addressDao = factory.getAddressDao();
 
     @Override
     public Address map(String addr) {

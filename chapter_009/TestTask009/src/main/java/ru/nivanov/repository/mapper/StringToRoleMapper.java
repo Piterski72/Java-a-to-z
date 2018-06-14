@@ -11,8 +11,8 @@ import java.util.Collection;
  * Created by Nikolay Ivanov on 12.05.2018.
  */
 public class StringToRoleMapper implements Mapper<String, Role> {
-    private DaoFactory factory = new PostgresDaoFactory();
-    private RoleDao roleDao = factory.getRoleDao();
+    private final DaoFactory factory = new PostgresDaoFactory();
+    private final RoleDao roleDao = factory.getRoleDao();
 
     @Override
     public Role map(String rolename) {

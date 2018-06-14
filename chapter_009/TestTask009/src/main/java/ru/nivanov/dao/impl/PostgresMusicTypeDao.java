@@ -2,6 +2,7 @@ package ru.nivanov.dao.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.nivanov.baseutils.NoConnectException;
 import ru.nivanov.baseutils.PostgresBaseUtils;
 import ru.nivanov.dao.MusicTypeDao;
 import ru.nivanov.entity.MusicType;
@@ -19,7 +20,7 @@ public class PostgresMusicTypeDao implements MusicTypeDao {
     @Override
     public int create(MusicType entity) {
         int result = -1;
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+        try (Connection conn = PostgresBaseUtils.getBase().getConnect();
              PreparedStatement pst = conn.prepareStatement("INSERT INTO public.musictype (music) VALUES (?)",
                      Statement.RETURN_GENERATED_KEYS)) {
             pst.setString(1, entity.getType());
@@ -31,18 +32,22 @@ public class PostgresMusicTypeDao implements MusicTypeDao {
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
+        } catch (NoConnectException e) {
+            LOG.error(e.getMessage(), e);
         }
         return result;
     }
 
     @Override
     public MusicType update(int id, MusicType entity) {
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+        try (Connection conn = PostgresBaseUtils.getBase().getConnect();
              PreparedStatement pst = conn.prepareStatement("UPDATE public.musictype SET music =? WHERE musid=?")) {
             pst.setString(1, entity.getType());
             pst.setInt(2, id);
             pst.executeUpdate();
         } catch (SQLException e) {
+            LOG.error(e.getMessage(), e);
+        } catch (NoConnectException e) {
             LOG.error(e.getMessage(), e);
         }
         return entity;
@@ -51,11 +56,13 @@ public class PostgresMusicTypeDao implements MusicTypeDao {
     @Override
     public boolean delete(int id) {
         int result = -1;
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+        try (Connection conn = PostgresBaseUtils.getBase().getConnect();
              PreparedStatement pst = conn.prepareStatement("DELETE  FROM public.musictype WHERE musid=?")) {
             pst.setInt(1, id);
             result = pst.executeUpdate();
         } catch (SQLException e) {
+            LOG.error(e.getMessage(), e);
+        } catch (NoConnectException e) {
             LOG.error(e.getMessage(), e);
         }
         return result != -1;
@@ -64,7 +71,7 @@ public class PostgresMusicTypeDao implements MusicTypeDao {
     @Override
     public Collection<MusicType> getAll() {
         Collection<MusicType> muslist = new CopyOnWriteArrayList<>();
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+        try (Connection conn = PostgresBaseUtils.getBase().getConnect();
              PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.musictype");
              ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
@@ -75,6 +82,8 @@ public class PostgresMusicTypeDao implements MusicTypeDao {
             }
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
+        } catch (NoConnectException e) {
+            LOG.error(e.getMessage(), e);
         }
         return muslist;
     }
@@ -82,7 +91,7 @@ public class PostgresMusicTypeDao implements MusicTypeDao {
     @Override
     public MusicType getById(int id) {
         MusicType mus = new MusicType();
-        try (Connection conn = PostgresBaseUtils.getBase().getConnection();
+        try (Connection conn = PostgresBaseUtils.getBase().getConnect();
              PreparedStatement pst = conn.prepareStatement("SELECT * FROM public.musictype WHERE musid=?")) {
             pst.setInt(1, id);
             try (ResultSet rs = pst.executeQuery()) {
@@ -92,6 +101,8 @@ public class PostgresMusicTypeDao implements MusicTypeDao {
                 }
             }
         } catch (SQLException e) {
+            LOG.error(e.getMessage(), e);
+        } catch (NoConnectException e) {
             LOG.error(e.getMessage(), e);
         }
         return mus;

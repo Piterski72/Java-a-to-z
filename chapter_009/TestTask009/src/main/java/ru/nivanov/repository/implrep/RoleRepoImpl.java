@@ -16,8 +16,8 @@ import ru.nivanov.repository.repoentity.RoleResult;
 public class RoleRepoImpl implements RoleRepository {
 
     private static final Logger LOG = LoggerFactory.getLogger(RoleRepoImpl.class);
+    private final Mapper<Integer, RoleResult> intToRoleresultMap = new IdToRoleResultMapper();
     private DaoFactory factory = new PostgresDaoFactory();
-    private Mapper<Integer, RoleResult> intToRoleresultMap = new IdToRoleResultMapper();
 
     @Override
     public RoleResult getEntity(Role role) {

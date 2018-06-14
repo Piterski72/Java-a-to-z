@@ -11,8 +11,8 @@ import java.util.Collection;
  * Created by Nikolay Ivanov on 08.05.2018.
  */
 public class StringToMusicMapper implements Mapper<String, MusicType> {
-    private DaoFactory factory = new PostgresDaoFactory();
-    private MusicTypeDao musicDao = factory.getMusicTypeDao();
+    private final DaoFactory factory = new PostgresDaoFactory();
+    private final MusicTypeDao musicDao = factory.getMusicTypeDao();
 
     @Override
     public MusicType map(String music) {

@@ -19,11 +19,11 @@ import java.util.concurrent.CopyOnWriteArraySet;
  * Created by Nikolay Ivanov on 06.05.2018.
  */
 public class IdToUserResultMapper implements Mapper<Integer, UserResult> {
-    private DaoFactory factory = new PostgresDaoFactory();
-    private AddressDao addressDao = factory.getAddressDao();
-    private MusicTypeDao musicDao = factory.getMusicTypeDao();
-    private RoleDao roleDao = factory.getRoleDao();
-    private UserDao userDao = factory.getUserDao();
+    private final DaoFactory factory = new PostgresDaoFactory();
+    private final AddressDao addressDao = factory.getAddressDao();
+    private final MusicTypeDao musicDao = factory.getMusicTypeDao();
+    private final RoleDao roleDao = factory.getRoleDao();
+    private final UserDao userDao = factory.getUserDao();
 
     @Override
     public UserResult map(Integer val) {
